@@ -1,4 +1,3 @@
-import { __ } from '@wordpress/i18n';
 import {
     Panel,
     PanelBody,
@@ -69,7 +68,7 @@ export default function FohSettingsNormalHours(){
     
                             infoInput.value = JSON.stringify(info);
     
-                            document.querySelector('#full-week') = full_week();
+                            //document.querySelector('#full-week') = full_week();
                             
                         }}>Add more</Button>
                         {removebtn}
