@@ -13,12 +13,12 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "@wordpress/scripts": "^30.6.0"
-  },
   "overrides": {
     "cookie": "^1.0.1",
     "cross-spawn": "^7.0.6",
     "puppeteer-core": "^23.9.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.8.1"
   }
 }
