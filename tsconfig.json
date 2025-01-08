@@ -1,11 +1,30 @@
 {
     "compilerOptions": {
-        "outDir": "./assets/public/",
+        "outDir": "./build/",
         "jsx": "react-jsx",
-        "module": "ESNext",
-        "target": "ES2015", // Set to ES5 for older browser support.
+        "target": "ES6",
         "strict": true,
         "allowSyntheticDefaultImports": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "baseUrl": "./",
+        "paths": {
+          "*": ["node_modules/*"]
+        }
     }
+    ,
+  "include": [
+    "src",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "assets/js",
+    "build",
+    "node_modules",
+    "vendor"
+  ]
   }

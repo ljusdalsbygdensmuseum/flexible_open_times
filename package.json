@@ -22,5 +22,10 @@
     "@wordpress/scripts": "^30.8.1",
     "ts-loader": "^9.5.1",
     "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@wordpress/components": "^29.1.1",
+    "@wordpress/dom-ready": "^4.15.0",
+    "@wordpress/element": "^6.15.1"
   }
 }
