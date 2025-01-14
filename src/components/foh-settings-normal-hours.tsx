@@ -9,10 +9,27 @@ import {
     Button
 } from '@wordpress/components';
 
+import {FullWeek, Day} from './foh-settings-fullweek';
+
 export default function FohSettingsNormalHours(){
     // get input and data
-    const infoInput = document.querySelector('#foh-normal-open-hours');
-    const info = JSON.parse(infoInput.value);
+    const infoInput: HTMLInputElement | null = document.querySelector('#foh-normal-open-hours')
+    if (!infoInput) {
+        throw new Error("#foh-normal-open-hours not found")
+    }
+    const info: Day[] = JSON.parse(infoInput.value).week
+
+    const weekNames = ['Monday', 'Tuseday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+    return (
+        <Panel>
+            <div id="full-week">
+                <FullWeek week={info} names={weekNames}/>
+            </div>
+        </Panel>
+    )
+
+
 
     // on edit of time field
     function editTime( objIndex, hourIndex, type, data) {
@@ -78,43 +95,4 @@ export default function FohSettingsNormalHours(){
         });
         return theWeek;
     }
-    /*
-    const fullWeek = info.weekday.map((obj, objIndex)=>{
-        //does not show delete button if there are no hours specified
-        let removebtn
-        if (obj.openhours.length) {
-            removebtn = <Button isDestructive variant="tertiary">Remove</Button>
-        }else{
-            removebtn = '';
-        }
-
-        return(
-            <PanelBody title={obj.name}>
-                <div id={'timepicker-'+obj.name}>
-                    {load_time_pickers(obj, objIndex)}
-                </div>
-
-                <PanelRow>
-                    <Button variant="secondary" onClick={(event)=>{
-                        console.log(objIndex);
-
-                        info.weekday[objIndex].openhours.push({open:{hours: 0, minutes: 0}, close:{hours: 0, minutes: 0}});
-
-                        infoInput.value = JSON.stringify(info);
-
-                        
-                        
-                    }}>Add more</Button>
-                    {removebtn}
-                </PanelRow>
-            </PanelBody>
-        );
-    });*/
-    return(
-        <Panel>
-            <div id="full-week">
-                {full_week()}
-            </div>
-        </Panel>
-    )
 }
