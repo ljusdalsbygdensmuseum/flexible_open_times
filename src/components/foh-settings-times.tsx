@@ -5,38 +5,34 @@ import {
     TimePicker,
     Button
 } from '@wordpress/components';
+import { TimeInputValue } from '@wordpress/components/build-types/date-time/types';
 
-export function Times(){
-    return(<>
-        <Flex>
-            <FlexItem>
-                <TimePicker.TimeInput label='Open'/>
-            </FlexItem>
-            <FlexItem>
-                <TimePicker.TimeInput label='Close'/>
-            </FlexItem>
-            <FlexBlock>
-                <Button isDestructive variant="tertiary">Remove</Button>
-            </FlexBlock>
-        </Flex>      
-    </>)
+interface Props {
+    hours: Hour[]
 }
 
-// construct time pickers
-    function load_time_pickers(obj, objIndex){
-        const timePicker = obj.openhours.map((hours, hoursIndex)=>{
-            return(
-            <PanelRow>
-                <Flex>
-                    <FlexItem>
-                        <TimePicker.TimeInput label="Open" value={hours.open} onChange={(data)=>editTime(objIndex, hoursIndex, 'open', data)}/>
-                    </FlexItem>
-                    <FlexBlock>
-                        <TimePicker.TimeInput label="Close" value={hours.close} onChange={(data)=>editTime(objIndex, hoursIndex, 'close', data)}/>
-                    </FlexBlock>
-                </Flex>
-            </PanelRow>
-            )
-        });
-        return timePicker
-    }
+export type Hour = {
+    open: TimeInputValue
+    close: TimeInputValue
+}
+
+export function Times(props: Props){
+    const theTimes = props.hours.map((timeObj: Hour)=>{
+        return(<>
+            <Flex>
+                <FlexItem>
+                    <TimePicker.TimeInput label='Open' value={timeObj.open}/>
+                </FlexItem>
+                <FlexItem>
+                    <TimePicker.TimeInput label='Close' value={timeObj.close}/>
+                </FlexItem>
+                <FlexBlock>
+                    <Button isDestructive variant="tertiary">Remove</Button>
+                </FlexBlock>
+            </Flex>      
+        </>)
+    })
+    return theTimes
+}
+
+                    

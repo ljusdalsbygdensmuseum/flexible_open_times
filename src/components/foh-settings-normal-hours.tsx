@@ -24,12 +24,12 @@ export default function FohSettingsNormalHours(){
     return (
         <Panel>
             <div id="full-week">
-                <FullWeek week={info} names={weekNames}/>
+                <FullWeek week={info} names={weekNames} input={infoInput}/>
             </div>
         </Panel>
     )
 
-
+/*
 
     // on edit of time field
     function editTime( objIndex, hourIndex, type, data) {
@@ -94,5 +94,5 @@ export default function FohSettingsNormalHours(){
             );
         });
         return theWeek;
-    }
+    }*/
 }
