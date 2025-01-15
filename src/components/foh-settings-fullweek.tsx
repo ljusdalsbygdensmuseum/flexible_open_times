@@ -6,7 +6,8 @@ import {
 
 import { useState } from 'react';
 
-import { Times, Hour } from './foh-settings-times';
+import{ Day, Hour } from './foh-settings-types'
+import { Times } from './foh-settings-times';
 
 interface Props {
     week: Day[]
@@ -14,20 +15,17 @@ interface Props {
     input: HTMLInputElement
 }
 
-export type Day = {
-    dayInt: 0 | 1 | 2 | 3 | 4 | 5 | 6
-    hours: Hour[]
-}
-
 export function FullWeek(props: Props) {
+    let hourIdInc = 0
     const theWeek = props.week.map((dayObj: Day)=>{
 
         const [hours, setHours] = useState(dayObj.hours)
 
         const addMoreHours = () => {
             const emptyHoursObj: Hour ={
+                id: hourIdInc++,
                 open:{
-                    hours: 5,
+                    hours: 0,
                     minutes: 0,
                 },
                 close:{
@@ -37,14 +35,16 @@ export function FullWeek(props: Props) {
             }
             setHours([...hours, emptyHoursObj])
 
-            const newWeek = props.week
-            props.input.value = JSON.stringify(props.week)
+            const newWeek = props.week.concat([])
+            newWeek[dayObj.dayInt].hours = [...hours, emptyHoursObj]
+
+            props.input.value = JSON.stringify(newWeek)
         }
 
         return(<>
             <PanelBody title={props.names[dayObj.dayInt]}>
                 <PanelRow>
-                    <Times hours={hours}/>
+                    <Times hours={hours} dayId={dayObj.dayInt} week={props.week}/>
                 </PanelRow>
                 <PanelRow>
                     <Button variant='secondary' onClick={addMoreHours}>Add More</Button>
