@@ -6,32 +6,30 @@ import {
     Button
 } from '@wordpress/components';
 
-import{ Day, Hour } from './foh-settings-types'
+import{ Hour } from './foh-settings-types'
 import { useState } from 'react';
 
 interface Props {
     hours: Hour[]
-    week: Day[]
-    dayId: number
+    onRemoveItem: (item: Hour) => void
 }
 
-export function Times(props: Props){
+export function Times({hours, onRemoveItem}: Props){
 
 
 
 
-    const theTimes = props.hours.map((timeObj: Hour)=>{
-        const [time, setTime] = useState(timeObj)
+    const theTimes = hours.map((timeObj: Hour)=>{
+        //const [timmmmme, setTimmmmme] = useState(timeObj)
 
         const editHours = () => {
 
         }
 
         const removeHours = () => {
-            const index = props.hours.indexOf(timeObj)
+            const index = hours.indexOf(timeObj)
             
         }
-        console.log('hello')
 
         return(<>
             <Flex>
@@ -42,7 +40,7 @@ export function Times(props: Props){
                     <TimePicker.TimeInput label='Close' value={timeObj.close}/>
                 </FlexItem>
                 <FlexBlock>
-                    <Button isDestructive variant="tertiary" >Remove</Button>
+                    <Button isDestructive variant="tertiary" onClick={onRemoveItem(event, timeObj)}>Remove</Button>
                 </FlexBlock>
             </Flex>      
         </>)

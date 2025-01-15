@@ -4,7 +4,7 @@ import {
     Button
 } from '@wordpress/components';
 
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 
 import{ Day, Hour } from './foh-settings-types'
 import { Times } from './foh-settings-times';
@@ -41,10 +41,14 @@ export function FullWeek(props: Props) {
             props.input.value = JSON.stringify(newWeek)
         }
 
+        const removeItem = (e: SyntheticEvent, item: Hour) => {
+            console.log(item)
+        }
+
         return(<>
             <PanelBody title={props.names[dayObj.dayInt]}>
                 <PanelRow>
-                    <Times hours={hours} dayId={dayObj.dayInt} week={props.week}/>
+                    <Times hours={hours} onRemoveItem={removeItem}/>
                 </PanelRow>
                 <PanelRow>
                     <Button variant='secondary' onClick={addMoreHours}>Add More</Button>
