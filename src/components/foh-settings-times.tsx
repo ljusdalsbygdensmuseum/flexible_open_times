@@ -8,13 +8,15 @@ import {
 
 import{ Hour } from './foh-settings-types'
 import { useState } from 'react';
+import { TimeInputValue } from '@wordpress/components/build-types/date-time/types';
 
 interface Props {
     hours: Hour[]
     onRemoveItem: (item: Hour) => void
+    onChangeItem: (newTime: TimeInputValue, open: boolean, item: Hour) => void
 }
 
-export function Times({hours, onRemoveItem}: Props){
+export function Times({hours, onRemoveItem, onChangeItem}: Props){
 
 
 
@@ -34,10 +36,14 @@ export function Times({hours, onRemoveItem}: Props){
         return(<>
             <Flex>
                 <FlexItem>
-                    <TimePicker.TimeInput label='Open' value={timeObj.open}/>
+                    <TimePicker.TimeInput label='Open' value={timeObj.open} onChange={(newTime)=>{
+                        onChangeItem(newTime, true, timeObj)
+                    }}/>
                 </FlexItem>
                 <FlexItem>
-                    <TimePicker.TimeInput label='Close' value={timeObj.close}/>
+                    <TimePicker.TimeInput label='Close' value={timeObj.close} onChange={(newTime)=>{
+                        onChangeItem(newTime, false, timeObj)
+                    }}/>
                 </FlexItem>
                 <FlexBlock>
                     <Button isDestructive variant="tertiary" onClick={()=>{

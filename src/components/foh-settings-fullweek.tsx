@@ -3,6 +3,7 @@ import {
     PanelRow,
     Button
 } from '@wordpress/components';
+import { TimeInputValue } from '@wordpress/components/build-types/date-time/types';
 
 import { SyntheticEvent, useState } from 'react';
 
@@ -52,10 +53,24 @@ export function FullWeek(props: Props) {
             props.input.value = JSON.stringify(newWeek)
         }
 
+        const changeItem = (newTime: TimeInputValue, open: boolean, item: Hour) => {
+            const hourIndex = props.week[dayObj.dayInt].hours.indexOf(item)
+
+            if (open) {
+                props.week[dayObj.dayInt].hours[hourIndex].open = newTime
+            }
+            else if (!open) {
+                props.week[dayObj.dayInt].hours[hourIndex].close = newTime
+            }
+
+            setHours([...props.week[dayObj.dayInt].hours])
+            props.input.value = JSON.stringify(props.week)
+        }
+
         return(<>
             <PanelBody title={props.names[dayObj.dayInt]}>
                 <PanelRow>
-                    <Times hours={hours} onRemoveItem={removeItem}/>
+                    <Times hours={hours} onRemoveItem={removeItem} onChangeItem={changeItem}/>
                 </PanelRow>
                 <PanelRow>
                     <Button variant='secondary' onClick={addMoreHours}>Add More</Button>
