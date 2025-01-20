@@ -2,6 +2,7 @@ import {
     Flex,
     FlexItem,
     FlexBlock,
+    PanelRow,
     TimePicker,
     Button
 } from '@wordpress/components';
@@ -33,8 +34,9 @@ export function Times({hours, onRemoveItem, onChangeItem}: Props){
             
         }
 
-        return(<>
-            <Flex>
+        return(
+        <PanelRow>
+            <Flex align='flex-end'>
                 <FlexItem>
                     <TimePicker.TimeInput label='Open' value={timeObj.open} onChange={(newTime)=>{
                         onChangeItem(newTime, true, timeObj)
@@ -51,7 +53,8 @@ export function Times({hours, onRemoveItem, onChangeItem}: Props){
                     }}>Remove</Button>
                 </FlexBlock>
             </Flex>      
-        </>)
+        </PanelRow>
+        )
     })
     
     return theTimes

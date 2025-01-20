@@ -5,7 +5,7 @@ import {
 } from '@wordpress/components';
 import { TimeInputValue } from '@wordpress/components/build-types/date-time/types';
 
-import { SyntheticEvent, useState } from 'react';
+import { useState } from 'react';
 
 import{ Day, Hour } from './foh-settings-types'
 import { Times } from './foh-settings-times';
@@ -68,12 +68,12 @@ export function FullWeek(props: Props) {
         }
 
         return(<>
-            <PanelBody title={props.names[dayObj.dayInt]}>
+            <PanelBody title={props.names[dayObj.dayInt]} initialOpen={props.week[dayObj.dayInt].hours.length > 0 ? true : false}>
+                <Times hours={hours} onRemoveItem={removeItem} onChangeItem={changeItem}/>
                 <PanelRow>
-                    <Times hours={hours} onRemoveItem={removeItem} onChangeItem={changeItem}/>
-                </PanelRow>
-                <PanelRow>
-                    <Button variant='secondary' onClick={addMoreHours}>Add More</Button>
+                    {props.week[dayObj.dayInt].hours.length < 4 &&
+                        <Button variant='secondary' onClick={addMoreHours}>Add More</Button>
+                    }
                 </PanelRow>
             </PanelBody>
         </>)
