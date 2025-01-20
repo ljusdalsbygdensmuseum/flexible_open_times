@@ -19,14 +19,22 @@ class FlexibleOpenHours{
         add_action('admin_init', array($this, 'settings'));
 
         //Post type
+        add_action('init', array($this, 'init_post_type'));
     }
 
     //Page
     function main_page()
     {
-        $menuPage = add_menu_page('Open Hours', 'Open Hours', 'delete_others_posts', 'open-hours', array($this, 'main_page_html'), 'dashicons-clock', 4);
+        $menuPage = add_menu_page('Open Hours', 'Open Hours', 'edit_pages', 'open-hours', array($this, 'main_page_html'), 'dashicons-clock', 4);
 
         add_action('load-' . $menuPage, array($this, 'load_main_page'));
+
+        // rename the submenu page 
+        add_submenu_page( 'open-hours', 'Open Hours', 'Normal hours', 'edit_pages', 'open-hours' );
+
+        // submenu pages for custom post type
+        add_submenu_page( 'open-hours', 'Extra hours', 'Extra hours', 'edit_pages', 'edit.php?post_type=foh-extra-hours');
+        add_submenu_page( 'open-hours', 'Extra hours', 'Closed', 'edit_pages', 'edit.php?post_type=foh-closed');
     }
 
     function main_page_html() 
@@ -86,6 +94,28 @@ class FlexibleOpenHours{
     {?>
         <input id="foh-normal-open-hours" name="foh-normal-open-hours" type="text" value='<?php echo esc_html(get_option('foh-normal-open-hours'))?>'>
     <?php 
+    }
+
+    function init_post_type() {
+        $args = array(
+            'public' => TRUE,
+            'supports' => array('title'),
+            'show_in_menu' => FALSE,
+            'labels' => array(
+                'name' => 'Extra hours',
+            )
+        );
+        register_post_type('foh-extra-hours', $args);
+
+        $argsClosed = array(
+            'public' => TRUE,
+            'supports' => array('title'),
+            'show_in_menu' => FALSE,
+            'labels' => array(
+                'name' => 'Closed',
+            )
+        );
+        register_post_type('foh-closed', $argsClosed);
     }
 }
 
