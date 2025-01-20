@@ -41,8 +41,15 @@ export function FullWeek(props: Props) {
             props.input.value = JSON.stringify(newWeek)
         }
 
-        const removeItem = (e: SyntheticEvent, item: Hour) => {
-            console.log(item)
+        const removeItem = (item: Hour) => {
+            const newHours = props.week[dayObj.dayInt].hours.filter((compareItem)=> compareItem != item)
+
+            setHours([...newHours])
+
+            const newWeek = props.week.concat([])
+            newWeek[dayObj.dayInt].hours = [...newHours]
+
+            props.input.value = JSON.stringify(newWeek)
         }
 
         return(<>

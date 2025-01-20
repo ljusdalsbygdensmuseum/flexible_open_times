@@ -40,7 +40,9 @@ export function Times({hours, onRemoveItem}: Props){
                     <TimePicker.TimeInput label='Close' value={timeObj.close}/>
                 </FlexItem>
                 <FlexBlock>
-                    <Button isDestructive variant="tertiary" onClick={onRemoveItem(event, timeObj)}>Remove</Button>
+                    <Button isDestructive variant="tertiary" onClick={()=>{
+                        onRemoveItem(timeObj)
+                    }}>Remove</Button>
                 </FlexBlock>
             </Flex>      
         </>)
