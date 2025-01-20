@@ -8,7 +8,6 @@ import {
 } from '@wordpress/components';
 
 import{ Hour } from './foh-settings-types'
-import { useState } from 'react';
 import { TimeInputValue } from '@wordpress/components/build-types/date-time/types';
 
 interface Props {
@@ -18,22 +17,7 @@ interface Props {
 }
 
 export function Times({hours, onRemoveItem, onChangeItem}: Props){
-
-
-
-
     const theTimes = hours.map((timeObj: Hour)=>{
-        //const [timmmmme, setTimmmmme] = useState(timeObj)
-
-        const editHours = () => {
-
-        }
-
-        const removeHours = () => {
-            const index = hours.indexOf(timeObj)
-            
-        }
-
         return(
         <PanelRow>
             <Flex align='flex-end'>
