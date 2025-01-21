@@ -20,6 +20,11 @@ class FlexibleOpenHours{
 
         //Post type
         add_action('init', array($this, 'init_post_type'));
+
+        //Meta boxes
+        add_action('add_meta_boxes', array($this, 'init_meta_boxes'));
+        add_action('save_post_foh-extra-hours', array($this, 'save_meta_values'));
+        add_action('save_post_foh-closed', array($this, 'save_meta_values'));
     }
 
     //Page
@@ -80,7 +85,7 @@ class FlexibleOpenHours{
 
         add_settings_section( 'normal_open_hours', null, array($this, 'open_hours_settings_html'), 'open-hours' );
 
-        add_settings_field('foh-normal-open-hours', null, array($this, 'day_html'), 'open-hours', 'normal_open_hours',);
+        add_settings_field('foh-normal-open-hours', null, array($this, 'day_html'), 'open-hours', 'normal_open_hours');
 
         
     }
@@ -96,7 +101,9 @@ class FlexibleOpenHours{
     <?php 
     }
 
-    function init_post_type() {
+    //Post types
+    function init_post_type() 
+    {
         $args = array(
             'public' => TRUE,
             'supports' => array('title'),
@@ -116,6 +123,44 @@ class FlexibleOpenHours{
             )
         );
         register_post_type('foh-closed', $argsClosed);
+    }
+
+    //Meta box
+    function init_meta_boxes()
+    {
+        add_meta_box('foh-extra-hours-meta', 'Extra hours', array($this, 'callback_content_meta_box'), 'foh-extra-hours', 'advanced', 'high');
+        add_meta_box('foh-closed-meta', 'Days', array($this, 'callback_content_meta_box'), 'foh-closed', 'advanced', 'high');
+    }
+
+    function callback_content_meta_box($post, $args) 
+    {
+        wp_nonce_field( 'save_meta_values', $args['id']. '_wpnonce' );
+
+        $value = esc_attr( get_post_meta( $post->ID, $args['id'], true ) );
+
+        echo '<div id="'.$args['id'].'_container" ></div><input type="text" id="'.$args['id'].'" name="'.$args['id'].'" value="'.$value.'">';
+    }
+
+    function save_meta_values($postID)
+    {
+        $post_type = get_post_type($postID);
+
+        if ( ! isset($_POST[$post_type.'-meta_wpnonce'])) {
+            return;
+        }
+        if ( ! wp_verify_nonce($_POST[$post_type.'-meta_wpnonce'], 'save_meta_values')) {
+            return;
+        }
+        if ( ! current_user_can('edit_post', $postID)) {
+            return;
+        }
+        if ( ! isset($_POST[$post_type.'-meta'])) {
+            return;
+        }
+
+        $data = sanitize_text_field($_POST[$post_type.'-meta']);
+
+        update_post_meta($postID, $post_type.'-meta', $data);
     }
 }
 
