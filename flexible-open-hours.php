@@ -89,6 +89,9 @@ class FlexibleOpenHours{
             //Enqueue scripts
             wp_enqueue_script('foh-extra-open-js', plugin_dir_url(__FILE__) . 'build/extra_open.js', $assets['dependencies'], $assets['version'], true);
 
+            //Enqueue styles
+            wp_enqueue_style( 'wp-components' );
+
         }
         if (get_post_type() == 'foh-closed') {
             //Grab dependencies
@@ -96,6 +99,9 @@ class FlexibleOpenHours{
 
             //Enqueue scripts
             wp_enqueue_script('foh-closed-js', plugin_dir_url(__FILE__) . 'build/closed.js', $assets['dependencies'], $assets['version'], true);
+
+            //Enqueue styles
+            wp_enqueue_style( 'wp-components' );
         }
     }
 

@@ -5,7 +5,11 @@ import {
 import { FullWeek } from './foh-settings-fullweek';
 import{ Day } from './foh-settings-types'
 
+import { DaySelect } from './foh-day-select';
+import{ Days } from './foh-day-select-types'
+
 import isJSON from '../utility/is-json'
+
 
 export default function FohExtraHours(){
     // get input and data
@@ -17,14 +21,20 @@ export default function FohExtraHours(){
     if (isJSON(infoInput.value)) {
         info = JSON.parse(infoInput.value)
     }
-    console.log(infoInput.value)
     const names = ['']
 
-    return (
+    const daysInfo: Days[] = []
+
+    return (<>
+        <Panel>
+            <div id="day-select">
+                <DaySelect/>
+            </div>
+        </Panel>
         <Panel>
             <div id="full-week">
                 <FullWeek week={info} names={names} input={infoInput}/>
             </div>
         </Panel>
-    )
+    </>)
 }
