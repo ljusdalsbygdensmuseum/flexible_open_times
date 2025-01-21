@@ -162,7 +162,7 @@ class FlexibleOpenHours{
 
         $value = esc_attr( get_post_meta( $post->ID, $args['id'], true ) );
 
-        echo '<div id="'.$args['id'].'_container" ></div><input type="text" id="'.$args['id'].'" name="'.$args['id'].'" value="'.$value.'">';
+        echo '<div id="'.$args['id'].'_container" ></div><input type="text" id="'.$args['id'].'_field" name="'.$args['id'].'_field" value="'.$value.'">';
     }
 
     function save_meta_values($postID)
@@ -178,11 +178,11 @@ class FlexibleOpenHours{
         if ( ! current_user_can('edit_post', $postID)) {
             return;
         }
-        if ( ! isset($_POST[$post_type.'-meta'])) {
+        if ( ! isset($_POST[$post_type.'-meta_field'])) {
             return;
         }
 
-        $data = sanitize_text_field($_POST[$post_type.'-meta']);
+        $data = sanitize_text_field($_POST[$post_type.'-meta_field']);
 
         update_post_meta($postID, $post_type.'-meta', $data);
     }
