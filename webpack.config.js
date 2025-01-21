@@ -4,7 +4,9 @@ const path          = require( 'path' );
 module.exports = {
   ...defaults,
   entry: {
-    settings: path.resolve( process.cwd(), 'src', 'settings.tsx' )
+    settings: path.resolve( process.cwd(), 'src', 'settings.tsx' ),
+    extra_open: path.resolve( process.cwd(), 'src', 'metabox-extra.tsx' ),
+    closed: path.resolve( process.cwd(), 'src', 'metabox-closed.tsx' )
   },
   output: {
     filename: '[name].js',

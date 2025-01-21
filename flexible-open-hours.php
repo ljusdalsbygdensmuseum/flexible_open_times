@@ -15,6 +15,9 @@ class FlexibleOpenHours{
         //Menu page
         add_action('admin_menu', array($this, 'main_page'));
 
+        //Admin enqueue
+        add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
+
         //Settings
         add_action('admin_init', array($this, 'settings'));
 
@@ -73,6 +76,27 @@ class FlexibleOpenHours{
 
         //Enqueue styles
         wp_enqueue_style( 'wp-components' );
+    }
+
+    function admin_scripts($hook){
+        if ($hook != 'post.php' && $hook != 'post-new.php') {
+            return;
+        }
+        if (get_post_type() == 'foh-extra-hours') {
+            //Grab dependencies
+            $assets = include plugin_dir_path(__FILE__) . 'build/extra_open.asset.php';
+
+            //Enqueue scripts
+            wp_enqueue_script('foh-extra-open-js', plugin_dir_url(__FILE__) . 'build/extra_open.js', $assets['dependencies'], $assets['version'], true);
+
+        }
+        if (get_post_type() == 'foh-closed') {
+            //Grab dependencies
+            $assets = include plugin_dir_path(__FILE__) . 'build/closed.asset.php';
+
+            //Enqueue scripts
+            wp_enqueue_script('foh-closed-js', plugin_dir_url(__FILE__) . 'build/closed.js', $assets['dependencies'], $assets['version'], true);
+        }
     }
 
     //Settings
