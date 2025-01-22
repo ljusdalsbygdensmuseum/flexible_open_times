@@ -2,11 +2,11 @@ import {
     Panel,
 } from '@wordpress/components';
 
-import { FullWeek } from './foh-settings-fullweek';
+import { FullWeek } from './foh-settings-fullweek'
 import{ Day } from './foh-settings-types'
 
-import { DaySelect } from './foh-day-select';
-import{ Days } from './foh-day-select-types'
+import { DaySelect } from './foh-day-select'
+import{ Dates } from './foh-day-select-types'
 
 import isJSON from '../utility/is-json'
 
@@ -23,15 +23,17 @@ export default function FohExtraHours(){
     }
     const names = ['']
 
-    const daysInfo: Days[] = []
+    const datesInfo: Dates[] = []
 
     return (<>
         <Panel>
+            <h3>Dates</h3>
             <div id="day-select">
-                <DaySelect/>
+                <DaySelect dates={datesInfo}/>
             </div>
         </Panel>
         <Panel>
+            <h3>Hours</h3>
             <div id="full-week">
                 <FullWeek week={info} names={names} input={infoInput}/>
             </div>
