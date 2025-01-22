@@ -6,7 +6,6 @@ import { FullWeek } from './foh-settings-fullweek'
 import{ Day } from './foh-settings-types'
 
 import { DaySelect } from './foh-day-select'
-import{ Dates } from './foh-day-select-types'
 
 import isJSON from '../utility/is-json'
 
@@ -23,7 +22,7 @@ export default function FohExtraHours(){
     }
     const names = ['']
 
-    const datesInfo: Dates[] = []
+    const datesInfo: Date[] = []
 
     return (<>
         <Panel>

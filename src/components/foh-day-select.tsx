@@ -6,31 +6,59 @@ import {
 } from "@wordpress/components";
 import { useState } from '@wordpress/element'
 
-import { Dates } from "./foh-day-select-types"
-
 interface Props {
-    dates: Dates[]
+    dates: Date[]
 }
 
 export function DaySelect({dates}: Props){
-    const[ date, setDate] = useState(new Date())
+    const[ date, setDate] = useState(dates)
 
-    const [functionState, setFunctionState] = useState(false)
+    const [multipleState, setMultipleState] = useState(false)
     const [removeState, setRemoveState] = useState(false)
+    const [prevDate, setPrevDate] = useState(new Date())
+
+    function addDate(date: Date) {
+        console.log('add')
+    }
+
+    function removeDate(date: Date){
+        console.log('remove')
+    }
+
+    function changeDates(newDate: Date){
+        let startDate = new Date(newDate)
+        if (!multipleState || startDate === prevDate) {
+            removeState ? removeDate(startDate) : addDate(startDate)
+
+        }else if (multipleState && startDate > prevDate) {
+            while (startDate >= prevDate) {
+                console.log(startDate)
+                removeState ? removeDate(startDate) : addDate(startDate)
+                startDate = new Date(startDate.setDate(startDate.getDate() - 1))
+            }
+        }else if (multipleState && startDate < prevDate) {
+            while (startDate <= prevDate) {
+                console.log(startDate)
+                removeState ? removeDate(startDate) : addDate(startDate)
+                startDate = new Date(startDate.setDate(startDate.getDate() + 1))
+            }
+        }
+        setPrevDate(newDate)
+    }
 
     return(<>
         <PanelBody >
             <PanelRow>
                 <DatePicker
                     startOfWeek={1}
-                    onChange={(newdate)=> setDate( new Date(newdate) )}
+                    onChange={(newDate)=> changeDates(new Date(newDate))}
                 />
             </PanelRow>
             <PanelRow>
                 <ToggleControl
                     label="Select multiple days"
-                    checked={functionState}
-                    onChange={(value)=> setFunctionState(value)}
+                    checked={multipleState}
+                    onChange={(value)=> setMultipleState(value)}
                 />
             </PanelRow>
             <PanelRow>
