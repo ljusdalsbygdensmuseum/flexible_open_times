@@ -6,6 +6,7 @@ import { FullWeek } from './foh-settings-fullweek'
 import{ Day } from './foh-settings-types'
 
 import { DaySelect } from './foh-day-select'
+import { DatePickerEvent } from "@wordpress/components/build-types/date-time/types"
 
 import isJSON from '../utility/is-json'
 
@@ -22,7 +23,7 @@ export default function FohExtraHours(){
     }
     const names = ['']
 
-    const datesInfo: Date[] = []
+    const datesInfo: DatePickerEvent[] = [{date: new Date('2025-01-02')}]
 
     return (<>
         <Panel>

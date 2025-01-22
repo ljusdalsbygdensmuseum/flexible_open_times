@@ -27,7 +27,6 @@ class FlexibleOpenHours{
         //Meta boxes
         add_action('add_meta_boxes', array($this, 'init_meta_boxes'));
         add_action('save_post_foh-extra-hours', array($this, 'save_meta_values'));
-        add_action('save_post_foh-closed', array($this, 'save_meta_values'));
     }
 
     //Page
@@ -42,7 +41,6 @@ class FlexibleOpenHours{
 
         // submenu pages for custom post type
         add_submenu_page( 'open-hours', 'Extra hours', 'Extra hours', 'edit_pages', 'edit.php?post_type=foh-extra-hours');
-        add_submenu_page( 'open-hours', 'Extra hours', 'Closed', 'edit_pages', 'edit.php?post_type=foh-closed');
     }
 
     function main_page_html() 
@@ -143,23 +141,12 @@ class FlexibleOpenHours{
             )
         );
         register_post_type('foh-extra-hours', $args);
-
-        $argsClosed = array(
-            'public' => TRUE,
-            'supports' => array('title'),
-            'show_in_menu' => FALSE,
-            'labels' => array(
-                'name' => 'Closed',
-            )
-        );
-        register_post_type('foh-closed', $argsClosed);
     }
 
     //Meta box
     function init_meta_boxes()
     {
         add_meta_box('foh-extra-hours-meta', 'Extra hours', array($this, 'callback_content_meta_box'), 'foh-extra-hours', 'advanced', 'high');
-        add_meta_box('foh-closed-meta', 'Days', array($this, 'callback_content_meta_box'), 'foh-closed', 'advanced', 'high');
     }
 
     function callback_content_meta_box($post, $args) 
