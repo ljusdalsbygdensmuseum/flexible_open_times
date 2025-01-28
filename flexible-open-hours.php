@@ -153,9 +153,10 @@ class FlexibleOpenHours{
     {
         wp_nonce_field( 'save_meta_values', $args['id']. '_wpnonce' );
 
-        $value = esc_attr( get_post_meta( $post->ID, $args['id'], true ) );
+        $dates = esc_attr( get_post_meta( $post->ID, 'foh-extra-hours_dates_field', true ) );
+        $hours = esc_attr( get_post_meta( $post->ID, 'foh-extra-hours_hours_field', true ) );
 
-        echo '<div id="'.$args['id'].'_container" ></div><input type="text" id="'.$args['id'].'_field" name="'.$args['id'].'_field" value="'.$value.'">';
+        echo '<div id="'.$args['id'].'_container" ></div><input type="text" id="foh-extra-hours_dates_field" name="foh-extra-hours_dates_field" value="'.$dates.'" style="display:none;"><input type="text" id="foh-extra-hours_hours_field" name="foh-extra-hours_hours_field" value="'.$hours.'" style="display:none;">';
     }
 
     function save_meta_values($postID)
@@ -171,13 +172,15 @@ class FlexibleOpenHours{
         if ( ! current_user_can('edit_post', $postID)) {
             return;
         }
-        if ( ! isset($_POST[$post_type.'-meta_field'])) {
+        if ( ! isset($_POST['foh-extra-hours_dates_field']) || ! isset($_POST['foh-extra-hours_hours_field'])) {
             return;
         }
 
-        $data = sanitize_text_field($_POST[$post_type.'-meta_field']);
+        $dates = sanitize_text_field($_POST['foh-extra-hours_dates_field']);
+        $hours = sanitize_text_field($_POST['foh-extra-hours_hours_field']);
 
-        update_post_meta($postID, $post_type.'-meta', $data);
+        update_post_meta($postID, 'foh-extra-hours_dates_field', $dates);
+        update_post_meta($postID, 'foh-extra-hours_hours_field', $hours);
     }
 }
 

@@ -9,18 +9,19 @@ import { useState } from '@wordpress/element'
 
 interface Props {
     dates: DatePickerEvent[]
+    input: HTMLInputElement
 }
 
-export function DaySelect({dates}: Props){
+export function DaySelect({dates, input}: Props){
     const[ dateParam, setDateParam] = useState(dates)
 
     const [multipleState, setMultipleState] = useState(false)
     const [removeState, setRemoveState] = useState(false)
     const [prevDate, setPrevDate] = useState(new Date())
 
-    const addDate = (newDate: Date) =>{
-        
+    const addDate = (newDate: Date) =>{  
         setDateParam((currentDate)=> {
+            input.value = JSON.stringify([...currentDate, {date: new Date(newDate)}])
             return [...currentDate, {date: new Date(newDate)}] 
         })
     }
@@ -28,6 +29,7 @@ export function DaySelect({dates}: Props){
     const removeDate = (newDate: Date) => {
         setDateParam((dates)=> {
             const newDates = dates.filter((compareItem) => newDate.toDateString() !== new Date(compareItem.date).toDateString())
+            input.value = JSON.stringify([...newDates])
             return[...newDates]
         })
         
