@@ -34,7 +34,7 @@ export function FullWeek(props: Props) {
                     minutes: 0,
                 }
             }
-            setHours([...hours, emptyHoursObj])
+            setHours(()=>[...hours, emptyHoursObj])
 
             const newWeek = props.week.concat([])
             newWeek[dayObj.dayInt].hours = [...hours, emptyHoursObj]
@@ -45,7 +45,7 @@ export function FullWeek(props: Props) {
         const removeItem = (item: Hour) => {
             const newHours = props.week[dayObj.dayInt].hours.filter((compareItem)=> compareItem != item)
 
-            setHours([...newHours])
+            setHours(()=>[...newHours])
 
             const newWeek = props.week.concat([])
             newWeek[dayObj.dayInt].hours = [...newHours]
@@ -63,7 +63,7 @@ export function FullWeek(props: Props) {
                 props.week[dayObj.dayInt].hours[hourIndex].close = newTime
             }
 
-            setHours([...props.week[dayObj.dayInt].hours])
+            setHours(()=>[...props.week[dayObj.dayInt].hours])
             props.input.value = JSON.stringify(props.week)
         }
 

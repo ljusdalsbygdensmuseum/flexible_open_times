@@ -22,16 +22,16 @@ export function DaySelect({dates}: Props){
 
         console.log(newDate.toDateString(), prevDate)
         
-        /*if (dateParam.includes({date: new Date(newDate)})) {
+        if (dateParam.includes({date: new Date(newDate)})) {
             return;
-        }*/
+        }
         setDateParam((currentDate)=> [...currentDate, {date: newDate}])
         
     }
 
     function removeDate(newDate: Date){
         const newDates = dateParam.filter((compareItem) => newDate.toDateString() !== new Date(compareItem.date).toDateString())
-        setDateParam(newDates)
+        setDateParam(()=> newDates)
         
     }
 
@@ -56,7 +56,7 @@ export function DaySelect({dates}: Props){
         else{
             console.log('wrong')
         }
-        setPrevDate(new Date(newDate))
+        setPrevDate(()=> new Date(newDate))
         
     }
 
@@ -73,14 +73,14 @@ export function DaySelect({dates}: Props){
                 <ToggleControl
                     label="Select multiple days"
                     checked={multipleState}
-                    onChange={(value)=> setMultipleState(value)}
+                    onChange={(value)=> setMultipleState(() => value)}
                 />
             </PanelRow>
             <PanelRow>
                 <ToggleControl
                     label="Remove days"
                     checked={removeState}
-                    onChange={(value)=> setRemoveState(value)}
+                    onChange={(value)=> setRemoveState(() => value)}
                 />
             </PanelRow>
         </PanelBody>
