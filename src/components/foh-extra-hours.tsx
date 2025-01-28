@@ -23,7 +23,7 @@ export default function FohExtraHours(){
     }
     const names = ['']
 
-    const datesInfo: DatePickerEvent[] = [{date: new Date('2025-01-02')}]
+    const datesInfo: DatePickerEvent[] = []
 
     return (<>
         <Panel>

@@ -18,24 +18,22 @@ export function DaySelect({dates}: Props){
     const [removeState, setRemoveState] = useState(false)
     const [prevDate, setPrevDate] = useState(new Date())
 
-    function addDate(newDate: Date) {
-
-        console.log(newDate.toDateString(), prevDate)
+    const addDate = (newDate: Date) =>{
         
-        if (dateParam.includes({date: new Date(newDate)})) {
-            return;
-        }
-        setDateParam((currentDate)=> [...currentDate, {date: newDate}])
+        setDateParam((currentDate)=> {
+            return [...currentDate, {date: new Date(newDate)}] 
+        })
+    }
+
+    const removeDate = (newDate: Date) => {
+        setDateParam((dates)=> {
+            const newDates = dates.filter((compareItem) => newDate.toDateString() !== new Date(compareItem.date).toDateString())
+            return[...newDates]
+        })
         
     }
 
-    function removeDate(newDate: Date){
-        const newDates = dateParam.filter((compareItem) => newDate.toDateString() !== new Date(compareItem.date).toDateString())
-        setDateParam(()=> newDates)
-        
-    }
-
-    function changeDates(newDate: Date){
+    const changeDates = (newDate: Date) =>{
         let startDate = new Date(newDate)
 
         if (!multipleState || startDate.toDateString() === prevDate.toDateString()) {
@@ -43,19 +41,18 @@ export function DaySelect({dates}: Props){
 
         }else if (multipleState && startDate > prevDate) {
             while (startDate >= prevDate) {
-                
-                removeState ? removeDate(startDate) : addDate(startDate)
+                const thisDate = new Date(startDate)
+                removeState ? removeDate(thisDate) : addDate(thisDate)
                 startDate = new Date(startDate.setDate(startDate.getDate() - 1))
             }
         }else if (multipleState && startDate < prevDate) {
             while (startDate <= prevDate) {
-                removeState ? removeDate(startDate) : addDate(startDate)
+                const thisDate = new Date(startDate)
+                removeState ? removeDate(thisDate) : addDate(thisDate)
                 startDate = new Date(startDate.setDate(startDate.getDate() + 1))
             }
         }
-        else{
-            console.log('wrong')
-        }
+    
         setPrevDate(()=> new Date(newDate))
         
     }
@@ -65,6 +62,7 @@ export function DaySelect({dates}: Props){
             <PanelRow>
                 <DatePicker
                     startOfWeek={1}
+                    currentDate={null}
                     events={dateParam}
                     onChange={(newDate)=> changeDates(new Date(newDate))}
                 />
