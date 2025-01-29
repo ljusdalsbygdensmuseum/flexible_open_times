@@ -2,21 +2,22 @@
 
 /*
     Plugin Name: Flexible Open Hours
-    Description: Eselly change open times on the fly.
+    Description: Easily change open times on the fly.
     Version: 0.0.1
     Author: ina
 */
 
-if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
-class FlexibleOpenHours{
+class FlexibleOpenHours
+{
     function __construct()
     {
         //Menu page
         add_action('admin_menu', array($this, 'main_page'));
 
         //Admin enqueue
-        add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_post_editor'));
 
         //Settings
         add_action('admin_init', array($this, 'settings'));
@@ -26,8 +27,7 @@ class FlexibleOpenHours{
 
         //Meta boxes
         add_action('add_meta_boxes', array($this, 'init_meta_boxes'));
-        add_action('save_post_foh-extra-hours', array($this, 'save_meta_values'));
-        add_action('save_post_foh-extra-hours', array($this, 'save_meta_values_message'));
+        add_action('save_post_foh-extra-hours', array($this, 'save_fohextrahours_meta_values'));
     }
 
     //Page
@@ -37,15 +37,16 @@ class FlexibleOpenHours{
 
         add_action('load-' . $menuPage, array($this, 'load_main_page'));
 
-        // rename the submenu page 
-        add_submenu_page( 'open-hours', 'Open Hours', 'Normal hours', 'edit_pages', 'open-hours' );
+        //Rename the submenu page 
+        add_submenu_page('open-hours', 'Open Hours', 'Normal hours', 'edit_pages', 'open-hours');
 
-        // submenu pages for custom post type
-        add_submenu_page( 'open-hours', 'Extra hours', 'Extra hours', 'edit_pages', 'edit.php?post_type=foh-extra-hours');
+        //Submenu pages for custom post type
+        add_submenu_page('open-hours', 'Extra hours', 'Extra hours', 'edit_pages', 'edit.php?post_type=foh-extra-hours');
     }
 
-    function main_page_html() 
-    {?>
+    function main_page_html()
+    {
+?>
         <div class="wrap">
             <h1>Normal Open Hours</h1>
             <form action="options.php" method="POST">
@@ -57,7 +58,8 @@ class FlexibleOpenHours{
                 ?>
             </form>
         </div>
-    <?php }
+    <?php
+    }
 
     function load_main_page()
     {
@@ -74,10 +76,12 @@ class FlexibleOpenHours{
         wp_enqueue_script('foh-settings-js', plugin_dir_url(__FILE__) . 'build/settings.js', $assets['dependencies'], $assets['version'], true);
 
         //Enqueue styles
-        wp_enqueue_style( 'wp-components' );
+        wp_enqueue_style('wp-components');
     }
 
-    function admin_scripts($hook){
+    function enqueue_post_editor($hook)
+    {
+        //Return if not in editor
         if ($hook != 'post.php' && $hook != 'post-new.php') {
             return;
         }
@@ -89,49 +93,41 @@ class FlexibleOpenHours{
             wp_enqueue_script('foh-extra-open-js', plugin_dir_url(__FILE__) . 'build/extra_open.js', $assets['dependencies'], $assets['version'], true);
 
             //Enqueue styles
-            wp_enqueue_style( 'wp-components' );
-
-        }
-        if (get_post_type() == 'foh-closed') {
-            //Grab dependencies
-            $assets = include plugin_dir_path(__FILE__) . 'build/closed.asset.php';
-
-            //Enqueue scripts
-            wp_enqueue_script('foh-closed-js', plugin_dir_url(__FILE__) . 'build/closed.js', $assets['dependencies'], $assets['version'], true);
-
-            //Enqueue styles
-            wp_enqueue_style( 'wp-components' );
+            wp_enqueue_style('wp-components');
         }
     }
 
     //Settings
-    function settings() 
+    function settings()
     {
         register_setting('normal_open_hours', 'foh-normal-open-hours', array(
             'sanitize_callback' => 'sanitize_text_field',
             'default' => '[{"dayInt":0,"hours":[]}, {"dayInt": 1,"hours":[]}, {"dayInt": 2,"hours":[]}, {"dayInt": 3,"hours":[]}, {"dayInt":4,"hours":[]}, {"dayInt":5,"hours":[]}, {"dayInt":6,"hours":[]}]'
         ));
 
-        add_settings_section( 'normal_open_hours', null, array($this, 'open_hours_settings_html'), 'open-hours' );
+        add_settings_section('normal_open_hours', null, array($this, 'open_hours_settings_html'), 'open-hours');
 
-        add_settings_field('foh-normal-open-hours', null, array($this, 'day_html'), 'open-hours', 'normal_open_hours');
-
-        
+        add_settings_field('foh-normal-open-hours', null, array($this, 'settings_field_html'), 'open-hours', 'normal_open_hours');
     }
 
-    function open_hours_settings_html() 
+    //Div to display full week
+    function open_hours_settings_html()
     {
-       echo '<div id="foh-normal-open-hours-input"></div>'; 
+    ?>
+        <div id="foh-normal-open-hours-input"></div>
+    <?php
     }
 
-    function day_html($day)
-    {?>
-        <input id="foh-normal-open-hours" name="foh-normal-open-hours" type="text" value='<?php echo esc_html(get_option('foh-normal-open-hours'))?>'>
-    <?php 
+    //Field to save the data in
+    function settings_field_html()
+    {
+    ?>
+        <input id="foh-normal-open-hours" name="foh-normal-open-hours" type="text" value='<?php echo esc_html(get_option('foh-normal-open-hours')) ?>'>
+    <?php
     }
 
     //Post types
-    function init_post_type() 
+    function init_post_type()
     {
         $args = array(
             'public' => TRUE,
@@ -151,67 +147,58 @@ class FlexibleOpenHours{
         add_meta_box('foh-extra-hours-message-meta', 'Message', array($this, 'callback_content_message_meta_box'), 'foh-extra-hours', 'advanced', 'high');
     }
 
-    function callback_content_meta_box($post) 
+    //Meta box content
+    function callback_content_meta_box($post)
     {
-        wp_nonce_field( 'save_meta_values', 'foh-extra-hours_wpnonce' );
+        wp_nonce_field('save_meta_values', 'foh-extra-hours_wpnonce');
 
-        $dates = esc_attr( get_post_meta( $post->ID, 'foh-extra-hours_dates_field', true ) );
-        $hours = esc_attr( get_post_meta( $post->ID, 'foh-extra-hours_hours_field', true ) );
+        $dates = esc_attr(get_post_meta($post->ID, 'foh-extra-hours_dates', true));
+        $hours = esc_attr(get_post_meta($post->ID, 'foh-extra-hours_hours', true));
 
-        echo '<div id="foh-extra-hours_container" ></div><input type="text" id="foh-extra-hours_dates_field" name="foh-extra-hours_dates_field" value="'.$dates.'" style="display:none;"><input type="text" id="foh-extra-hours_hours_field" name="foh-extra-hours_hours_field" value="'.$hours.'" style="display:none;">';
-    }
-    function callback_content_message_meta_box($post) {
-        wp_nonce_field( 'save_meta_values_message', 'foh-message_wpnonce' );
-
-        $value = esc_textarea( get_post_meta( $post->ID, 'foh-message', true ) );
-
-        echo '<textarea id="foh-message_field" name="foh-message_field">'.$value.'</textarea>';
+    ?>
+        <div id="foh-extra-hours_container"></div>
+        </div>
+        <input type="text" id="foh-extra-hours_dates_field" name="foh-extra-hours_dates_field" value="<?php echo $dates ?>" style="display:none;">
+        <input type="text" id="foh-extra-hours_hours_field" name="foh-extra-hours_hours_field" value="<?php echo $hours ?>" style="display:none;">
+    <?php
     }
 
-    function save_meta_values($postID)
+    function callback_content_message_meta_box($post)
+    {
+        wp_nonce_field('save_meta_values', 'foh-message_wpnonce');
+
+        $value = esc_textarea(get_post_meta($post->ID, 'foh-message', true));
+
+    ?>
+        <textarea id="foh-message_field" name="foh-message_field"><?php echo $value ?></textarea>
+<?php
+    }
+
+    //Save meta values
+    function save_fohextrahours_meta_values($postID)
     {
         $post_type = get_post_type($postID);
 
-        if ( ! isset($_POST['foh-extra-hours_wpnonce'])) {
+        if (! isset($_POST['foh-extra-hours_wpnonce']) || ! isset($_POST['foh-message_wpnonce'])) {
             return;
         }
-        if ( ! wp_verify_nonce($_POST['foh-extra-hours_wpnonce'], 'save_meta_values')) {
+        if (! wp_verify_nonce($_POST['foh-extra-hours_wpnonce'], 'save_meta_values') || ! wp_verify_nonce($_POST['foh-message_wpnonce'], 'save_meta_values')) {
             return;
         }
-        if ( ! current_user_can('edit_post', $postID)) {
+        if (! current_user_can('edit_post', $postID)) {
             return;
         }
-        if ( ! isset($_POST['foh-extra-hours_dates_field']) || ! isset($_POST['foh-extra-hours_hours_field'])) {
+        if (! isset($_POST['foh-extra-hours_dates_field']) || ! isset($_POST['foh-extra-hours_hours_field']) || ! isset($_POST['foh-message_field'])) {
             return;
         }
 
         $dates = sanitize_text_field($_POST['foh-extra-hours_dates_field']);
         $hours = sanitize_text_field($_POST['foh-extra-hours_hours_field']);
+        $message = sanitize_text_field($_POST['foh-message_field']);
 
-        update_post_meta($postID, 'foh-extra-hours_dates_field', $dates);
-        update_post_meta($postID, 'foh-extra-hours_hours_field', $hours);
-    }
-
-    function save_meta_values_message($postID)
-    {
-        $post_type = get_post_type($postID);
-
-        if ( ! isset($_POST['foh-message_wpnonce'])) {
-            return;
-        }
-        if ( ! wp_verify_nonce($_POST['foh-message_wpnonce'], 'save_meta_values_message')) {
-            return;
-        }
-        if ( ! current_user_can('edit_post', $postID)) {
-            return;
-        }
-        if ( ! isset($_POST['foh-message_field'])) {
-            return;
-        }
-
-        $dates = sanitize_text_field($_POST['foh-message_field']);
-
-        update_post_meta($postID, 'foh-message', $dates);
+        update_post_meta($postID, 'foh-extra-hours_dates', $dates);
+        update_post_meta($postID, 'foh-extra-hours_hours', $hours);
+        update_post_meta($postID, 'foh-message', $message);
     }
 }
 
