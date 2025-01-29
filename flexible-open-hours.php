@@ -28,6 +28,8 @@ class FlexibleOpenHours
         //Meta boxes
         add_action('add_meta_boxes', array($this, 'init_meta_boxes'));
         add_action('save_post_foh-extra-hours', array($this, 'save_fohextrahours_meta_values'));
+
+        add_action('save_post_foh-temporary-hours', array($this, 'save_fohtemporaryhours_meta_values'));
     }
 
     //Page
@@ -42,6 +44,7 @@ class FlexibleOpenHours
 
         //Submenu pages for custom post type
         add_submenu_page('open-hours', 'Extra hours', 'Extra hours', 'edit_pages', 'edit.php?post_type=foh-extra-hours');
+        add_submenu_page('open-hours', 'Temporary hours', 'Temporary hours', 'edit_pages', 'edit.php?post_type=foh-temporary-hours');
     }
 
     function main_page_html()
@@ -129,7 +132,7 @@ class FlexibleOpenHours
     //Post types
     function init_post_type()
     {
-        $args = array(
+        $extra_hours_args = array(
             'public' => TRUE,
             'supports' => array('title'),
             'show_in_menu' => FALSE,
@@ -137,26 +140,40 @@ class FlexibleOpenHours
                 'name' => 'Extra hours',
             )
         );
-        register_post_type('foh-extra-hours', $args);
+        register_post_type('foh-extra-hours', $extra_hours_args);
+
+        $temporary_hours_args = array(
+            'public' => TRUE,
+            'supports' => array('title'),
+            'show_in_menu' => FALSE,
+            'labels' => array(
+                'name' => 'Temporary hours',
+            )
+        );
+        register_post_type('foh-temporary-hours', $temporary_hours_args);
     }
 
     //Meta box
     function init_meta_boxes()
     {
+        //Extra hours
         add_meta_box('foh-extra-hours-meta', 'Extra hours', array($this, 'callback_content_meta_box'), 'foh-extra-hours', 'advanced', 'high');
         add_meta_box('foh-extra-hours-message-meta', 'Message', array($this, 'callback_content_message_meta_box'), 'foh-extra-hours', 'advanced', 'high');
+
+        //Temporary hours
+        add_meta_box('foh-temporary-hours-meta', 'Temporary hours', array($this, 'callback_content_temporary_hours_meta_box'), 'foh-temporary-hours', 'advanced', 'high');
     }
 
     //Meta box content
     function callback_content_meta_box($post)
     {
-        wp_nonce_field('save_meta_values', 'foh-extra-hours_wpnonce');
+        wp_nonce_field('save_fohextrahours_meta_values', 'foh-extra-hours_wpnonce');
 
         $dates = esc_attr(get_post_meta($post->ID, 'foh-extra-hours_dates', true));
         $hours = esc_attr(get_post_meta($post->ID, 'foh-extra-hours_hours', true));
 
     ?>
-        <div id="foh-extra-hours_container"></div>
+        <div id="foh-extra-hours_container">
         </div>
         <input type="text" id="foh-extra-hours_dates_field" name="foh-extra-hours_dates_field" value="<?php echo $dates ?>" style="display:none;">
         <input type="text" id="foh-extra-hours_hours_field" name="foh-extra-hours_hours_field" value="<?php echo $hours ?>" style="display:none;">
@@ -165,24 +182,37 @@ class FlexibleOpenHours
 
     function callback_content_message_meta_box($post)
     {
-        wp_nonce_field('save_meta_values', 'foh-message_wpnonce');
+        wp_nonce_field('save_fohextrahours_meta_values', 'foh-message_wpnonce');
 
         $value = esc_textarea(get_post_meta($post->ID, 'foh-message', true));
 
     ?>
         <textarea id="foh-message_field" name="foh-message_field"><?php echo $value ?></textarea>
+    <?php
+    }
+
+    function callback_content_temporary_hours_meta_box($post)
+    {
+        wp_nonce_field('save_fohtemporaryhours_meta_values', 'foh-temporary-hours_wpnonce');
+
+        $dates = esc_attr(get_post_meta($post->ID, 'foh-temporary-hours_dates', true));
+        $hours = esc_attr(get_post_meta($post->ID, 'foh-temporary-hours_hours', true));
+
+    ?>
+        <div id="foh-temporary-hours_container">
+        </div>
+        <input type="text" id="foh-temporary-hours_dates_field" name="foh-temporary-hours_dates_field" value="<?php echo $dates ?>" style="display:block;">
+        <input type="text" id="foh-temporary-hours_hours_field" name="foh-temporary-hours_hours_field" value="<?php echo $hours ?>" style="display:block;">
 <?php
     }
 
     //Save meta values
     function save_fohextrahours_meta_values($postID)
     {
-        $post_type = get_post_type($postID);
-
         if (! isset($_POST['foh-extra-hours_wpnonce']) || ! isset($_POST['foh-message_wpnonce'])) {
             return;
         }
-        if (! wp_verify_nonce($_POST['foh-extra-hours_wpnonce'], 'save_meta_values') || ! wp_verify_nonce($_POST['foh-message_wpnonce'], 'save_meta_values')) {
+        if (! wp_verify_nonce($_POST['foh-extra-hours_wpnonce'], 'save_fohextrahours_meta_values') || ! wp_verify_nonce($_POST['foh-message_wpnonce'], 'save_fohextrahours_meta_values')) {
             return;
         }
         if (! current_user_can('edit_post', $postID)) {
@@ -199,6 +229,28 @@ class FlexibleOpenHours
         update_post_meta($postID, 'foh-extra-hours_dates', $dates);
         update_post_meta($postID, 'foh-extra-hours_hours', $hours);
         update_post_meta($postID, 'foh-message', $message);
+    }
+
+    function save_fohtemporaryhours_meta_values($postID)
+    {
+        if (! isset($_POST['foh-temporary-hours_wpnonce'])) {
+            return;
+        }
+        if (! wp_verify_nonce($_POST['foh-temporary-hours_wpnonce'], 'save_fohtemporaryhours_meta_values')) {
+            return;
+        }
+        if (! current_user_can('edit_post', $postID)) {
+            return;
+        }
+        if (! isset($_POST['foh-temporary-hours_dates_field']) || ! isset($_POST['foh-temporary-hours_hours_field'])) {
+            return;
+        }
+
+        $dates = sanitize_text_field($_POST['foh-temporary-hours_dates_field']);
+        $hours = sanitize_text_field($_POST['foh-temporary-hours_hours_field']);
+
+        update_post_meta($postID, 'foh-temporary-hours_dates', $dates);
+        update_post_meta($postID, 'foh-temporary-hours_hours', $hours);
     }
 }
 
