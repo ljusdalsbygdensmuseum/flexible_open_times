@@ -5,7 +5,7 @@ import FohExtraHours from './components/foh-extra-hours';
 
 domReady( () => {
     const root = createRoot(
-        document.getElementById( 'foh-extra-hours-meta_container')!
+        document.getElementById( 'foh-extra-hours_container')!
     );
 
     root.render( <><FohExtraHours /></> );

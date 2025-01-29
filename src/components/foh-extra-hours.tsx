@@ -40,7 +40,6 @@ export default function FohExtraHours(){
     //---
     //closed
     let closedCheck = false
-    console.log(hoursinfo[0].hours.length )
     if (hoursinfo[0].hours.length <= 0) {
         closedCheck = true
     }
