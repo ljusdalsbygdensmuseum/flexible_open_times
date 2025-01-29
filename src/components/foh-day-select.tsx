@@ -60,7 +60,7 @@ export function DaySelect({dates, input}: Props){
     }
 
     return(<>
-        <PanelBody >
+        <PanelBody title="Dates">
             <PanelRow>
                 <DatePicker
                     startOfWeek={1}

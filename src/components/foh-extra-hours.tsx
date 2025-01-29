@@ -1,5 +1,6 @@
 import {
     Panel,
+    PanelBody,
     ToggleControl
 } from '@wordpress/components'
 
@@ -20,11 +21,11 @@ export default function FohExtraHours(){
     if (!hoursInput) {
         throw new Error("#foh-extra-hours_hours_field not found")
     }
-    let hoursinfo: Day[] = [{dayInt: 0, hours:[{id: 0, open:{hours:0, minutes:0}, close:{hours:0, minutes:0}}]}]
+    let hoursinfo: Day[] = [{dayInt: 0, hours:[]}]
     if (isJSON(hoursInput.value)) {
         hoursinfo = JSON.parse(hoursInput.value)
     }
-    const names = ['']
+    const names = ['Hours']
 
     // date
     const dateInput: HTMLInputElement | null = document.querySelector('#foh-extra-hours_dates_field')
@@ -38,27 +39,31 @@ export default function FohExtraHours(){
     
     //---
     //closed
-
-    const [closed, setClosed] = useState(false)
+    let closedCheck = false
+    console.log(hoursinfo[0].hours.length )
+    if (hoursinfo[0].hours.length <= 0) {
+        closedCheck = true
+    }
+    const [closed, setClosed] = useState(closedCheck)
 
     return (<>
         <Panel>
-            <h3>Dates</h3>
             <div id="day-select">
                 <DaySelect dates={datesInfo} input={dateInput}/>
             </div>
         </Panel>
         <Panel>
-            <h3>Hours</h3>
             <div id="full-week">
-                <ToggleControl
-                        label="Closed"
-                        checked={closed}
-                        onChange={(value)=> setClosed(() => {
-                            hoursInput.value = ''
-                            return value
-                        })}
-                />
+                <PanelBody>
+                    <ToggleControl
+                            label="Closed"
+                            checked={closed}
+                            onChange={(value)=> setClosed(() => {
+                                hoursInput.value = '[{dayInt: 0, hours:[]}]'
+                                return value
+                            })}
+                    />
+                </PanelBody>
                 {!closed &&
                     <FullWeek week={hoursinfo} names={names} input={hoursInput}/>
                 }
