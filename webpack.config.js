@@ -6,7 +6,7 @@ module.exports = {
 	entry: {
 		settings: path.resolve(process.cwd(), 'src', 'settings.tsx'),
 		extra_open: path.resolve(process.cwd(), 'src', 'metabox-extra.tsx'),
-		closed: path.resolve(process.cwd(), 'src', 'metabox-closed.tsx'),
+		temporary: path.resolve(process.cwd(), 'src', 'metabox-temporary.tsx'),
 	},
 	output: {
 		filename: '[name].js',

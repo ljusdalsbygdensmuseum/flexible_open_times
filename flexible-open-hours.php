@@ -98,6 +98,16 @@ class FlexibleOpenHours
             //Enqueue styles
             wp_enqueue_style('wp-components');
         }
+        if (get_post_type() == 'foh-temporary-hours') {
+            //Grab dependencies
+            $assets = include plugin_dir_path(__FILE__) . 'build/temporary.asset.php';
+
+            //Enqueue scripts
+            wp_enqueue_script('foh-temporary-open-js', plugin_dir_url(__FILE__) . 'build/temporary.js', $assets['dependencies'], $assets['version'], true);
+
+            //Enqueue styles
+            wp_enqueue_style('wp-components');
+        }
     }
 
     //Settings
