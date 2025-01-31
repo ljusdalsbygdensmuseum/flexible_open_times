@@ -31,9 +31,11 @@ export function FOHDateRange({dates, input}: Props){
                     changeDates.start.date = new Date(newDate)
                 }
             }
-
+            
             return changeDates
         })
+
+        input.value = JSON.stringify(dateRange)
     }
     return(
         <>
