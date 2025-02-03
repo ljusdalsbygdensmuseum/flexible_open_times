@@ -7,6 +7,7 @@ module.exports = {
 		settings: path.resolve(process.cwd(), 'src', 'settings.tsx'),
 		extra_open: path.resolve(process.cwd(), 'src', 'metabox-extra.tsx'),
 		temporary: path.resolve(process.cwd(), 'src', 'metabox-temporary.tsx'),
+		block: path.resolve(process.cwd(), 'src', 'foh-blocks.tsx'),
 	},
 	output: {
 		filename: '[name].js',

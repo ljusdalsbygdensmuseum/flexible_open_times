@@ -30,6 +30,9 @@ class FlexibleOpenHours
         add_action('save_post_foh-extra-hours', array($this, 'save_fohextrahours_meta_values'));
 
         add_action('save_post_foh-temporary-hours', array($this, 'save_fohtemporaryhours_meta_values'));
+
+        //Blocks
+        add_action('enqueue_block_editor_assets', array($this, 'enqueue_blocks'));
     }
 
     //Page
@@ -108,6 +111,17 @@ class FlexibleOpenHours
             //Enqueue styles
             wp_enqueue_style('wp-components');
         }
+    }
+
+    function enqueue_blocks()
+    {
+        //Grab dependencies
+        $assets = include plugin_dir_path(__FILE__) . 'build/block.asset.php';
+
+        //Enqueue scripts
+        wp_enqueue_script('foh-blocks', plugin_dir_url(__FILE__) . 'build/block.js', ('wp_blocks'), $assets['version'], true);
+
+        //Enqueue styles
     }
 
     //Settings
