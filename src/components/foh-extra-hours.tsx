@@ -20,7 +20,18 @@ export default function FohExtraHours() {
 	}
 	let hoursinfo: Day[] = [{ dayInt: 0, hours: [] }]
 	if (isJSON(hoursInput.value)) {
-		hoursinfo = JSON.parse(hoursInput.value)
+		let hoursinfoInput = JSON.parse(hoursInput.value)
+		hoursinfoInput = hoursinfoInput.filter((item: Day) => {
+			if (!('hours' in item)) {
+				return
+			}
+			return item
+		})
+
+		if (hoursinfoInput.length != hoursinfo.length) {
+			hoursinfoInput = hoursinfo
+		}
+		hoursinfo = hoursinfoInput
 	}
 	const names = ['Hours']
 
