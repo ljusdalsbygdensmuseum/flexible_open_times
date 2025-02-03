@@ -27,7 +27,18 @@ export function FohTemporaryHours() {
 		{ dayInt: 6, hours: [] },
 	]
 	if (isJSON(hoursInput.value)) {
-		hoursinfo = JSON.parse(hoursInput.value)
+		let hoursinfoInput = JSON.parse(hoursInput.value)
+		hoursinfoInput = hoursinfoInput.filter((item: Day) => {
+			if (!('hours' in item)) {
+				return
+			}
+			return item
+		})
+
+		if (hoursinfoInput.length != hoursinfo.length) {
+			hoursinfoInput = hoursinfo
+		}
+		hoursinfo = hoursinfoInput
 	}
 	const names = [
 		'Monday',
@@ -53,10 +64,10 @@ export function FohTemporaryHours() {
 	// checks if info input has the correct format if not throw error
 	if (isJSON(dateInput.value)) {
 		let datesInfoInput = JSON.parse(dateInput.value)
-		console.log(datesInfoInput)
 		if (!('start' in datesInfoInput) || !('end' in datesInfoInput)) {
 			datesInfoInput = datesInfo
-		} else if (
+		}
+		if (
 			isNaN(new Date(datesInfoInput.start.date).getTime()) ||
 			isNaN(new Date(datesInfoInput.end.date).getTime())
 		) {
