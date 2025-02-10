@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/blockboilerplate",
+	"name": "flexible-open-hours/openhours",
 	"version": "0.1.0",
-	"title": "Blockboilerplate",
+	"title": "Open hours",
 	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"icon": "clock",
+	"description": "Display your open hours",
 	"example": {},
 	"supports": {
 		"html": false

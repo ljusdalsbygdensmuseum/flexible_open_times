@@ -24,6 +24,10 @@
 		"typescript": "^5.7.2"
 	},
 	"dependencies": {
+		"@types/wordpress__block-editor": "^11.5.16",
+		"@types/wordpress__blocks": "^12.5.17",
+		"@wordpress/block-editor": "^14.12.0",
+		"@wordpress/blocks": "^14.6.0",
 		"@wordpress/components": "^29.1.1",
 		"@wordpress/dom-ready": "^4.15.0",
 		"@wordpress/element": "^6.15.1"
