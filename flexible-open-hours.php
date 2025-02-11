@@ -113,21 +113,22 @@ class FlexibleOpenHours
     //Settings
     function settings()
     {
-        register_setting('normal_open_hours', 'foh-normal-open-hours', array(
+        register_setting('normal_open_hours', 'foh_normal_open_hours', array(
             'sanitize_callback' => 'sanitize_text_field',
+            'show_in_rest'  => TRUE,
             'default' => '[{"dayInt":0,"hours":[]}, {"dayInt": 1,"hours":[]}, {"dayInt": 2,"hours":[]}, {"dayInt": 3,"hours":[]}, {"dayInt":4,"hours":[]}, {"dayInt":5,"hours":[]}, {"dayInt":6,"hours":[]}]'
         ));
 
         add_settings_section('normal_open_hours', null, array($this, 'open_hours_settings_html'), 'open-hours');
 
-        add_settings_field('foh-normal-open-hours', null, array($this, 'settings_field_html'), 'open-hours', 'normal_open_hours');
+        add_settings_field('foh_normal_open_hours', null, array($this, 'settings_field_html'), 'open-hours', 'normal_open_hours');
     }
 
     //Div to display full week
     function open_hours_settings_html()
     {
     ?>
-        <div id="foh-normal-open-hours-input"></div>
+        <div id="foh_normal_open_hours-input"></div>
     <?php
     }
 
@@ -135,7 +136,7 @@ class FlexibleOpenHours
     function settings_field_html()
     {
     ?>
-        <input id="foh-normal-open-hours" name="foh-normal-open-hours" type="text" value='<?php echo esc_html(get_option('foh-normal-open-hours')) ?>'>
+        <input id="foh_normal_open_hours" name="foh_normal_open_hours" type="text" value='<?php echo esc_html(get_option('foh_normal_open_hours')) ?>'>
     <?php
     }
 

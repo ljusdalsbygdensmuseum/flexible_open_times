@@ -7,10 +7,10 @@ import isJSON from '../utility/is-json'
 export default function FohSettingsNormalHours() {
 	// get input and data
 	const hoursInput: HTMLInputElement | null = document.querySelector(
-		'#foh-normal-open-hours'
+		'#foh_normal_open_hours'
 	)
 	if (!hoursInput) {
-		throw new Error('#foh-temporary-hours_hours_field not found')
+		throw new Error('#foh_normal_open_hours_field not found')
 	}
 	let hoursinfo: Day[] = [
 		{ dayInt: 0, hours: [] },

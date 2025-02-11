@@ -5,7 +5,7 @@ import FohSettingsNormalHours from './components/foh-settings-normal-hours'
 
 domReady(() => {
 	const root = createRoot(
-		document.getElementById('foh-normal-open-hours-input')!
+		document.getElementById('foh_normal_open_hours-input')!
 	)
 
 	root.render(
