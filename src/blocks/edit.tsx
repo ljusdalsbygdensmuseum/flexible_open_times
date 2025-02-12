@@ -24,8 +24,7 @@ import apiFetch from '@wordpress/api-fetch'
 import './editor.scss'
 import { Day } from '../components/foh-settings-types'
 import { useState } from 'react'
-
-import fohFixMissingZero from '../utility/fohFixMissingZero'
+import DisplayDays from '../components/foh-block-display-day'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -58,28 +57,7 @@ export default function Edit() {
 			setNormalHours(JSON.parse(settings.foh_normal_open_hours))
 		}
 	})
-	// for each day
-	const theWeek = normalHours.map((day) => {
-		//check if is empty
-		if (day.hours.length < 1) {
-			return
-		}
-		// for each hour
-		const hours = day.hours.map((hour) => {
-			const openHour = `${fohFixMissingZero(
-				hour.open.hours
-			)} : ${fohFixMissingZero(hour.open.minutes)}`
-			const closeHour = `${fohFixMissingZero(
-				hour.close.hours
-			)} : ${fohFixMissingZero(hour.close.minutes)}`
-			return (
-				<>
-					{openHour} - {closeHour}
-				</>
-			)
-		})
-		return <p>{hours}</p>
-	})
-	return theWeek
+
+	return <DisplayDays showTitle={true} days={normalHours} />
 	//return <p {...useBlockProps()}></p>
 }
