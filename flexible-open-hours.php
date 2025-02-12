@@ -212,13 +212,15 @@ class FlexibleOpenHours
     {
         wp_nonce_field('save_fohtemporaryhours_meta_values', 'foh-temporary-hours_wpnonce');
 
-        $dates = esc_attr(get_post_meta($post->ID, 'foh-temporary-hours_dates', true));
+        $minDate = (int) esc_attr(get_post_meta($post->ID, 'foh-temporary-hours_min_date', true));
+        $maxDate = (int) esc_attr(get_post_meta($post->ID, 'foh-temporary-hours_max_date', true));
         $hours = esc_attr(get_post_meta($post->ID, 'foh-temporary-hours_hours', true));
 
     ?>
         <div id="foh-temporary-hours_container">
         </div>
-        <input type="text" id="foh-temporary-hours_dates_field" name="foh-temporary-hours_dates_field" value="<?php echo $dates ?>" style="display:block;">
+        <input type="number" id="foh-temporary-hours_min_date_field" name="foh-temporary-hours_min_date_field" value="<?php echo $minDate ?>" style="display:block;">
+        <input type="number" id="foh-temporary-hours_max_date_field" name="foh-temporary-hours_max_date_field" value="<?php echo $maxDate ?>" style="display:block;">
         <input type="text" id="foh-temporary-hours_hours_field" name="foh-temporary-hours_hours_field" value="<?php echo $hours ?>" style="display:block;">
 <?php
     }
@@ -263,14 +265,16 @@ class FlexibleOpenHours
         if (! current_user_can('edit_post', $postID)) {
             return;
         }
-        if (! isset($_POST['foh-temporary-hours_dates_field']) || ! isset($_POST['foh-temporary-hours_hours_field'])) {
+        if (! isset($_POST['foh-temporary-hours_min_date_field']) || ! isset($_POST['foh-temporary-hours_max_date_field']) || ! isset($_POST['foh-temporary-hours_hours_field'])) {
             return;
         }
 
-        $dates = sanitize_text_field($_POST['foh-temporary-hours_dates_field']);
+        $minDate = (int) sanitize_text_field($_POST['foh-temporary-hours_min_date_field']);
+        $maxDate = (int) sanitize_text_field($_POST['foh-temporary-hours_max_date_field']);
         $hours = sanitize_text_field($_POST['foh-temporary-hours_hours_field']);
 
-        update_post_meta($postID, 'foh-temporary-hours_dates', $dates);
+        update_post_meta($postID, 'foh-temporary-hours_min_date', $minDate);
+        update_post_meta($postID, 'foh-temporary-hours_max_date', $maxDate);
         update_post_meta($postID, 'foh-temporary-hours_hours', $hours);
     }
 }

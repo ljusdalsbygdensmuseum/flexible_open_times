@@ -42,47 +42,24 @@ export function FohTemporaryHours() {
 	}
 
 	//date
-	const dateInput: HTMLInputElement | null = document.querySelector(
-		'#foh-temporary-hours_dates_field'
+	const mindateInput: HTMLInputElement | null = document.querySelector(
+		'#foh-temporary-hours_min_date_field'
 	)
-	if (!dateInput) {
-		throw new Error('#foh-temporary-hours_dates_field not found')
-	}
-	let datesInfo: DatesRange = {
-		start: { date: new Date() },
-		end: { date: new Date() },
-	}
-	// checks if info input has the correct format if not throw error
-	if (isJSON(dateInput.value)) {
-		let datesInfoInput = JSON.parse(dateInput.value)
-		if (!('start' in datesInfoInput) || !('end' in datesInfoInput)) {
-			datesInfoInput = datesInfo
-		}
-		if (
-			isNaN(new Date(datesInfoInput.start.date).getTime()) ||
-			isNaN(new Date(datesInfoInput.end.date).getTime())
-		) {
-			datesInfoInput = datesInfo
-		}
-		if (
-			new Date(datesInfoInput.start.date).getTime() >
-			new Date(datesInfoInput.end.date).getTime()
-		) {
-			const replacementDate: DatesRange = {
-				start: { date: new Date(datesInfoInput.end.date) },
-				end: { date: new Date(datesInfoInput.start.date) },
-			}
-			datesInfo = replacementDate
-		}
-		datesInfo.start.date = new Date(datesInfoInput.start.date)
-		datesInfo.end.date = new Date(datesInfoInput.end.date)
+	const maxdateInput: HTMLInputElement | null = document.querySelector(
+		'#foh-temporary-hours_max_date_field'
+	)
+	if (!mindateInput || !maxdateInput) {
+		throw new Error('dates_field not found')
 	}
 
 	return (
 		<>
 			<Panel>
 				<div id='day-select'>
-					<FOHDateRange dates={datesInfo} input={dateInput} />
+					<FOHDateRange
+						dates={[parseInt(mindateInput.value), parseInt(maxdateInput.value)]}
+						input={[mindateInput, maxdateInput]}
+					/>
 				</div>
 			</Panel>
 			<Panel>
