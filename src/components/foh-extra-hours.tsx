@@ -69,7 +69,7 @@ export default function FohExtraHours() {
 							checked={closed}
 							onChange={(value) =>
 								setClosed(() => {
-									hoursInput.value = '[{dayInt: 0, hours:[]}]'
+									hoursInput.value = '[{dayInt: 0, title: "Hours", hours:[]}]'
 									return value
 								})
 							}

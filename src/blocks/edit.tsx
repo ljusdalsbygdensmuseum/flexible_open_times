@@ -13,8 +13,6 @@ import { __ } from '@wordpress/i18n'
  */
 import { useBlockProps } from '@wordpress/block-editor'
 
-import apiFetch from '@wordpress/api-fetch'
-
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -22,9 +20,7 @@ import apiFetch from '@wordpress/api-fetch'
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss'
-import { Day } from '../components/foh-settings-types'
-import { useState } from 'react'
-import DisplayDays from '../components/foh-block-display-day'
+import DisplayAllOpenHours from '../components/foh-block-display-all-open-hours'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -36,28 +32,12 @@ import DisplayDays from '../components/foh-block-display-day'
  */
 
 export default function Edit() {
-	let hoursinfo: Day[] = [
-		{ dayInt: 0, title: 'Monday', hours: [] },
-		{ dayInt: 1, title: 'Tuseday', hours: [] },
-		{ dayInt: 2, title: 'Wednesday', hours: [] },
-		{ dayInt: 3, title: 'Thursday', hours: [] },
-		{ dayInt: 4, title: 'Friday', hours: [] },
-		{ dayInt: 5, title: 'Saturday', hours: [] },
-		{ dayInt: 6, title: 'Sunday', hours: [] },
-	]
-
-	const [normalHours, setNormalHours] = useState(hoursinfo)
-	// get the setting
-	apiFetch({ path: '/wp/v2/settings' }).then((settings) => {
-		if (
-			typeof settings == 'object' &&
-			settings != undefined &&
-			settings.hasOwnProperty('foh_normal_open_hours')
-		) {
-			setNormalHours(JSON.parse(settings.foh_normal_open_hours))
-		}
-	})
-
-	return <DisplayDays showTitle={true} days={normalHours} />
+	return (
+		<DisplayAllOpenHours
+			title='Open Hours'
+			showExtra={true}
+			showTemporary={true}
+		/>
+	)
 	//return <p {...useBlockProps()}></p>
 }
