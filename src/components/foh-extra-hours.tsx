@@ -18,7 +18,7 @@ export default function FohExtraHours() {
 	if (!hoursInput) {
 		throw new Error('#foh-extra-hours_hours_field not found')
 	}
-	let hoursinfo: Day[] = [{ dayInt: 0, hours: [] }]
+	let hoursinfo: Day[] = [{ dayInt: 0, title: 'Hours', hours: [] }]
 	if (isJSON(hoursInput.value)) {
 		let hoursinfoInput = JSON.parse(hoursInput.value)
 		hoursinfoInput = hoursinfoInput.filter((item: Day) => {
@@ -33,7 +33,6 @@ export default function FohExtraHours() {
 		}
 		hoursinfo = hoursinfoInput
 	}
-	const names = ['Hours']
 
 	//date
 	const dateInput: HTMLInputElement | null = document.querySelector(
@@ -76,9 +75,7 @@ export default function FohExtraHours() {
 							}
 						/>
 					</PanelBody>
-					{!closed && (
-						<FullWeek week={hoursinfo} names={names} input={hoursInput} />
-					)}
+					{!closed && <FullWeek week={hoursinfo} input={hoursInput} />}
 				</div>
 			</Panel>
 		</>

@@ -8,5 +8,6 @@ export type Hour = {
 
 export type Day = {
 	dayInt: 0 | 1 | 2 | 3 | 4 | 5 | 6
+	title: string
 	hours: Hour[]
 }

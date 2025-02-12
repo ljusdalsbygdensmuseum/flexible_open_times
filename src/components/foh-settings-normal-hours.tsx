@@ -13,13 +13,13 @@ export default function FohSettingsNormalHours() {
 		throw new Error('#foh_normal_open_hours_field not found')
 	}
 	let hoursinfo: Day[] = [
-		{ dayInt: 0, hours: [] },
-		{ dayInt: 1, hours: [] },
-		{ dayInt: 2, hours: [] },
-		{ dayInt: 3, hours: [] },
-		{ dayInt: 4, hours: [] },
-		{ dayInt: 5, hours: [] },
-		{ dayInt: 6, hours: [] },
+		{ dayInt: 0, title: 'Monday', hours: [] },
+		{ dayInt: 1, title: 'Tuseday', hours: [] },
+		{ dayInt: 2, title: 'Wednesday', hours: [] },
+		{ dayInt: 3, title: 'Thursday', hours: [] },
+		{ dayInt: 4, title: 'Friday', hours: [] },
+		{ dayInt: 5, title: 'Saturday', hours: [] },
+		{ dayInt: 6, title: 'Sunday', hours: [] },
 	]
 	if (isJSON(hoursInput.value)) {
 		let hoursinfoInput = JSON.parse(hoursInput.value)
@@ -35,20 +35,11 @@ export default function FohSettingsNormalHours() {
 		}
 		hoursinfo = hoursinfoInput
 	}
-	const weekNames = [
-		'Monday',
-		'Tuseday',
-		'Wednesday',
-		'Thursday',
-		'Friday',
-		'Saturday',
-		'Sunday',
-	]
 
 	return (
 		<Panel>
 			<div id='full-week'>
-				<FullWeek week={hoursinfo} names={weekNames} input={hoursInput} />
+				<FullWeek week={hoursinfo} input={hoursInput} />
 			</div>
 		</Panel>
 	)

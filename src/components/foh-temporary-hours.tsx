@@ -18,13 +18,13 @@ export function FohTemporaryHours() {
 		throw new Error('#foh-temporary-hours_hours_field not found')
 	}
 	let hoursinfo: Day[] = [
-		{ dayInt: 0, hours: [] },
-		{ dayInt: 1, hours: [] },
-		{ dayInt: 2, hours: [] },
-		{ dayInt: 3, hours: [] },
-		{ dayInt: 4, hours: [] },
-		{ dayInt: 5, hours: [] },
-		{ dayInt: 6, hours: [] },
+		{ dayInt: 0, title: 'Monday', hours: [] },
+		{ dayInt: 1, title: 'Tuseday', hours: [] },
+		{ dayInt: 2, title: 'Wednesday', hours: [] },
+		{ dayInt: 3, title: 'Thursday', hours: [] },
+		{ dayInt: 4, title: 'Friday', hours: [] },
+		{ dayInt: 5, title: 'Saturday', hours: [] },
+		{ dayInt: 6, title: 'Sunday', hours: [] },
 	]
 	if (isJSON(hoursInput.value)) {
 		let hoursinfoInput = JSON.parse(hoursInput.value)
@@ -40,15 +40,6 @@ export function FohTemporaryHours() {
 		}
 		hoursinfo = hoursinfoInput
 	}
-	const names = [
-		'Monday',
-		'Tuseday',
-		'Wednesday',
-		'Thursday',
-		'Friday',
-		'Saturday',
-		'Sunday',
-	]
 
 	//date
 	const dateInput: HTMLInputElement | null = document.querySelector(
@@ -96,7 +87,7 @@ export function FohTemporaryHours() {
 			</Panel>
 			<Panel>
 				<div id='full-week'>
-					<FullWeek week={hoursinfo} names={names} input={hoursInput} />
+					<FullWeek week={hoursinfo} input={hoursInput} />
 				</div>
 			</Panel>
 		</>

@@ -8,7 +8,6 @@ import { Times } from './foh-settings-times'
 
 interface Props {
 	week: Day[]
-	names: string[]
 	input: HTMLInputElement
 }
 
@@ -66,7 +65,7 @@ export function FullWeek(props: Props) {
 		return (
 			<>
 				<PanelBody
-					title={props.names[dayObj.dayInt]}
+					title={props.week[dayObj.dayInt].title}
 					initialOpen={
 						props.week[dayObj.dayInt].hours.length > 0 ? true : false
 					}

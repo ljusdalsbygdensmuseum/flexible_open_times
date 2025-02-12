@@ -38,13 +38,13 @@ import fohFixMissingZero from '../utility/fohFixMissingZero'
 
 export default function Edit() {
 	let hoursinfo: Day[] = [
-		{ dayInt: 0, hours: [] },
-		{ dayInt: 1, hours: [] },
-		{ dayInt: 2, hours: [] },
-		{ dayInt: 3, hours: [] },
-		{ dayInt: 4, hours: [] },
-		{ dayInt: 5, hours: [] },
-		{ dayInt: 6, hours: [] },
+		{ dayInt: 0, title: 'Monday', hours: [] },
+		{ dayInt: 1, title: 'Tuseday', hours: [] },
+		{ dayInt: 2, title: 'Wednesday', hours: [] },
+		{ dayInt: 3, title: 'Thursday', hours: [] },
+		{ dayInt: 4, title: 'Friday', hours: [] },
+		{ dayInt: 5, title: 'Saturday', hours: [] },
+		{ dayInt: 6, title: 'Sunday', hours: [] },
 	]
 
 	const [normalHours, setNormalHours] = useState(hoursinfo)
@@ -53,7 +53,7 @@ export default function Edit() {
 		if (
 			typeof settings == 'object' &&
 			settings != undefined &&
-			settings.foh_normal_open_hours != undefined
+			settings.hasOwnProperty('foh_normal_open_hours')
 		) {
 			setNormalHours(JSON.parse(settings.foh_normal_open_hours))
 		}
