@@ -38,7 +38,13 @@ export default function FohExtraHours() {
 	const dateInput: HTMLInputElement | null = document.querySelector(
 		'#foh-extra-hours_dates_field'
 	)
-	if (!dateInput) {
+	const mindateInput: HTMLInputElement | null = document.querySelector(
+		'#foh-extra-hours_min_date_field'
+	)
+	const maxdateInput: HTMLInputElement | null = document.querySelector(
+		'#foh-extra-hours_max_date_field'
+	)
+	if (!dateInput || !mindateInput || !maxdateInput) {
 		throw new Error('#foh-extra-hours_dates_field not found')
 	}
 	let datesInfo: DatePickerEvent[] = []
@@ -58,7 +64,10 @@ export default function FohExtraHours() {
 		<>
 			<Panel>
 				<div id='day-select'>
-					<DaySelect dates={datesInfo} input={dateInput} />
+					<DaySelect
+						dates={datesInfo}
+						input={[dateInput, mindateInput, maxdateInput]}
+					/>
 				</div>
 			</Panel>
 			<Panel>

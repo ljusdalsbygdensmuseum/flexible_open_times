@@ -183,13 +183,17 @@ class FlexibleOpenHours
         wp_nonce_field('save_fohextrahours_meta_values', 'foh-extra-hours_wpnonce');
 
         $dates = esc_attr(get_post_meta($post->ID, 'foh-extra-hours_dates', true));
+        $minDate = (int) esc_attr(get_post_meta($post->ID, 'foh-extra-hours_min_date', true));
+        $maxDate = (int) esc_attr(get_post_meta($post->ID, 'foh-extra-hours_max_date', true));
         $hours = esc_attr(get_post_meta($post->ID, 'foh-extra-hours_hours', true));
 
     ?>
         <div id="foh-extra-hours_container">
         </div>
-        <input type="text" id="foh-extra-hours_dates_field" name="foh-extra-hours_dates_field" value="<?php echo $dates ?>" style="display:none;">
-        <input type="text" id="foh-extra-hours_hours_field" name="foh-extra-hours_hours_field" value="<?php echo $hours ?>" style="display:none;">
+        <input type="text" id="foh-extra-hours_dates_field" name="foh-extra-hours_dates_field" value="<?php echo $dates ?>" style="display:block;">
+        <input type="number" id="foh-extra-hours_min_date_field" name="foh-extra-hours_min_date_field" value="<?php echo $minDate ?>" style="display:block;">
+        <input type="number" id="foh-extra-hours_max_date_field" name="foh-extra-hours_max_date_field" value="<?php echo $maxDate ?>" style="display:block;">
+        <input type="text" id="foh-extra-hours_hours_field" name="foh-extra-hours_hours_field" value="<?php echo $hours ?>" style="display:block;">
     <?php
     }
 
@@ -231,15 +235,19 @@ class FlexibleOpenHours
         if (! current_user_can('edit_post', $postID)) {
             return;
         }
-        if (! isset($_POST['foh-extra-hours_dates_field']) || ! isset($_POST['foh-extra-hours_hours_field']) || ! isset($_POST['foh-message_field'])) {
+        if (! isset($_POST['foh-extra-hours_dates_field']) || ! isset($_POST['foh-extra-hours_min_date_field']) || ! isset($_POST['foh-extra-hours_max_date_field']) || ! isset($_POST['foh-extra-hours_hours_field']) || ! isset($_POST['foh-message_field'])) {
             return;
         }
 
         $dates = sanitize_text_field($_POST['foh-extra-hours_dates_field']);
+        $minDate = (int) sanitize_text_field($_POST['foh-extra-hours_min_date_field']);
+        $maxDate = (int) sanitize_text_field($_POST['foh-extra-hours_max_date_field']);
         $hours = sanitize_text_field($_POST['foh-extra-hours_hours_field']);
         $message = sanitize_text_field($_POST['foh-message_field']);
 
         update_post_meta($postID, 'foh-extra-hours_dates', $dates);
+        update_post_meta($postID, 'foh-extra-hours_min_date', $minDate);
+        update_post_meta($postID, 'foh-extra-hours_max_date', $maxDate);
         update_post_meta($postID, 'foh-extra-hours_hours', $hours);
         update_post_meta($postID, 'foh-message', $message);
     }
