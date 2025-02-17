@@ -293,7 +293,7 @@ class FlexibleOpenHours
     function normal_hours_rest()
     {
         $normalHours = get_option('foh_normal_open_hours');
-        $returnValue = json_decode($normalHours);
+        $returnValue = array('normal_hours' => json_decode($normalHours));
         return $returnValue;
     }
 }

@@ -1,5 +1,5 @@
 import apiFetch from '@wordpress/api-fetch'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import DisplayDays from '../components/foh-block-display-day'
 
 import { Day } from '../components/foh-settings-types'
@@ -24,6 +24,7 @@ export default function DisplayAllOpenHours({
 		{ dayInt: 5, title: 'Saturday', hours: [] },
 		{ dayInt: 6, title: 'Sunday', hours: [] },
 	]
+
 	const dayInfo: Day = { dayInt: 0, title: '', hours: [] }
 	const dateInfo: DatePickerEvent[] = []
 
@@ -33,18 +34,21 @@ export default function DisplayAllOpenHours({
 
 	//Normal hours
 	// get the setting
-	apiFetch({ path: '/wp/v2/settings?foh_normal_open_hours' }).then(
-		(settings) => {
-			console.log(settings)
-			if (
-				typeof settings == 'object' &&
-				settings != undefined &&
-				settings.hasOwnProperty('foh_normal_open_hours')
-			) {
-				setNormalHours(JSON.parse(settings.foh_normal_open_hours))
+	useEffect(() => {
+		apiFetch({ path: '/flexible_open_hours/v1/normal_hours' }).then(
+			(settings) => {
+				if (
+					typeof settings == 'object' &&
+					settings != undefined &&
+					settings.hasOwnProperty('normal_hours')
+				) {
+					setNormalHours((old) => {
+						return settings.normal_hours
+					})
+				}
 			}
-		}
-	)
+		)
+	}, [])
 
 	//Extra hours
 
