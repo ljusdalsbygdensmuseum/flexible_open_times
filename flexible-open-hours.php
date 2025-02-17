@@ -30,6 +30,9 @@ class FlexibleOpenHours
         add_action('save_post_foh-extra-hours', array($this, 'save_fohextrahours_meta_values'));
 
         add_action('save_post_foh-temporary-hours', array($this, 'save_fohtemporaryhours_meta_values'));
+
+        //Rest API
+        add_action('rest_api_init', array($this, 'custom_rest_api'));
     }
 
     //Page
@@ -276,6 +279,22 @@ class FlexibleOpenHours
         update_post_meta($postID, 'foh-temporary-hours_min_date', $minDate);
         update_post_meta($postID, 'foh-temporary-hours_max_date', $maxDate);
         update_post_meta($postID, 'foh-temporary-hours_hours', $hours);
+    }
+
+    //Rest API
+    function custom_rest_api()
+    {
+        register_rest_route('flexible_open_hours/v1', 'normal_hours', array(
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => array($this, 'normal_hours_rest')
+        ));
+    }
+
+    function normal_hours_rest()
+    {
+        $normalHours = get_option('foh_normal_open_hours');
+        $returnValue = json_decode($normalHours);
+        return $returnValue;
     }
 }
 
