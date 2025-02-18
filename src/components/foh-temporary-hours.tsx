@@ -52,12 +52,18 @@ export function FohTemporaryHours() {
 		throw new Error('dates_field not found')
 	}
 
+	let minDate = parseInt(mindateInput.value)
+	if (minDate < 86400000) {
+		minDate = new Date().getTime()
+	}
+	const maxDate = parseInt(maxdateInput.value)
+
 	return (
 		<>
 			<Panel>
 				<div id='day-select'>
 					<FOHDateRange
-						dates={[parseInt(mindateInput.value), parseInt(maxdateInput.value)]}
+						dates={[minDate, maxDate]}
 						input={[mindateInput, maxdateInput]}
 					/>
 				</div>
