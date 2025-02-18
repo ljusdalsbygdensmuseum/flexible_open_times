@@ -292,10 +292,80 @@ class FlexibleOpenHours
 
     function normal_hours_rest()
     {
+        // Normal hours
         $normalHours = get_option('foh_normal_open_hours');
-        $returnValue = array('normal_hours' => json_decode($normalHours));
+
+        // Extra hours
+        $extraHoursQuery = new WP_Query(array(
+            'posts_per_page' => -1,
+            'post_type' => 'foh-extra-hours',
+            'meta_query' => array(
+                array(
+                    'key' => 'foh-extra-hours_max_date',
+                    'compare' => '>=',
+                    'value' => date('Uv')
+                ),
+                array(
+                    'key' => 'foh-extra-hours_min_date',
+                    'compare' => '<',
+                    'value' => date('Uv') + (86400000 * 7) // it will show 7 days before beginning/min_date
+                ),
+            ),
+        ));
+        $extraHours = [];
+        while ($extraHoursQuery->have_posts()) {
+            $extraHoursQuery->the_post();
+            array_push($extraHours, array(
+                'id' => get_the_ID(),
+                'title' => get_the_title(),
+                'message' => get_post_meta(get_the_ID(), 'foh-message', true),
+                'dates' => json_decode(get_post_meta(get_the_ID(), 'foh-extra-hours_dates', true)),
+                'hours' => json_decode(get_post_meta(get_the_ID(), 'foh-extra-hours_hours', true))
+            ));
+        }
+
+        // Temporary hours
+        $temporaryHoursQuery = new WP_Query(array(
+            'posts_per_page' => -1,
+            'post_type' => 'foh-temporary-hours',
+            'meta_query' => array(
+                array(
+                    'key' => 'foh-temporary-hours_max_date',
+                    'compare' => '>=',
+                    'value' => date('Uv')
+                ),
+                array(
+                    'key' => 'foh-temporary-hours_min_date',
+                    'compare' => '<',
+                    'value' => date('Uv')
+                ),
+            ),
+        ));
+        $temporaryHours = [];
+        while ($temporaryHoursQuery->have_posts()) {
+            $temporaryHoursQuery->the_post();
+            array_push($temporaryHours, array(
+                'id' => get_the_ID(),
+                'title' => get_the_title(),
+                'dates' => array(
+                    'start' => get_post_meta(get_the_ID(), 'foh-temporary-hours_min_date', true),
+                    'end' => get_post_meta(get_the_ID(), 'foh-temporary-hours_max_date', true),
+                ),
+                'hours' => json_decode(get_post_meta(get_the_ID(), 'foh-temporary-hours_hours', true))
+            ));
+        }
+
+        // Return
+        $returnValue = array(
+            'normal_hours' => json_decode($normalHours),
+            'extra_hours' => $extraHours,
+            'temporary_hours' => $temporaryHours
+        );
         return $returnValue;
     }
 }
 
 $flexibleOpenHours = new FlexibleOpenHours();
+//1739867987   86400000 7 days in milliseconds
+//1740124040000
+//1739868461000
