@@ -29,28 +29,46 @@ export default function DisplayAllOpenHours({
 	const dateInfo: DatePickerEvent[] = []
 
 	const [normalHours, setNormalHours] = useState(fullWeekInfo)
-	const [extraHours, setExtraHours] = useState(dayInfo)
-	const [extraDates, setExtraDates] = useState(dateInfo)
+	const [extraHours, setExtraHours] = useState([])
 
-	//Normal hours
-	// get the setting
+	// Get the data
 	useEffect(() => {
-		apiFetch({ path: '/flexible_open_hours/v1/normal_hours' }).then(
-			(settings) => {
-				if (
-					typeof settings == 'object' &&
-					settings != undefined &&
-					settings.hasOwnProperty('normal_hours')
-				) {
-					setNormalHours((old) => {
-						return settings.normal_hours
-					})
+		apiFetch({ path: '/flexible_open_hours/v1/normal_hours' }).then((data) => {
+			if (typeof data == 'object' && data != undefined) {
+				if (hasOwnProperty(data, 'normal_hours')) {
+					setNormalHours(data.normal_hours)
+				}
+				if (data.hasOwnProperty('extra_hours')) {
+					setExtraHours(data.extra_hours)
 				}
 			}
-		)
+		})
 	}, [])
 
-	//Extra hours
+	// Extra Hours
+	const displayExtraHours = extraHours.map((extraHour) => {
+		if (extraHour === undefined) {
+			return
+		}
+		const altTitle = extraHour.dates.map((date: DatePickerEvent) => {
+			date.date = new Date(date.date)
+			return `${date.getDate()}/${date.getMonth()} `
+		})
+		return (
+			<DisplayDays
+				showTitle={false}
+				altTitle={altTitle}
+				showClosed={true}
+				days={extraHour.hours}
+			/>
+		)
+	})
 
-	return <DisplayDays showTitle={true} days={normalHours} />
+	return (
+		<>
+			{title.length > 0 && <h2>{title}</h2>}
+			<DisplayDays showTitle={true} showClosed={false} days={normalHours} />
+			{displayExtraHours}
+		</>
+	)
 }
