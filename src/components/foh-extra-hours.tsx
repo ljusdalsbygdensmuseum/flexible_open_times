@@ -1,7 +1,7 @@
 import { Panel, PanelBody, ToggleControl } from '@wordpress/components'
 
 import { FullWeek } from './foh-settings-fullweek'
-import { Day } from './foh-settings-types'
+import { Day } from '../types/foh-settings-types'
 
 import { DaySelect } from './foh-day-select'
 import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'

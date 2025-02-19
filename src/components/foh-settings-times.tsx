@@ -7,7 +7,7 @@ import {
 	Button,
 } from '@wordpress/components'
 
-import { Hour } from './foh-settings-types'
+import { Hour } from '../types/foh-settings-types'
 import { TimeInputValue } from '@wordpress/components/build-types/date-time/types'
 
 interface Props {

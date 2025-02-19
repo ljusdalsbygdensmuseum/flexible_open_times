@@ -3,7 +3,7 @@ import { TimeInputValue } from '@wordpress/components/build-types/date-time/type
 
 import { useState } from 'react'
 
-import { Day, Hour } from './foh-settings-types'
+import { Day, Hour } from '../types/foh-settings-types'
 import { Times } from './foh-settings-times'
 
 interface Props {

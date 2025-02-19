@@ -2,7 +2,7 @@ import apiFetch from '@wordpress/api-fetch'
 import { useState, useEffect } from 'react'
 import DisplayDays from '../components/foh-block-display-day'
 
-import { Day } from '../components/foh-settings-types'
+import { Day } from '../types/foh-settings-types'
 import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'
 
 interface Props {

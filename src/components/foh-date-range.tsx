@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { DatePicker, PanelBody } from '@wordpress/components'
-import { DatesRange } from './foh-metabox-temporary-types'
+import { DatesRange } from '../types/foh-metabox-temporary-types'
 import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'
 
 interface Props {

@@ -1,12 +1,12 @@
 import { Panel } from '@wordpress/components'
 
 import { FullWeek } from './foh-settings-fullweek'
-import { Day } from './foh-settings-types'
+import { Day } from '../types/foh-settings-types'
 
 import { FOHDateRange } from './foh-date-range'
 
 import isJSON from '../utility/is-json'
-import { DatesRange } from './foh-metabox-temporary-types'
+import { DatesRange } from '../types/foh-metabox-temporary-types'
 
 export function FohTemporaryHours() {
 	//get input and data

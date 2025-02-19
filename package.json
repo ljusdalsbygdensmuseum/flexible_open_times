@@ -30,6 +30,7 @@
 		"@wordpress/blocks": "^14.6.0",
 		"@wordpress/components": "^29.1.1",
 		"@wordpress/dom-ready": "^4.15.0",
-		"@wordpress/element": "^6.15.1"
+		"@wordpress/element": "^6.15.1",
+		"zod": "^3.24.2"
 	}
 }
