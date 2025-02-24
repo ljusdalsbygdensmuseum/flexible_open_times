@@ -1,12 +1,17 @@
 import { Panel, PanelBody, ToggleControl } from '@wordpress/components'
 
 import { FullWeek } from './foh-settings-fullweek'
-import { Day } from '../types/foh-settings-types'
-
 import { DaySelect } from './foh-day-select'
-import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'
+
+import {
+	Day,
+	Dates,
+	DaysSchema,
+	DatesSchema,
+} from '../types/foh-settings-types'
 
 import isJSON from '../utility/is-json'
+
 import { useState } from 'react'
 
 export default function FohExtraHours() {
@@ -20,18 +25,10 @@ export default function FohExtraHours() {
 	}
 	let hoursinfo: Day[] = [{ dayInt: 0, title: 'Hours', hours: [] }]
 	if (isJSON(hoursInput.value)) {
-		let hoursinfoInput = JSON.parse(hoursInput.value)
-		hoursinfoInput = hoursinfoInput.filter((item: Day) => {
-			if (!('hours' in item)) {
-				return
-			}
-			return item
-		})
-
-		if (hoursinfoInput.length != hoursinfo.length) {
-			hoursinfoInput = hoursinfo
+		let json = JSON.parse(hoursInput.value)
+		if (DaysSchema.safeParse(json)) {
+			hoursinfo = json
 		}
-		hoursinfo = hoursinfoInput
 	}
 
 	//date
@@ -47,15 +44,18 @@ export default function FohExtraHours() {
 	if (!dateInput || !mindateInput || !maxdateInput) {
 		throw new Error('#foh-extra-hours_dates_field not found')
 	}
-	let datesInfo: DatePickerEvent[] = []
+	let datesInfo: Dates = []
 	if (isJSON(dateInput.value)) {
-		datesInfo = JSON.parse(dateInput.value)
+		let json = JSON.parse(dateInput.value)
+		if (DatesSchema.safeParse(json)) {
+			datesInfo = json
+		}
 	}
 
 	//---
 	//closed
 	let closedCheck = false
-	if (hoursinfo[0].hours.length <= 0) {
+	if (hoursinfo.length <= 0) {
 		closedCheck = true
 	}
 	const [closed, setClosed] = useState(closedCheck)
