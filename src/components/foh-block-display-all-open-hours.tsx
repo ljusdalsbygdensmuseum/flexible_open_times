@@ -2,13 +2,7 @@ import apiFetch from '@wordpress/api-fetch'
 import { useState, useEffect } from 'react'
 import DisplayDays from '../components/foh-block-display-day'
 
-import {
-	AllHoursDataSchema,
-	DaySchema,
-	AllHoursData,
-	Day,
-} from '../types/foh-settings-types'
-import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'
+import { AllHoursDataSchema, AllHoursData } from '../types/foh-settings-types'
 
 interface Props {
 	showExtra: boolean
@@ -33,7 +27,6 @@ export default function DisplayAllOpenHours({
 		extra_hours: [],
 		temporary_hours: [],
 	}
-	const week: Day = { dayInt: 0, title: 'Monday', hours: [] }
 
 	const [allHours, setAllHours] = useState(fullWeekInfo)
 
