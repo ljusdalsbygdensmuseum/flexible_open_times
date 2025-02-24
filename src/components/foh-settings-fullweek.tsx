@@ -12,13 +12,11 @@ interface Props {
 }
 
 export function FullWeek(props: Props) {
-	let hourIdInc = 0
 	const theWeek = props.week.map((dayObj: Day) => {
 		const [hours, setHours] = useState(dayObj.hours)
 
 		const addMoreHours = () => {
 			const emptyHoursObj: Hour = {
-				id: hourIdInc++,
 				open: {
 					hours: 0,
 					minutes: 0,

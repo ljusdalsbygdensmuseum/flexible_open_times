@@ -248,6 +248,9 @@ class FlexibleOpenHours
         $minDate = (int) sanitize_text_field($_POST['foh-extra-hours_min_date_field']);
         $maxDate = (int) sanitize_text_field($_POST['foh-extra-hours_max_date_field']);
         $hours = sanitize_text_field($_POST['foh-extra-hours_hours_field']);
+        if (empty($hours)) {
+            $hours = '[]';
+        }
         $message = sanitize_text_field($_POST['foh-message_field']);
 
         update_post_meta($postID, 'foh-extra-hours_dates', $dates);
@@ -348,8 +351,12 @@ class FlexibleOpenHours
                 'id' => get_the_ID(),
                 'title' => get_the_title(),
                 'dates' => array(
-                    'start' => get_post_meta(get_the_ID(), 'foh-temporary-hours_min_date', true),
-                    'end' => get_post_meta(get_the_ID(), 'foh-temporary-hours_max_date', true),
+                    'start' => array(
+                        'date' => date(get_post_meta(get_the_ID(), 'foh-temporary-hours_min_date', true))
+                    ),
+                    'end' => array(
+                        'date' => get_post_meta(get_the_ID(), 'foh-temporary-hours_max_date', true)
+                    ),
                 ),
                 'hours' => json_decode(get_post_meta(get_the_ID(), 'foh-temporary-hours_hours', true))
             ));
@@ -366,6 +373,3 @@ class FlexibleOpenHours
 }
 
 $flexibleOpenHours = new FlexibleOpenHours();
-//1739867987   86400000 7 days in milliseconds
-//1740124040000
-//1739868461000

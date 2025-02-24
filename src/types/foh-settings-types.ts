@@ -1,17 +1,16 @@
-import { number, z } from 'zod'
+import { z } from 'zod'
 
 const TimeInputValue = z.object({
 	// from '@wordpress/components/build-types/date-time/types'
 	hours: z.number(),
 	minutes: z.number(),
 })
-const DatePickerEvent = z.object({
+const DatePickerEventSchema = z.object({
 	// from "@wordpress/components/build-types/date-time/types"
-	date: z.string(),
+	date: z.union([z.date(), z.string()]),
 })
 
 export const HourSchema = z.object({
-	id: z.number(),
 	open: TimeInputValue,
 	close: TimeInputValue,
 })
@@ -19,28 +18,23 @@ export const HourSchema = z.object({
 export const DaySchema = z.object({
 	dayInt: z.number().int().optional(),
 	title: z.string(),
-	hours: z.union([z.array(HourSchema), z.undefined()]),
+	hours: z.array(HourSchema),
 })
 
 export const DatesRangeSchema = z.object({
-	start: DatePickerEvent,
-	end: DatePickerEvent,
+	start: DatePickerEventSchema,
+	end: DatePickerEventSchema,
 })
 
-const ExtraHoursSchema = z.object({
-	dayInt: z.number().int().optional(),
-	title: z.string(),
-	hours: z.union([z.array(HourSchema), z.undefined()]),
+const ExtraHoursSchema = DaySchema.extend({
 	id: z.number(),
 	message: z.string(),
-	dates: z.union([z.array(DatePickerEvent), z.undefined()]),
+	dates: z.array(DatePickerEventSchema),
 })
 const TemporaryHoursSchema = DaySchema.extend({
 	id: z.number(),
-	dates: z.object({
-		start: z.string(),
-		end: z.string(),
-	}),
+	dates: DatesRangeSchema,
+	hours: z.array(DaySchema),
 })
 
 export const AllHoursDataSchema = z.object({
@@ -48,6 +42,8 @@ export const AllHoursDataSchema = z.object({
 	extra_hours: z.array(ExtraHoursSchema),
 	temporary_hours: z.array(TemporaryHoursSchema),
 })
+
+export type DatePickerEvent = z.infer<typeof DatePickerEventSchema>
 
 export type Hour = z.infer<typeof HourSchema>
 
