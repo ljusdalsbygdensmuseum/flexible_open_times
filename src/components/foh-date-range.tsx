@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { DatePicker, PanelBody } from '@wordpress/components'
-import { DatesRange, DatePickerEvent } from '../types/foh-settings-types'
+import { Dates } from '../types/foh-settings-types'
 
 interface Props {
 	dates: number[]
@@ -8,7 +8,7 @@ interface Props {
 }
 export function FOHDateRange({ dates, input }: Props) {
 	const getAllDates = (range: number[]) => {
-		let allDatesArray: DatePickerEvent[] = []
+		let allDatesArray: Dates = []
 		let loopDate = new Date(range[0])
 
 		while (loopDate <= new Date(range[1])) {

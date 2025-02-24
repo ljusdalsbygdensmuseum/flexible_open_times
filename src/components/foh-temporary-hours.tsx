@@ -1,9 +1,8 @@
 import { Panel } from '@wordpress/components'
 
 import { FullWeek } from './foh-settings-fullweek'
-import { Day } from '../types/foh-settings-types'
-
 import { FOHDateRange } from './foh-date-range'
+import { Day, DaysSchema } from '../types/foh-settings-types'
 
 import isJSON from '../utility/is-json'
 import { DatesRange } from '../types/foh-metabox-temporary-types'
@@ -27,18 +26,10 @@ export function FohTemporaryHours() {
 		{ dayInt: 6, title: 'Sunday', hours: [] },
 	]
 	if (isJSON(hoursInput.value)) {
-		let hoursinfoInput = JSON.parse(hoursInput.value)
-		hoursinfoInput = hoursinfoInput.filter((item: Day) => {
-			if (!('hours' in item)) {
-				return
-			}
-			return item
-		})
-
-		if (hoursinfoInput.length != hoursinfo.length) {
-			hoursinfoInput = hoursinfo
+		let json = JSON.parse(hoursInput.value)
+		if (DaysSchema.safeParse(json)) {
+			hoursinfo = json
 		}
-		hoursinfo = hoursinfoInput
 	}
 
 	//date
