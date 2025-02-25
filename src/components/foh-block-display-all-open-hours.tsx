@@ -31,7 +31,8 @@ export default function DisplayAllOpenHours({
 
 	const [allHours, setAllHours] = useState(fullWeekInfo)
 
-	// Get the data
+	//Normal hours
+	// get the setting
 	useEffect(() => {
 		apiFetch({ path: '/flexible_open_hours/v1/normal_hours' }).then(
 			(settings) => {
@@ -46,7 +47,7 @@ export default function DisplayAllOpenHours({
 					})
 				}
 			}
-		})
+		)
 	}, [])
 
 	//Extra hours

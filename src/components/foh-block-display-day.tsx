@@ -4,36 +4,23 @@ import DisplayHours from './foh-block-display-hours'
 interface Props {
 	days: Day[]
 	showTitle: boolean
-	altTitle?: string
-	showClosed: boolean
 }
-export default function DisplayDays({
-	days,
-	showTitle,
-	altTitle,
-	showClosed,
-}: Props) {
+export default function DisplayDays({ days, showTitle }: Props) {
 	const theWeek = days.map((day) => {
 		//check if is empty
-		if (day.hours.length < 1 && !showClosed) {
+		if (day.hours.length < 1) {
 			return
 		}
-		let theDay = altTitle
+		let theDay = ''
 		if (showTitle) {
 			theDay = day.title
 		}
+		console.log(day.title)
 
 		return (
-			<ul>
-				{theDay}
-				{day.hours.length < 1 ? (
-					<ul>
-						<li>Closed</li>
-					</ul>
-				) : (
-					<DisplayHours hours={day.hours} />
-				)}
-			</ul>
+			<li>
+				{theDay} <DisplayHours hours={day.hours} />
+			</li>
 		)
 	})
 	return theWeek
