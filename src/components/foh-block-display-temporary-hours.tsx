@@ -9,15 +9,19 @@ export default function DisplayTemporaryHours({ temporary, normal }: Props) {
 	const theDays = temporary.map((theTemporary) => {
 		const title = theTemporary.title
 		const allTemporary = temporary.map((temporary) => {
-			return <DisplayDays showTitle={true} days={temporary.hours} />
+			return (
+				<DisplayDays showTitle={true} days={temporary.hours} header={title} />
+			)
 		})
 
 		return (
 			<>
-				<h2>{title}</h2>
 				{allTemporary}
-				<h2>Normal open hours</h2>
-				<DisplayDays showTitle={true} days={normal} />
+				<DisplayDays
+					showTitle={true}
+					days={normal}
+					header='Normal open hours'
+				/>
 			</>
 		)
 	})

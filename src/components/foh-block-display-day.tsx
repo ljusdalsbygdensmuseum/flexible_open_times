@@ -4,8 +4,16 @@ import DisplayHours from './foh-block-display-hours'
 interface Props {
 	days: Day[]
 	showTitle: boolean
+	header?: string
 }
-export default function DisplayDays({ days, showTitle }: Props) {
+export default function DisplayDays({ days, showTitle, header }: Props) {
+	const theHeader = header ? (
+		<li>
+			<h2>{header}</h2>
+		</li>
+	) : (
+		''
+	)
 	const theWeek = days.map((day) => {
 		//check if is empty
 		if (day.hours.length < 1) {
@@ -23,5 +31,10 @@ export default function DisplayDays({ days, showTitle }: Props) {
 			</li>
 		)
 	})
-	return <ul>{theWeek}</ul>
+	return (
+		<ul>
+			{theHeader}
+			{theWeek}
+		</ul>
+	)
 }

@@ -39,7 +39,9 @@ export default function DisplayExtraHours({ event }: Props) {
 
 		return (
 			<ul>
-				<li>{title}</li>
+				<li>
+					<h2>{title}</h2>
+				</li>
 				<li>{message}</li>
 				<ul>{dates}</ul>
 				<li>{hours}</li>
