@@ -12,7 +12,7 @@ interface Props {
 }
 
 export function FullWeek(props: Props) {
-	const theWeek = props.week.map((dayObj: Day) => {
+	const theWeek = props.week.map((dayObj: Day, index) => {
 		const [hours, setHours] = useState(dayObj.hours)
 
 		const addMoreHours = () => {
@@ -29,44 +29,42 @@ export function FullWeek(props: Props) {
 			setHours(() => [...hours, emptyHoursObj])
 
 			const newWeek = props.week.concat([])
-			newWeek[dayObj.dayInt].hours = [...hours, emptyHoursObj]
+			newWeek[index].hours = [...hours, emptyHoursObj]
 
 			props.input.value = JSON.stringify(newWeek)
 		}
 
 		const removeItem = (item: Hour) => {
-			const newHours = props.week[dayObj.dayInt].hours.filter(
+			const newHours = props.week[index].hours.filter(
 				(compareItem) => compareItem != item
 			)
 
 			setHours(() => [...newHours])
 
 			const newWeek = props.week.concat([])
-			newWeek[dayObj.dayInt].hours = [...newHours]
+			newWeek[index].hours = [...newHours]
 
 			props.input.value = JSON.stringify(newWeek)
 		}
 
 		const changeItem = (newTime: TimeInputValue, open: boolean, item: Hour) => {
-			const hourIndex = props.week[dayObj.dayInt].hours.indexOf(item)
+			const hourIndex = props.week[index].hours.indexOf(item)
 
 			if (open) {
-				props.week[dayObj.dayInt].hours[hourIndex].open = newTime
+				props.week[index].hours[hourIndex].open = newTime
 			} else if (!open) {
-				props.week[dayObj.dayInt].hours[hourIndex].close = newTime
+				props.week[index].hours[hourIndex].close = newTime
 			}
 
-			setHours(() => [...props.week[dayObj.dayInt].hours])
+			setHours(() => [...props.week[index].hours])
 			props.input.value = JSON.stringify(props.week)
 		}
 
 		return (
 			<>
 				<PanelBody
-					title={props.week[dayObj.dayInt].title}
-					initialOpen={
-						props.week[dayObj.dayInt].hours.length > 0 ? true : false
-					}
+					title={props.week[index].title}
+					initialOpen={props.week[index].hours.length > 0 ? true : false}
 				>
 					<Times
 						hours={hours}
@@ -74,7 +72,7 @@ export function FullWeek(props: Props) {
 						onChangeItem={changeItem}
 					/>
 					<PanelRow>
-						{props.week[dayObj.dayInt].hours.length < 4 && (
+						{props.week[index].hours.length < 4 && (
 							<Button variant='secondary' onClick={addMoreHours}>
 								Add More
 							</Button>

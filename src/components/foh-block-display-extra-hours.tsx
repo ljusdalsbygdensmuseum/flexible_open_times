@@ -30,9 +30,9 @@ export default function DisplayExtraHours({ event }: Props) {
 				}${comma}`}</li>
 			)
 		})
-
-		const hours = theEvent.hours.length ? (
-			<DisplayHours hours={theEvent.hours} />
+		console.log(theEvent.hours)
+		const hours = theEvent.hours[0].hours.length ? (
+			<DisplayHours hours={theEvent.hours[0].hours} />
 		) : (
 			'Closed'
 		)

@@ -34,6 +34,7 @@ export const ExtraHoursSchema = DaySchema.extend({
 	id: z.number(),
 	message: z.string(),
 	dates: z.array(DatePickerEventSchema),
+	hours: z.array(DaySchema),
 })
 export const TemporaryHoursSchema = DaySchema.extend({
 	id: z.number(),
