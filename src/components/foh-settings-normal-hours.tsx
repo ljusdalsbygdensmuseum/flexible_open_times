@@ -1,7 +1,7 @@
 import { Panel } from '@wordpress/components'
 
 import { FullWeek } from './foh-settings-fullweek'
-import { Day } from './foh-settings-types'
+import { Day } from '../types/foh-settings-types'
 import isJSON from '../utility/is-json'
 
 export default function FohSettingsNormalHours() {

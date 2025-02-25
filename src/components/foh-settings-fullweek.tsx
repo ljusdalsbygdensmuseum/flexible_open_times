@@ -3,7 +3,7 @@ import { TimeInputValue } from '@wordpress/components/build-types/date-time/type
 
 import { useState } from 'react'
 
-import { Day, Hour } from './foh-settings-types'
+import { Day, Hour } from '../types/foh-settings-types'
 import { Times } from './foh-settings-times'
 
 interface Props {
@@ -12,13 +12,11 @@ interface Props {
 }
 
 export function FullWeek(props: Props) {
-	let hourIdInc = 0
 	const theWeek = props.week.map((dayObj: Day) => {
 		const [hours, setHours] = useState(dayObj.hours)
 
 		const addMoreHours = () => {
 			const emptyHoursObj: Hour = {
-				id: hourIdInc++,
 				open: {
 					hours: 0,
 					minutes: 0,

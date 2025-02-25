@@ -1,4 +1,4 @@
-import { Day } from './foh-settings-types'
+import { Day } from '../types/foh-settings-types'
 import DisplayHours from './foh-block-display-hours'
 
 interface Props {

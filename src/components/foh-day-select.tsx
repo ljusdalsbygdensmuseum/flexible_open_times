@@ -4,11 +4,12 @@ import {
 	PanelRow,
 	ToggleControl,
 } from '@wordpress/components'
-import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'
+
+import { Dates } from '../types/foh-settings-types'
 import { useState } from '@wordpress/element'
 
 interface Props {
-	dates: DatePickerEvent[]
+	dates: Dates
 	input: HTMLInputElement[]
 }
 
@@ -19,16 +20,16 @@ export function DaySelect({ dates, input }: Props) {
 	const [removeState, setRemoveState] = useState(false)
 	const [prevDate, setPrevDate] = useState(new Date())
 
-	const begOrEndDate = (newDate: Date, allDates: DatePickerEvent[]) => {
+	const begOrEndDate = (newDate: Date, allDates: Dates) => {
 		let begDate = newDate
 		let endDate = newDate
 
 		allDates.forEach((compareDate) => {
 			if (new Date(compareDate.date).getTime() < new Date(begDate).getTime()) {
-				begDate = compareDate.date
+				begDate = new Date(compareDate.date)
 			}
 			if (new Date(compareDate.date).getTime() > new Date(endDate).getTime()) {
-				endDate = compareDate.date
+				endDate = new Date(compareDate.date)
 			}
 		})
 		input[1].value = String(new Date(begDate).getTime())
@@ -51,7 +52,7 @@ export function DaySelect({ dates, input }: Props) {
 				(compareItem) =>
 					newDate.toDateString() !== new Date(compareItem.date).toDateString()
 			)
-			begOrEndDate(newDates[0].date, [...newDates])
+			begOrEndDate(new Date(newDates[0].date), [...newDates])
 			input[0].value = JSON.stringify([...newDates])
 			return [...newDates]
 		})

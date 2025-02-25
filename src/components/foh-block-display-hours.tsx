@@ -1,4 +1,4 @@
-import { Hour } from './foh-settings-types'
+import { Hour } from '../types/foh-settings-types'
 import fohFixMissingZero from '../utility/fohFixMissingZero'
 
 interface Prorps {
