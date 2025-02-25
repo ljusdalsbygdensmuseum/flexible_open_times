@@ -2,6 +2,7 @@ import apiFetch from '@wordpress/api-fetch'
 import { useState, useEffect } from 'react'
 import DisplayDays from '../components/foh-block-display-day'
 import DisplayExtraHours from '../components/foh-block-display-extra-hours'
+import DisplayTemporaryHours from '../components/foh-block-display-temporary-hours'
 
 import { AllHoursDataSchema, AllHoursData } from '../types/foh-settings-types'
 
@@ -50,12 +51,28 @@ export default function DisplayAllOpenHours({
 		)
 	}, [])
 
+	//normal and temporary hours
+	const normalHours =
+		showTemporary && allHours.temporary_hours.length ? (
+			<DisplayTemporaryHours
+				temporary={allHours.temporary_hours}
+				normal={allHours.normal_hours}
+			/>
+		) : (
+			<DisplayDays showTitle={true} days={allHours.normal_hours} />
+		)
+
 	//Extra hours
-	console.log(allHours.extra_hours.length)
+	const ExtraHours = showExtra ? (
+		<DisplayExtraHours event={allHours.extra_hours} />
+	) : (
+		''
+	)
+
 	return (
 		<>
-			<DisplayDays showTitle={true} days={allHours.normal_hours} />
-			<DisplayExtraHours event={allHours.extra_hours} />
+			{normalHours}
+			{ExtraHours}
 		</>
 	)
 }

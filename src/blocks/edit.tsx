@@ -33,11 +33,13 @@ import DisplayAllOpenHours from '../components/foh-block-display-all-open-hours'
 
 export default function Edit() {
 	return (
-		<DisplayAllOpenHours
-			title='Open Hours'
-			showExtra={true}
-			showTemporary={true}
-		/>
+		<div {...useBlockProps()}>
+			<DisplayAllOpenHours
+				title='Open Hours'
+				showExtra={true}
+				showTemporary={true}
+			/>
+		</div>
 	)
 	//return <p {...useBlockProps()}></p>
 }

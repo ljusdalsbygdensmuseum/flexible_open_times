@@ -61,3 +61,5 @@ export type DatesRange = z.infer<typeof DatesRangeSchema>
 export type AllHoursData = z.infer<typeof AllHoursDataSchema>
 
 export type ExtraHoursData = z.infer<typeof ExtraHoursSchema>
+
+export type TemporaryHoursData = z.infer<typeof TemporaryHoursSchema>
