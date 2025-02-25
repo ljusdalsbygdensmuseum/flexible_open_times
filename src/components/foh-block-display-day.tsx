@@ -23,5 +23,5 @@ export default function DisplayDays({ days, showTitle }: Props) {
 			</li>
 		)
 	})
-	return theWeek
+	return <ul>{theWeek}</ul>
 }
