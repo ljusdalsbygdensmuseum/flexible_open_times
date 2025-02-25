@@ -11,8 +11,8 @@ interface Props {
 	input: HTMLInputElement
 }
 
-export function FullWeek(props: Props) {
-	const theWeek = props.week.map((dayObj: Day, index) => {
+export function FullWeek({ week, input }: Props) {
+	const theWeek = week.map((dayObj: Day, index) => {
 		const [hours, setHours] = useState(dayObj.hours)
 
 		const addMoreHours = () => {
@@ -26,45 +26,50 @@ export function FullWeek(props: Props) {
 					minutes: 0,
 				},
 			}
-			setHours(() => [...hours, emptyHoursObj])
+			setHours((oldHours) => {
+				const newHours = [...oldHours, emptyHoursObj]
 
-			const newWeek = props.week.concat([])
-			newWeek[index].hours = [...hours, emptyHoursObj]
+				const newWeek = week.concat([])
+				newWeek[index].hours = newHours
 
-			props.input.value = JSON.stringify(newWeek)
+				input.value = JSON.stringify(newWeek)
+
+				return newHours
+			})
 		}
 
 		const removeItem = (item: Hour) => {
-			const newHours = props.week[index].hours.filter(
-				(compareItem) => compareItem != item
-			)
+			setHours((oldHours) => {
+				const newHours = week[index].hours.filter(
+					(compareItem) => compareItem != item
+				)
+				const newWeek = week.concat([])
+				newWeek[index].hours = [...newHours]
 
-			setHours(() => [...newHours])
+				input.value = JSON.stringify(newWeek)
 
-			const newWeek = props.week.concat([])
-			newWeek[index].hours = [...newHours]
-
-			props.input.value = JSON.stringify(newWeek)
+				return newHours
+			})
 		}
 
 		const changeItem = (newTime: TimeInputValue, open: boolean, item: Hour) => {
-			const hourIndex = props.week[index].hours.indexOf(item)
+			const hourIndex = week[index].hours.indexOf(item)
 
 			if (open) {
-				props.week[index].hours[hourIndex].open = newTime
+				week[index].hours[hourIndex].open = newTime
 			} else if (!open) {
-				props.week[index].hours[hourIndex].close = newTime
+				week[index].hours[hourIndex].close = newTime
 			}
 
-			setHours(() => [...props.week[index].hours])
-			props.input.value = JSON.stringify(props.week)
+			setHours(() => [...week[index].hours])
+			input.value = JSON.stringify(week)
 		}
 
 		return (
 			<>
 				<PanelBody
-					title={props.week[index].title}
-					initialOpen={props.week[index].hours.length > 0 ? true : false}
+					title={week[index].title}
+					initialOpen={week[index].hours.length > 0 ? true : false}
 				>
 					<Times
 						hours={hours}
@@ -72,7 +77,7 @@ export function FullWeek(props: Props) {
 						onChangeItem={changeItem}
 					/>
 					<PanelRow>
-						{props.week[index].hours.length < 4 && (
+						{week[index].hours.length < 4 && (
 							<Button variant='secondary' onClick={addMoreHours}>
 								Add More
 							</Button>
