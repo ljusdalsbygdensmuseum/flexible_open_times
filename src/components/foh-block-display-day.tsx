@@ -23,7 +23,6 @@ export default function DisplayDays({ days, showTitle, header }: Props) {
 		if (showTitle) {
 			theDay = day.title
 		}
-		console.log(day.title)
 
 		return (
 			<li>
