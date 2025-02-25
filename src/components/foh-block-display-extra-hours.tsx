@@ -1,3 +1,4 @@
+import DisplayHours from './foh-block-display-hours'
 import { ExtraHoursData } from '../types/foh-settings-types'
 
 interface Props {
@@ -14,20 +15,34 @@ export default function DisplayExtraHours({ event }: Props) {
 			})
 			.map((date) => {
 				const thedate = new Date(date.date)
-				return `${thedate.getFullYear()}-${thedate.getMonth()}-${thedate.getDate()}`
+				return `${thedate.getFullYear()}-${
+					thedate.getMonth() + 1
+				}-${thedate.getDate()}`
 			})
 		// remove duplicates
 		sortedDates = [...new Set(sortedDates)]
 
-		const dates = sortedDates.map((date) => {
-			return <li>{new Date(date).getDate()}</li>
+		const dates = sortedDates.map((date, index, array) => {
+			const comma = array.length - 1 == index ? '' : ', '
+			return (
+				<li>{`${new Date(date).getDate()}/${
+					new Date(date).getMonth() + 1
+				}${comma}`}</li>
+			)
 		})
+
+		const hours = theEvent.hours.length ? (
+			<DisplayHours hours={theEvent.hours} />
+		) : (
+			'Closed'
+		)
 
 		return (
 			<ul>
 				<li>{title}</li>
 				<li>{message}</li>
 				<ul>{dates}</ul>
+				<li>{hours}</li>
 			</ul>
 		)
 	})
