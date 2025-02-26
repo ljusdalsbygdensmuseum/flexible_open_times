@@ -11,3 +11,5 @@ export const weekNames = [
 export const singleWeekName = 'Hours'
 
 export const defaultNormalTitle = 'Normal open hours'
+
+export const backName = 'Back'

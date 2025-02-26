@@ -6,8 +6,14 @@ interface Props {
 }
 export default function DisplayExtraHours({ event }: Props) {
 	const theDays = event.map((theEvent) => {
-		const title = theEvent.title
-		const message = theEvent.message
+		const title = theEvent.title ? (
+			<li>
+				<h2>{theEvent.title}</h2>
+			</li>
+		) : (
+			''
+		)
+		const message = theEvent.message ? <li>{theEvent.message}</li> : ''
 		// sort dates and map to be easier to remove duplicates
 		let sortedDates = theEvent.dates
 			.sort((dateA, dateB) => {
@@ -37,13 +43,15 @@ export default function DisplayExtraHours({ event }: Props) {
 		)
 
 		return (
-			<ul>
-				<li>
-					<h2>{title}</h2>
-				</li>
-				<li>{message}</li>
-				<ul>{dates}</ul>
-				<li>{hours}</li>
+			<ul className='foh-display__wrap'>
+				{title}
+				<ul>{message}</ul>
+
+				<ul className='foh-display__dates'>{dates}</ul>
+
+				<ul className='foh-display__hours'>
+					<li>{hours}</li>
+				</ul>
 			</ul>
 		)
 	})

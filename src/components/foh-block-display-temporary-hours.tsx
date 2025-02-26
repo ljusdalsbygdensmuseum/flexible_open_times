@@ -1,30 +1,49 @@
 import DisplayDays from '../components/foh-block-display-day'
 import { Day, TemporaryHoursData } from '../types/foh-settings-types'
-import { defaultNormalTitle } from '../utility/fohNames'
+import { defaultNormalTitle, backName } from '../utility/fohNames'
+
+import { useState } from 'react'
 
 interface Props {
 	temporary: TemporaryHoursData[]
 	normal: Day[]
 }
 export default function DisplayTemporaryHours({ temporary, normal }: Props) {
-	const theDays = temporary.map((theTemporary, index) => {
-		const title = theTemporary.title
-		const allTemporary = temporary.map((temporary) => {
-			return (
-				<DisplayDays showTitle={true} days={temporary.hours} header={title} />
-			)
-		})
+	const [showNormal, setShowNormal] = useState(false)
 
+	const allTemporary = temporary.map((temporary) => {
+		const title = temporary.title
 		return (
-			<>
-				{allTemporary}
+			<DisplayDays showTitle={true} days={temporary.hours} header={title} />
+		)
+	})
+
+	const changeButton = (
+		<ul>
+			<li
+				onClick={() => {
+					setShowNormal((old) => {
+						return !old
+					})
+				}}
+				className='foh-display__button'
+			>
+				{showNormal ? `<< ${backName}` : `${defaultNormalTitle} >>`}
+			</li>
+		</ul>
+	)
+
+	return (
+		<>
+			{!showNormal && allTemporary}
+			{showNormal && (
 				<DisplayDays
 					showTitle={true}
 					days={normal}
 					header={defaultNormalTitle}
 				/>
-			</>
-		)
-	})
-	return theDays
+			)}
+			{changeButton}
+		</>
+	)
 }

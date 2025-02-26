@@ -6,16 +6,18 @@ interface Prorps {
 }
 
 export default function DisplayHours({ hours }: Prorps) {
-	const displayHours = hours.map((hour) => {
-		const openHour = `${fohFixMissingZero(
-			hour.open.hours
-		)} : ${fohFixMissingZero(hour.open.minutes)}`
+	const displayHours = hours.map((hour, index, array) => {
+		const comma = array.length - 1 == index ? '' : ', '
+		const openHour = `${fohFixMissingZero(hour.open.hours)}.${fohFixMissingZero(
+			hour.open.minutes
+		)}`
 		const closeHour = `${fohFixMissingZero(
 			hour.close.hours
-		)} : ${fohFixMissingZero(hour.close.minutes)}`
+		)}.${fohFixMissingZero(hour.close.minutes)}`
 		return (
 			<li>
 				{openHour} - {closeHour}
+				{comma}
 			</li>
 		)
 	})

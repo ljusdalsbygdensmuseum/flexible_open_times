@@ -34,7 +34,7 @@ export default function DisplayDays({ days, showTitle, header }: Props) {
 	return (
 		<ul>
 			{theHeader}
-			{theWeek}
+			<ul className='foh-display__hours'>{theWeek}</ul>
 		</ul>
 	)
 }
