@@ -28,12 +28,14 @@ export const DatesRangeSchema = z.object({
 
 export const ExtraHoursSchema = z.object({
 	id: z.number(),
+	title: z.string(),
 	message: z.string(),
 	dates: z.array(DatePickerEventSchema),
 	hours: z.array(DaySchema),
 })
 export const TemporaryHoursSchema = z.object({
 	id: z.number(),
+	title: z.string(),
 	dates: DatesRangeSchema,
 	hours: z.array(DaySchema),
 })

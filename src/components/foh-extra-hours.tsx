@@ -55,7 +55,7 @@ export default function FohExtraHours() {
 	//---
 	//closed
 	let closedCheck = false
-	if (hoursinfo.length <= 0) {
+	if (hoursinfo[0].length <= 0) {
 		closedCheck = true
 	}
 	const [closed, setClosed] = useState(closedCheck)
