@@ -1,10 +1,10 @@
 import { PanelBody, PanelRow, Button } from '@wordpress/components'
-import { TimeInputValue } from '@wordpress/components/build-types/date-time/types'
 
 import { useState } from 'react'
 
-import { Day, Hour } from '../types/foh-settings-types'
+import { Day, Hour, TimeInputValue } from '../types/foh-settings-types'
 import { Times } from './foh-settings-times'
+import { weekNames, singleWeekName } from '../utility/fohNames'
 
 interface Props {
 	week: Day[]
@@ -12,8 +12,11 @@ interface Props {
 }
 
 export function FullWeek({ week, input }: Props) {
-	const theWeek = week.map((dayObj: Day, index) => {
-		const [hours, setHours] = useState(dayObj.hours)
+	const [weekArray, setWeekArray] = useState(week)
+	const theWeek = week.map((dayObj: Day, index, array) => {
+		const [hours, setHours] = useState(dayObj)
+
+		const title = array.length == 7 ? weekNames[index] : singleWeekName
 
 		const addMoreHours = () => {
 			const emptyHoursObj: Hour = {
@@ -26,58 +29,57 @@ export function FullWeek({ week, input }: Props) {
 					minutes: 0,
 				},
 			}
-			setHours((oldHours) => {
-				const newHours = [...oldHours, emptyHoursObj]
-
-				const newWeek = week.concat([])
-				newWeek[index].hours = newHours
-
+			setWeekArray((oldWeek) => {
+				const newHours = [...oldWeek[index], emptyHoursObj]
+				const newWeek = oldWeek.concat([])
+				newWeek[index] = newHours
 				input.value = JSON.stringify(newWeek)
-
-				return newHours
+				return newWeek
 			})
 		}
 
-		const removeItem = (item: Hour) => {
-			setHours((oldHours) => {
-				const newHours = week[index].hours.filter(
-					(compareItem) => compareItem != item
-				)
-				const newWeek = week.concat([])
-				newWeek[index].hours = [...newHours]
-
+		const removeItem = (itemIndex: number) => {
+			setWeekArray((oldWeek) => {
+				if (itemIndex < 0) {
+					return oldWeek
+				}
+				const newWeek = oldWeek.concat([])
+				newWeek[index].splice(itemIndex, 1)
 				input.value = JSON.stringify(newWeek)
-
-				return newHours
+				return newWeek
 			})
 		}
 
-		const changeItem = (newTime: TimeInputValue, open: boolean, item: Hour) => {
-			const hourIndex = week[index].hours.indexOf(item)
-
-			if (open) {
-				week[index].hours[hourIndex].open = newTime
-			} else if (!open) {
-				week[index].hours[hourIndex].close = newTime
-			}
-
-			setHours(() => [...week[index].hours])
-			input.value = JSON.stringify(week)
+		const changeItem = (
+			newTime: TimeInputValue,
+			open: boolean,
+			itemIndex: number
+		) => {
+			setWeekArray((oldWeek) => {
+				const newWeek = oldWeek.concat([])
+				if (open) {
+					newWeek[index][itemIndex].open = newTime
+				} else if (!open) {
+					newWeek[index][itemIndex].close = newTime
+				}
+				input.value = JSON.stringify(newWeek)
+				return newWeek
+			})
 		}
 
 		return (
 			<>
 				<PanelBody
-					title={week[index].title}
-					initialOpen={week[index].hours.length > 0 ? true : false}
+					title={title}
+					initialOpen={week[index].length > 0 ? true : false}
 				>
 					<Times
-						hours={hours}
+						hours={weekArray[index]}
 						onRemoveItem={removeItem}
 						onChangeItem={changeItem}
 					/>
 					<PanelRow>
-						{week[index].hours.length < 4 && (
+						{week[index].length < 4 && (
 							<Button variant='secondary' onClick={addMoreHours}>
 								Add More
 							</Button>

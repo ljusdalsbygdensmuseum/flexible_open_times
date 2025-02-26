@@ -7,17 +7,20 @@ import {
 	Button,
 } from '@wordpress/components'
 
-import { Hour } from '../types/foh-settings-types'
-import { TimeInputValue } from '@wordpress/components/build-types/date-time/types'
+import { Hour, TimeInputValue } from '../types/foh-settings-types'
 
 interface Props {
 	hours: Hour[]
-	onRemoveItem: (item: Hour) => void
-	onChangeItem: (newTime: TimeInputValue, open: boolean, item: Hour) => void
+	onRemoveItem: (hourIndex: number) => void
+	onChangeItem: (
+		newTime: TimeInputValue,
+		open: boolean,
+		itemIndex: number
+	) => void
 }
 
 export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
-	const theTimes = hours.map((timeObj: Hour) => {
+	const theTimes = hours.map((timeObj: Hour, index) => {
 		return (
 			<PanelRow>
 				<Flex align='flex-end'>
@@ -26,7 +29,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 							label='Open'
 							value={timeObj.open}
 							onChange={(newTime) => {
-								onChangeItem(newTime, true, timeObj)
+								onChangeItem(newTime, true, index)
 							}}
 						/>
 					</FlexItem>
@@ -35,7 +38,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 							label='Close'
 							value={timeObj.close}
 							onChange={(newTime) => {
-								onChangeItem(newTime, false, timeObj)
+								onChangeItem(newTime, false, index)
 							}}
 						/>
 					</FlexItem>
@@ -44,7 +47,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 							isDestructive
 							variant='tertiary'
 							onClick={() => {
-								onRemoveItem(timeObj)
+								onRemoveItem(index)
 							}}
 						>
 							Remove

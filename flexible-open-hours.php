@@ -119,7 +119,7 @@ class FlexibleOpenHours
         register_setting('normal_open_hours', 'foh_normal_open_hours', array(
             'sanitize_callback' => 'sanitize_text_field',
             'show_in_rest'  => TRUE,
-            'default' => '[ { dayInt: 0, title: "Monday", hours: [] }, { dayInt: 1, title: "Tuseday", hours: [] }, { dayInt: 2, title: "Wednesday", hours: [] }, { dayInt: 3, title: "Thursday", hours: [] }, { dayInt: 4, title: "Friday", hours: [] }, { dayInt: 5, title: "Saturday", hours: [] }, { dayInt: 6, title: "Sunday", hours: [] },]'
+            'default' => '[ [], [], [], [], [], [], [] ]'
         ));
 
         add_settings_section('normal_open_hours', null, array($this, 'open_hours_settings_html'), 'open-hours');

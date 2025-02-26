@@ -23,7 +23,7 @@ export default function FohExtraHours() {
 	if (!hoursInput) {
 		throw new Error('#foh-extra-hours_hours_field not found')
 	}
-	let hoursinfo: Day[] = [{ dayInt: 0, title: 'Hours', hours: [] }]
+	let hoursinfo: Day[] = [[]]
 	if (isJSON(hoursInput.value)) {
 		let json = JSON.parse(hoursInput.value)
 		if (DaysSchema.safeParse(json)) {
@@ -78,7 +78,7 @@ export default function FohExtraHours() {
 							checked={closed}
 							onChange={(value) =>
 								setClosed(() => {
-									hoursInput.value = '[{"title": "Hours", "hours":[]}]'
+									hoursInput.value = '[[]]'
 									return value
 								})
 							}

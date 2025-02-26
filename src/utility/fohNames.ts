@@ -8,4 +8,6 @@ export const weekNames = [
 	'Sunday',
 ]
 
+export const singleWeekName = 'Hours'
+
 export const defaultNormalTitle = 'Normal open hours'
