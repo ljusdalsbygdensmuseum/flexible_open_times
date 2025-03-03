@@ -5,6 +5,8 @@
     Description: Easily change open times on the fly.
     Version: 0.0.1
     Author: ina
+    Text domain: flexible-open-hours-domain
+    Domain Path: /languages
 */
 
 if (! defined('ABSPATH')) exit; // Exit if accessed directly
@@ -13,9 +15,6 @@ class FlexibleOpenHours
 {
     function __construct()
     {
-        //Plugin dir
-        define('FOH_ROOT_FILE', __FILE__);
-
         //Menu page
         add_action('admin_menu', array($this, 'main_page'));
 
@@ -25,7 +24,7 @@ class FlexibleOpenHours
         //Settings
         add_action('admin_init', array($this, 'settings'));
 
-        //Post type
+        //Post type and other init
         add_action('init', array($this, 'init_post_type'));
 
         //Meta boxes
@@ -41,7 +40,7 @@ class FlexibleOpenHours
     //Page
     function main_page()
     {
-        $menuPage = add_menu_page('Open Hours', 'Open Hours', 'edit_pages', 'open-hours', array($this, 'main_page_html'), 'dashicons-clock', 4);
+        $menuPage = add_menu_page(__('Open Hours', 'flexible-open-hours-domain'), 'Open Hours', 'edit_pages', 'open-hours', array($this, 'main_page_html'), 'dashicons-clock', 4);
 
         add_action('load-' . $menuPage, array($this, 'load_main_page'));
 
@@ -49,8 +48,8 @@ class FlexibleOpenHours
         add_submenu_page('open-hours', 'Open Hours', 'Normal hours', 'edit_pages', 'open-hours');
 
         //Submenu pages for custom post type
-        add_submenu_page('open-hours', 'Extra hours', 'Extra hours', 'edit_pages', 'edit.php?post_type=foh-extra-hours');
-        add_submenu_page('open-hours', 'Temporary hours', 'Temporary hours', 'edit_pages', 'edit.php?post_type=foh-temporary-hours');
+        add_submenu_page('open-hours', 'Extra hours', __('Extra hours', 'flexible-open-hours-domain'), 'edit_pages', 'edit.php?post_type=foh-extra-hours');
+        add_submenu_page('open-hours', 'Temporary hours', __('Temporary hours', 'flexible-open-hours-domain'), 'edit_pages', 'edit.php?post_type=foh-temporary-hours');
     }
 
     function main_page_html()
@@ -142,19 +141,21 @@ class FlexibleOpenHours
     function settings_field_html()
     {
     ?>
-        <input id="foh_normal_open_hours" name="foh_normal_open_hours" type="text" value='<?php echo esc_html(get_option('foh_normal_open_hours')) ?>'>
+        <input id="foh_normal_open_hours" name="foh_normal_open_hours" type="text" value='<?php echo esc_html(get_option('foh_normal_open_hours')) ?>' style="display:none;">
     <?php
     }
 
     //Post types
     function init_post_type()
     {
+        load_textdomain('flexible-open-hours-domain', false, dirname(plugin_basename(__FILE__)) . '/languages');
+
         $extra_hours_args = array(
             'public' => TRUE,
             'supports' => array('title'),
             'show_in_menu' => FALSE,
             'labels' => array(
-                'name' => 'Extra hours',
+                'name' => __('Extra hours', 'flexible-open-hours-domain'),
             )
         );
         register_post_type('foh-extra-hours', $extra_hours_args);
@@ -164,7 +165,7 @@ class FlexibleOpenHours
             'supports' => array('title'),
             'show_in_menu' => FALSE,
             'labels' => array(
-                'name' => 'Temporary hours',
+                'name' => __('Temporary hours', 'flexible-open-hours-domain'),
             )
         );
         register_post_type('foh-temporary-hours', $temporary_hours_args);
@@ -176,11 +177,11 @@ class FlexibleOpenHours
     function init_meta_boxes()
     {
         //Extra hours
-        add_meta_box('foh-extra-hours-meta', 'Extra hours', array($this, 'callback_content_meta_box'), 'foh-extra-hours', 'advanced', 'high');
-        add_meta_box('foh-extra-hours-message-meta', 'Message', array($this, 'callback_content_message_meta_box'), 'foh-extra-hours', 'advanced', 'high');
+        add_meta_box('foh-extra-hours-meta', __('Extra hours', 'flexible-open-hours-domain'), array($this, 'callback_content_meta_box'), 'foh-extra-hours', 'advanced', 'high');
+        add_meta_box('foh-extra-hours-message-meta', __('Message', 'flexible-open-hours-domain'), array($this, 'callback_content_message_meta_box'), 'foh-extra-hours', 'advanced', 'high');
 
         //Temporary hours
-        add_meta_box('foh-temporary-hours-meta', 'Temporary hours', array($this, 'callback_content_temporary_hours_meta_box'), 'foh-temporary-hours', 'advanced', 'high');
+        add_meta_box('foh-temporary-hours-meta', __('Temporary hours', 'flexible-open-hours-domain'), array($this, 'callback_content_temporary_hours_meta_box'), 'foh-temporary-hours', 'advanced', 'high');
     }
 
     //Meta box content
@@ -196,10 +197,10 @@ class FlexibleOpenHours
     ?>
         <div id="foh-extra-hours_container">
         </div>
-        <input type="text" id="foh-extra-hours_dates_field" name="foh-extra-hours_dates_field" value="<?php echo $dates ?>" style="display:block;">
-        <input type="number" id="foh-extra-hours_min_date_field" name="foh-extra-hours_min_date_field" value="<?php echo $minDate ?>" style="display:block;">
-        <input type="number" id="foh-extra-hours_max_date_field" name="foh-extra-hours_max_date_field" value="<?php echo $maxDate ?>" style="display:block;">
-        <input type="text" id="foh-extra-hours_hours_field" name="foh-extra-hours_hours_field" value="<?php echo $hours ?>" style="display:block;">
+        <input type="text" id="foh-extra-hours_dates_field" name="foh-extra-hours_dates_field" value="<?php echo $dates ?>" style="display:none;">
+        <input type="number" id="foh-extra-hours_min_date_field" name="foh-extra-hours_min_date_field" value="<?php echo $minDate ?>" style="display:none;">
+        <input type="number" id="foh-extra-hours_max_date_field" name="foh-extra-hours_max_date_field" value="<?php echo $maxDate ?>" style="display:none;">
+        <input type="text" id="foh-extra-hours_hours_field" name="foh-extra-hours_hours_field" value="<?php echo $hours ?>" style="display:none;">
     <?php
     }
 
@@ -225,9 +226,9 @@ class FlexibleOpenHours
     ?>
         <div id="foh-temporary-hours_container">
         </div>
-        <input type="number" id="foh-temporary-hours_min_date_field" name="foh-temporary-hours_min_date_field" value="<?php echo $minDate ?>" style="display:block;">
-        <input type="number" id="foh-temporary-hours_max_date_field" name="foh-temporary-hours_max_date_field" value="<?php echo $maxDate ?>" style="display:block;">
-        <input type="text" id="foh-temporary-hours_hours_field" name="foh-temporary-hours_hours_field" value="<?php echo $hours ?>" style="display:block;">
+        <input type="number" id="foh-temporary-hours_min_date_field" name="foh-temporary-hours_min_date_field" value="<?php echo $minDate ?>" style="display:none;">
+        <input type="number" id="foh-temporary-hours_max_date_field" name="foh-temporary-hours_max_date_field" value="<?php echo $maxDate ?>" style="display:none;">
+        <input type="text" id="foh-temporary-hours_hours_field" name="foh-temporary-hours_hours_field" value="<?php echo $hours ?>" style="display:none;">
 <?php
     }
 
