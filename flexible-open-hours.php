@@ -13,6 +13,9 @@ class FlexibleOpenHours
 {
     function __construct()
     {
+        //Plugin dir
+        define('FOH_ROOT_FILE', __FILE__);
+
         //Menu page
         add_action('admin_menu', array($this, 'main_page'));
 
