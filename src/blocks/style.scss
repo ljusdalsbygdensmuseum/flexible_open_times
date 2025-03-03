@@ -15,4 +15,23 @@
 	.foh-display__dates {
 		font-weight: bold;
 	}
+	.foh-display__button {
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		opacity: 0.7; // change to selected color in future
+		transition: 0.2s;
+		&:hover {
+			cursor: pointer;
+			opacity: 1;
+		}
+	}
+	.foh-display__full-temporary {
+		transition: 0.3s;
+		transform: translate(0);
+	}
+	.foh-display__left-out {
+		transform: translate(-1em);
+		opacity: 0;
+	}
 }

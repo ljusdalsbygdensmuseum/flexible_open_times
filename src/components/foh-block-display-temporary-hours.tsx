@@ -20,21 +20,32 @@ export default function DisplayTemporaryHours({ temporary, normal }: Props) {
 
 	const changeButton = (
 		<ul>
-			<li
-				onClick={() => {
-					setShowNormal((old) => {
-						return !old
-					})
-				}}
-				className='foh-display__button'
-			>
-				{showNormal ? `<< ${backName}` : `${defaultNormalTitle} >>`}
+			<li>
+				<button
+					onClick={(e) => {
+						const target = e.target as HTMLElement
+						target
+							.closest('.foh-display__full-temporary')
+							?.classList.add('foh-display__left-out')
+						setTimeout(() => {
+							setShowNormal((old) => {
+								return !old
+							})
+							target
+								.closest('.foh-display__full-temporary')
+								?.classList.remove('foh-display__left-out')
+						}, 300)
+					}}
+					className='foh-display__button'
+				>
+					{showNormal ? `<< ${backName}` : `${defaultNormalTitle} >>`}
+				</button>
 			</li>
 		</ul>
 	)
 
 	return (
-		<>
+		<div className='foh-display__full-temporary'>
 			{!showNormal && allTemporary}
 			{showNormal && (
 				<DisplayDays
@@ -44,6 +55,6 @@ export default function DisplayTemporaryHours({ temporary, normal }: Props) {
 				/>
 			)}
 			{changeButton}
-		</>
+		</div>
 	)
 }
