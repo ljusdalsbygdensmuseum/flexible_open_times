@@ -1,6 +1,10 @@
 import DisplayDays from '../components/foh-block-display-day'
 import { Day, TemporaryHoursData } from '../types/foh-settings-types'
-import { defaultNormalTitle, backName } from '../utility/fohNames'
+import {
+	defaultNormalTitle,
+	backName,
+	toNormalHours,
+} from '../utility/fohNames'
 
 import { useState } from 'react'
 
@@ -38,14 +42,14 @@ export default function DisplayTemporaryHours({ temporary, normal }: Props) {
 					}}
 					className='foh-display__button'
 				>
-					{showNormal ? `<< ${backName}` : `${defaultNormalTitle} >>`}
+					{showNormal ? `${backName}` : `${toNormalHours}`}
 				</button>
 			</li>
 		</ul>
 	)
 
 	return (
-		<div className='foh-display__full-temporary'>
+		<div className='foh-display__full-temporary' aria-live='polite'>
 			{!showNormal && allTemporary}
 			{showNormal && (
 				<DisplayDays

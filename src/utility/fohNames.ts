@@ -12,4 +12,6 @@ export const singleWeekName = 'Hours'
 
 export const defaultNormalTitle = 'Normal open hours'
 
-export const backName = 'Back'
+export const toNormalHours = 'Show ' + defaultNormalTitle.toLocaleLowerCase()
+
+export const backName = 'Back to current hours'
