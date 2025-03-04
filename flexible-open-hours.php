@@ -40,12 +40,12 @@ class FlexibleOpenHours
     //Page
     function main_page()
     {
-        $menuPage = add_menu_page(__('Open Hours', 'flexible-open-hours-domain'), 'Open Hours', 'edit_pages', 'open-hours', array($this, 'main_page_html'), 'dashicons-clock', 4);
+        $menuPage = add_menu_page(__('Open Hours', 'flexible-open-hours-domain'), __('Open Hours', 'flexible-open-hours-domain'), 'edit_pages', 'open-hours', array($this, 'main_page_html'), 'dashicons-clock', 4);
 
         add_action('load-' . $menuPage, array($this, 'load_main_page'));
 
         //Rename the submenu page 
-        add_submenu_page('open-hours', 'Open Hours', 'Normal hours', 'edit_pages', 'open-hours');
+        add_submenu_page('open-hours', __('Open Hours', 'flexible-open-hours-domain'), __('Normal hours', 'flexible-open-hours-domain'), 'edit_pages', 'open-hours');
 
         //Submenu pages for custom post type
         add_submenu_page('open-hours', 'Extra hours', __('Extra hours', 'flexible-open-hours-domain'), 'edit_pages', 'edit.php?post_type=foh-extra-hours');
@@ -56,7 +56,7 @@ class FlexibleOpenHours
     {
 ?>
         <div class="wrap">
-            <h1>Normal Open Hours</h1>
+            <h1><?php echo __('Normal Open Hours', 'flexible-open-hours-domain'); ?></h1>
             <form action="options.php" method="POST">
                 <?php
                 settings_errors();
@@ -85,6 +85,9 @@ class FlexibleOpenHours
 
         //Enqueue styles
         wp_enqueue_style('wp-components');
+
+        //Set translation
+        wp_set_script_translations('foh-settings-js', 'flexible-open-hours-domain', plugin_dir_path(__FILE__) . '/languages');
     }
 
     function enqueue_post_editor($hook)
@@ -102,6 +105,9 @@ class FlexibleOpenHours
 
             //Enqueue styles
             wp_enqueue_style('wp-components');
+
+            //Set translation
+            wp_set_script_translations('foh-extra-open-js', 'flexible-open-hours-domain', plugin_dir_path(__FILE__) . '/languages');
         }
         if (get_post_type() == 'foh-temporary-hours') {
             //Grab dependencies
@@ -112,6 +118,9 @@ class FlexibleOpenHours
 
             //Enqueue styles
             wp_enqueue_style('wp-components');
+
+            //Set translation
+            wp_set_script_translations('foh-temporary-open-js', 'flexible-open-hours-domain', plugin_dir_path(__FILE__) . '/languages');
         }
     }
 
@@ -148,7 +157,7 @@ class FlexibleOpenHours
     //Post types
     function init_post_type()
     {
-        load_textdomain('flexible-open-hours-domain', false, dirname(plugin_basename(__FILE__)) . '/languages');
+        load_plugin_textdomain('flexible-open-hours-domain', false, dirname(plugin_basename(__FILE__)) . '/languages');
 
         $extra_hours_args = array(
             'public' => TRUE,

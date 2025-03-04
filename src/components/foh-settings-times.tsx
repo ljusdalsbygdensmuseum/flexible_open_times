@@ -6,6 +6,7 @@ import {
 	TimePicker,
 	Button,
 } from '@wordpress/components'
+import { __ } from '@wordpress/i18n'
 
 import { Hour, TimeInputValue } from '../types/foh-settings-types'
 
@@ -26,7 +27,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 				<Flex align='flex-end'>
 					<FlexItem>
 						<TimePicker.TimeInput
-							label='Open'
+							label={__('Open', 'flexible-open-hours-domain')}
 							value={timeObj.open}
 							onChange={(newTime) => {
 								onChangeItem(newTime, true, index)
@@ -35,7 +36,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 					</FlexItem>
 					<FlexItem>
 						<TimePicker.TimeInput
-							label='Close'
+							label={__('Close', 'flexible-open-hours-domain')}
 							value={timeObj.close}
 							onChange={(newTime) => {
 								onChangeItem(newTime, false, index)
@@ -50,7 +51,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 								onRemoveItem(index)
 							}}
 						>
-							Remove
+							{__('Remove', 'flexible-open-hours-domain')}
 						</Button>
 					</FlexBlock>
 				</Flex>

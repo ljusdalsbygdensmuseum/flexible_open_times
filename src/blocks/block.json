@@ -11,7 +11,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "blockboilerplate",
+	"textdomain": "flexible-open-hours-domain",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

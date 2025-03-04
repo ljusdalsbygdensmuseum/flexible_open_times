@@ -1,4 +1,5 @@
 import { PanelBody, PanelRow, Button } from '@wordpress/components'
+import { __ } from '@wordpress/i18n'
 
 import { useState } from 'react'
 
@@ -81,7 +82,7 @@ export function FullWeek({ week, input }: Props) {
 					<PanelRow>
 						{week[index].length < 4 && (
 							<Button variant='secondary' onClick={addMoreHours}>
-								Add More
+								{__('Add More', 'flexible-open-hours-domain')}
 							</Button>
 						)}
 					</PanelRow>
