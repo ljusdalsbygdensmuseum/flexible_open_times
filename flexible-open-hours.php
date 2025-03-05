@@ -56,7 +56,7 @@ class FlexibleOpenHours
     {
 ?>
         <div class="wrap">
-            <h1><?php echo __('Normal Open Hours', 'flexible-open-hours-domain'); ?></h1>
+            <h1><?php _e('Normal Open Hours', 'flexible-open-hours-domain'); ?></h1>
             <form action="options.php" method="POST">
                 <?php
                 settings_errors();

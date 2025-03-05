@@ -7,6 +7,7 @@
 		"start": "wp-scripts start",
 		"dev": "wp-scripts start",
 		"devFast": "wp-scripts start",
+		"make-pot": "wp i18n make-pot . languages/flexible-open-hours-domain.pot",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],

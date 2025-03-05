@@ -1,0 +1,167 @@
+# Copyright (C) 2025 ina
+# This file is distributed under the same license as the Flexible Open Hours plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Flexible Open Hours 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-open-"
+"times\n"
+"Last-Translator: \n"
+"Language-Team: Svenska\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-04T10:57:40+01:00\n"
+"PO-Revision-Date: 2025-03-05 08:47+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: flexible-open-hours-domain\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2"
+
+#: build/extra_open.js:300 build/settings.js:96 build/temporary.js:175
+#: build/extra_open.js:169 build/settings.js:56 build/temporary.js:107
+msgid "Add More"
+msgstr "Lägg till"
+
+#: build/blocks/index.js:497 build/block_frontend.js:399
+#: build/extra_open.js:456 build/settings.js:300 build/temporary.js:403
+#: build/blocks/index.js:246 build/block_frontend.js:186
+#: build/extra_open.js:245 build/settings.js:153 build/temporary.js:217
+msgid "Back to current hours"
+msgstr "Tillbaka till temporära tider"
+
+#: build/blocks/block.json src/blocks/block.json
+msgctxt "block description"
+msgid "Display your open hours"
+msgstr "Visa dina öppettider"
+
+#: build/blocks/block.json src/blocks/block.json
+msgctxt "block title"
+msgid "Open hours"
+msgstr "Öppettider"
+
+#: build/extra_open.js:349 build/settings.js:193 build/temporary.js:224
+#: build/extra_open.js:181 build/settings.js:89 build/temporary.js:119
+msgid "Close"
+msgstr "Stänga"
+
+#. Description of the plugin
+#: flexible-open-hours.php
+msgid "Easily change open times on the fly."
+msgstr "Ändra öppettider hur du vill när du vill."
+
+#: flexible-open-hours.php:51 flexible-open-hours.php:167
+#: flexible-open-hours.php:189
+msgid "Extra hours"
+msgstr "Extra öppettider"
+
+#. Plugin Name of the plugin
+#: flexible-open-hours.php
+msgid "Flexible Open Hours"
+msgstr "Flexibla Öppettider"
+
+#: build/blocks/index.js:493 build/block_frontend.js:395
+#: build/extra_open.js:452 build/settings.js:296 build/temporary.js:399
+#: build/blocks/index.js:237 build/block_frontend.js:177
+#: build/extra_open.js:236 build/settings.js:144 build/temporary.js:208
+msgid "Friday"
+msgstr "Fredag"
+
+#: build/blocks/index.js:494 build/block_frontend.js:396
+#: build/extra_open.js:453 build/settings.js:297 build/temporary.js:400
+#: build/blocks/index.js:241 build/block_frontend.js:181
+#: build/extra_open.js:240 build/settings.js:148 build/temporary.js:212
+msgid "Hours"
+msgstr "Tider"
+
+#. Author of the plugin
+#: flexible-open-hours.php
+msgid "ina"
+msgstr "Ina"
+
+#: flexible-open-hours.php:190
+msgid "Message"
+msgstr "Meddelande"
+
+#: build/blocks/index.js:493 build/block_frontend.js:395
+#: build/extra_open.js:452 build/settings.js:296 build/temporary.js:399
+#: build/blocks/index.js:233 build/block_frontend.js:173
+#: build/extra_open.js:232 build/settings.js:140 build/temporary.js:204
+msgid "Monday"
+msgstr "Måndag"
+
+#: flexible-open-hours.php:48
+msgid "Normal hours"
+msgstr "Vanliga Öppettider"
+
+#: flexible-open-hours.php:59
+msgid "Normal Open Hours"
+msgstr "Vanliga Öppettider"
+
+#: build/blocks/index.js:495 build/block_frontend.js:397
+#: build/extra_open.js:454 build/settings.js:298 build/temporary.js:401
+#: build/blocks/index.js:242 build/block_frontend.js:182
+#: build/extra_open.js:241 build/settings.js:149 build/temporary.js:213
+msgid "Normal open hours"
+msgstr "Vanliga öppettider"
+
+#: build/extra_open.js:341 build/settings.js:185 build/temporary.js:216
+#: build/extra_open.js:179 build/settings.js:87 build/temporary.js:117
+msgid "Open"
+msgstr "Öppna"
+
+#: flexible-open-hours.php:43 flexible-open-hours.php:48
+msgid "Open Hours"
+msgstr "Öppettider"
+
+#: build/extra_open.js:362 build/settings.js:206 build/temporary.js:237
+#: build/extra_open.js:185 build/settings.js:93 build/temporary.js:123
+msgid "Remove"
+msgstr "Ta bort"
+
+#: build/blocks/index.js:493 build/block_frontend.js:395
+#: build/extra_open.js:452 build/settings.js:296 build/temporary.js:399
+#: build/blocks/index.js:238 build/block_frontend.js:178
+#: build/extra_open.js:237 build/settings.js:145 build/temporary.js:209
+msgid "Saturday"
+msgstr "Lördag"
+
+#: build/blocks/index.js:496 build/block_frontend.js:398
+#: build/extra_open.js:455 build/settings.js:299 build/temporary.js:402
+#: build/blocks/index.js:243 build/block_frontend.js:183
+#: build/extra_open.js:242 build/settings.js:150 build/temporary.js:214
+msgid "Show"
+msgstr "Visa"
+
+#: build/blocks/index.js:493 build/block_frontend.js:395
+#: build/extra_open.js:452 build/settings.js:296 build/temporary.js:399
+#: build/blocks/index.js:239 build/block_frontend.js:179
+#: build/extra_open.js:238 build/settings.js:146 build/temporary.js:210
+msgid "Sunday"
+msgstr "Söndag"
+
+#: flexible-open-hours.php:52 flexible-open-hours.php:177
+#: flexible-open-hours.php:193
+msgid "Temporary hours"
+msgstr "Temporära Öppettider"
+
+#: build/blocks/index.js:493 build/block_frontend.js:395
+#: build/extra_open.js:452 build/settings.js:296 build/temporary.js:399
+#: build/blocks/index.js:236 build/block_frontend.js:176
+#: build/extra_open.js:235 build/settings.js:143 build/temporary.js:207
+msgid "Thursday"
+msgstr "Torsdag"
+
+#: build/blocks/index.js:493 build/block_frontend.js:395
+#: build/extra_open.js:452 build/settings.js:296 build/temporary.js:399
+#: build/blocks/index.js:234 build/block_frontend.js:174
+#: build/extra_open.js:233 build/settings.js:141 build/temporary.js:205
+msgid "Tuesday"
+msgstr "Tisdag"
+
+#: build/blocks/index.js:493 build/block_frontend.js:395
+#: build/extra_open.js:452 build/settings.js:296 build/temporary.js:399
+#: build/blocks/index.js:235 build/block_frontend.js:175
+#: build/extra_open.js:234 build/settings.js:142 build/temporary.js:206
+msgid "Wednesday"
+msgstr "Onsdag"
