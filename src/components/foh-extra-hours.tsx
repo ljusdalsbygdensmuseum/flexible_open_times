@@ -1,12 +1,17 @@
 import { Panel, PanelBody, ToggleControl } from '@wordpress/components'
 
 import { FullWeek } from './foh-settings-fullweek'
-import { Day } from './foh-settings-types'
-
 import { DaySelect } from './foh-day-select'
-import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'
+
+import {
+	Day,
+	Dates,
+	DaysSchema,
+	DatesSchema,
+} from '../types/foh-settings-types'
 
 import isJSON from '../utility/is-json'
+
 import { useState } from 'react'
 
 export default function FohExtraHours() {
@@ -18,39 +23,39 @@ export default function FohExtraHours() {
 	if (!hoursInput) {
 		throw new Error('#foh-extra-hours_hours_field not found')
 	}
-	let hoursinfo: Day[] = [{ dayInt: 0, hours: [] }]
+	let hoursinfo: Day[] = [[]]
 	if (isJSON(hoursInput.value)) {
-		let hoursinfoInput = JSON.parse(hoursInput.value)
-		hoursinfoInput = hoursinfoInput.filter((item: Day) => {
-			if (!('hours' in item)) {
-				return
-			}
-			return item
-		})
-
-		if (hoursinfoInput.length != hoursinfo.length) {
-			hoursinfoInput = hoursinfo
+		let json = JSON.parse(hoursInput.value)
+		if (DaysSchema.safeParse(json)) {
+			hoursinfo = json
 		}
-		hoursinfo = hoursinfoInput
 	}
-	const names = ['Hours']
 
 	//date
 	const dateInput: HTMLInputElement | null = document.querySelector(
 		'#foh-extra-hours_dates_field'
 	)
-	if (!dateInput) {
+	const mindateInput: HTMLInputElement | null = document.querySelector(
+		'#foh-extra-hours_min_date_field'
+	)
+	const maxdateInput: HTMLInputElement | null = document.querySelector(
+		'#foh-extra-hours_max_date_field'
+	)
+	if (!dateInput || !mindateInput || !maxdateInput) {
 		throw new Error('#foh-extra-hours_dates_field not found')
 	}
-	let datesInfo: DatePickerEvent[] = []
+	let datesInfo: Dates = []
 	if (isJSON(dateInput.value)) {
-		datesInfo = JSON.parse(dateInput.value)
+		let json = JSON.parse(dateInput.value)
+		if (DatesSchema.safeParse(json)) {
+			datesInfo = json
+		}
 	}
 
 	//---
 	//closed
 	let closedCheck = false
-	if (hoursinfo[0].hours.length <= 0) {
+	if (hoursinfo[0].length <= 0) {
 		closedCheck = true
 	}
 	const [closed, setClosed] = useState(closedCheck)
@@ -59,7 +64,10 @@ export default function FohExtraHours() {
 		<>
 			<Panel>
 				<div id='day-select'>
-					<DaySelect dates={datesInfo} input={dateInput} />
+					<DaySelect
+						dates={datesInfo}
+						input={[dateInput, mindateInput, maxdateInput]}
+					/>
 				</div>
 			</Panel>
 			<Panel>
@@ -70,15 +78,13 @@ export default function FohExtraHours() {
 							checked={closed}
 							onChange={(value) =>
 								setClosed(() => {
-									hoursInput.value = '[{dayInt: 0, hours:[]}]'
+									hoursInput.value = '[[]]'
 									return value
 								})
 							}
 						/>
 					</PanelBody>
-					{!closed && (
-						<FullWeek week={hoursinfo} names={names} input={hoursInput} />
-					)}
+					{!closed && <FullWeek week={hoursinfo} input={hoursInput} />}
 				</div>
 			</Panel>
 		</>

@@ -7,6 +7,7 @@
 		"start": "wp-scripts start",
 		"dev": "wp-scripts start",
 		"devFast": "wp-scripts start",
+		"make-pot": "wp i18n make-pot . languages/flexible-open-hours-domain.pot",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
@@ -24,8 +25,14 @@
 		"typescript": "^5.7.2"
 	},
 	"dependencies": {
+		"@types/wordpress__block-editor": "^11.5.16",
+		"@types/wordpress__blocks": "^12.5.17",
+		"@wordpress/block-editor": "^14.12.0",
+		"@wordpress/blocks": "^14.6.0",
 		"@wordpress/components": "^29.1.1",
 		"@wordpress/dom-ready": "^4.15.0",
-		"@wordpress/element": "^6.15.1"
+		"@wordpress/element": "^6.15.1",
+		"@wordpress/i18n": "^5.19.0",
+		"zod": "^3.24.2"
 	}
 }

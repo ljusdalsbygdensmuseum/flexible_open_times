@@ -1,12 +1,11 @@
 import { Panel } from '@wordpress/components'
 
 import { FullWeek } from './foh-settings-fullweek'
-import { Day } from './foh-settings-types'
-
 import { FOHDateRange } from './foh-date-range'
+import { Day, DaysSchema } from '../types/foh-settings-types'
 
 import isJSON from '../utility/is-json'
-import { DatesRange } from './foh-metabox-temporary-types'
+import { DatesRange } from '../types/foh-metabox-temporary-types'
 
 export function FohTemporaryHours() {
 	//get input and data
@@ -17,86 +16,44 @@ export function FohTemporaryHours() {
 	if (!hoursInput) {
 		throw new Error('#foh-temporary-hours_hours_field not found')
 	}
-	let hoursinfo: Day[] = [
-		{ dayInt: 0, hours: [] },
-		{ dayInt: 1, hours: [] },
-		{ dayInt: 2, hours: [] },
-		{ dayInt: 3, hours: [] },
-		{ dayInt: 4, hours: [] },
-		{ dayInt: 5, hours: [] },
-		{ dayInt: 6, hours: [] },
-	]
+	let hoursinfo: Day[] = [[], [], [], [], [], [], []]
 	if (isJSON(hoursInput.value)) {
-		let hoursinfoInput = JSON.parse(hoursInput.value)
-		hoursinfoInput = hoursinfoInput.filter((item: Day) => {
-			if (!('hours' in item)) {
-				return
-			}
-			return item
-		})
-
-		if (hoursinfoInput.length != hoursinfo.length) {
-			hoursinfoInput = hoursinfo
+		let json = JSON.parse(hoursInput.value)
+		if (DaysSchema.safeParse(json)) {
+			hoursinfo = json
 		}
-		hoursinfo = hoursinfoInput
 	}
-	const names = [
-		'Monday',
-		'Tuseday',
-		'Wednesday',
-		'Thursday',
-		'Friday',
-		'Saturday',
-		'Sunday',
-	]
 
 	//date
-	const dateInput: HTMLInputElement | null = document.querySelector(
-		'#foh-temporary-hours_dates_field'
+	const mindateInput: HTMLInputElement | null = document.querySelector(
+		'#foh-temporary-hours_min_date_field'
 	)
-	if (!dateInput) {
-		throw new Error('#foh-temporary-hours_dates_field not found')
+	const maxdateInput: HTMLInputElement | null = document.querySelector(
+		'#foh-temporary-hours_max_date_field'
+	)
+	if (!mindateInput || !maxdateInput) {
+		throw new Error('dates_field not found')
 	}
-	let datesInfo: DatesRange = {
-		start: { date: new Date() },
-		end: { date: new Date() },
+
+	let minDate = parseInt(mindateInput.value)
+	if (minDate < 86400000) {
+		minDate = new Date().getTime()
 	}
-	// checks if info input has the correct format if not throw error
-	if (isJSON(dateInput.value)) {
-		let datesInfoInput = JSON.parse(dateInput.value)
-		if (!('start' in datesInfoInput) || !('end' in datesInfoInput)) {
-			datesInfoInput = datesInfo
-		}
-		if (
-			isNaN(new Date(datesInfoInput.start.date).getTime()) ||
-			isNaN(new Date(datesInfoInput.end.date).getTime())
-		) {
-			datesInfoInput = datesInfo
-		}
-		if (
-			new Date(datesInfoInput.start.date).getTime() >
-			new Date(datesInfoInput.end.date).getTime()
-		) {
-			const replacementDate: DatesRange = {
-				start: { date: new Date(datesInfoInput.end.date) },
-				end: { date: new Date(datesInfoInput.start.date) },
-			}
-			datesInfo = replacementDate
-		}
-		datesInfo.start.date = new Date(datesInfoInput.start.date)
-		datesInfo.end.date = new Date(datesInfoInput.end.date)
-	}
+	const maxDate = parseInt(maxdateInput.value)
 
 	return (
 		<>
 			<Panel>
 				<div id='day-select'>
-					<FOHDateRange dates={datesInfo} input={dateInput} />
+					<FOHDateRange
+						dates={[minDate, maxDate]}
+						input={[mindateInput, maxdateInput]}
+					/>
 				</div>
 			</Panel>
 			<Panel>
 				<div id='full-week'>
-					<FullWeek week={hoursinfo} names={names} input={hoursInput} />
+					<FullWeek week={hoursinfo} input={hoursInput} />
 				</div>
 			</Panel>
 		</>

@@ -4,10 +4,11 @@ const path = require('path')
 module.exports = {
 	...defaults,
 	entry: {
+		...defaults.entry(),
 		settings: path.resolve(process.cwd(), 'src', 'settings.tsx'),
 		extra_open: path.resolve(process.cwd(), 'src', 'metabox-extra.tsx'),
 		temporary: path.resolve(process.cwd(), 'src', 'metabox-temporary.tsx'),
-		block: path.resolve(process.cwd(), 'src', 'foh-blocks.tsx'),
+		block_frontend: path.resolve(process.cwd(), 'src', 'block-frontend.tsx'),
 	},
 	output: {
 		filename: '[name].js',

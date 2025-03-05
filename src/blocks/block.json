@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "flexible-open-hours/openhours",
+	"version": "0.1.0",
+	"title": "Open hours",
+	"category": "widgets",
+	"icon": "clock",
+	"description": "Display your open hours",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "flexible-open-hours-domain",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}
