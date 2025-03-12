@@ -8,10 +8,12 @@ interface Props {
 }
 export function FOHDateRange({ dates, input }: Props) {
 	const getAllDates = (range: number[]) => {
+		const start = new Date(range[0]).setHours(0, 0, 0, 0)
+		const end = new Date(range[1]).setHours(0, 0, 0, 0)
 		let allDatesArray: Dates = []
-		let loopDate = new Date(range[0])
+		let loopDate = new Date(start)
 
-		while (loopDate <= new Date(range[1])) {
+		while (loopDate <= new Date(end)) {
 			allDatesArray.push({ date: new Date(loopDate) })
 			loopDate = new Date(loopDate.setDate(loopDate.getDate() + 1))
 		}
