@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import DisplayDays from '../components/foh-block-display-day'
 import DisplayExtraHours from '../components/foh-block-display-extra-hours'
 import DisplayTemporaryHours from '../components/foh-block-display-temporary-hours'
+import { defaultNormalTitle } from '../utility/fohNames'
 
 import { AllHoursDataSchema, AllHoursData } from '../types/foh-settings-types'
 
@@ -51,7 +52,11 @@ export default function DisplayAllOpenHours({
 				normal={allHours.normal_hours}
 			/>
 		) : (
-			<DisplayDays showTitle={true} days={allHours.normal_hours} />
+			<DisplayDays
+				showTitle={true}
+				days={allHours.normal_hours}
+				header={defaultNormalTitle}
+			/>
 		)
 
 	//Extra hours
