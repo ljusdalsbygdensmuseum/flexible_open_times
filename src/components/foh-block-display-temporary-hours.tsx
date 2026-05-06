@@ -1,10 +1,6 @@
 import DisplayDays from '../components/foh-block-display-day'
 import { Day, TemporaryHoursData } from '../types/foh-settings-types'
-import {
-	defaultNormalTitle,
-	backName,
-	toNormalHours,
-} from '../utility/fohNames'
+import { normalTitle } from '../utility/fohNames'
 
 import { useState } from 'react'
 
@@ -42,7 +38,7 @@ export default function DisplayTemporaryHours({ temporary, normal }: Props) {
 					}}
 					className='foh-display__button'
 				>
-					{showNormal ? `${backName}` : `${toNormalHours}`}
+					{showNormal ? `${normalTitle.backName}` : `${normalTitle.showNormal}`}
 				</button>
 			</li>
 		</ul>
@@ -55,7 +51,7 @@ export default function DisplayTemporaryHours({ temporary, normal }: Props) {
 				<DisplayDays
 					showTitle={true}
 					days={normal}
-					header={defaultNormalTitle}
+					header={normalTitle.whenTemp}
 				/>
 			)}
 			{changeButton}

@@ -11,17 +11,9 @@ export const weekNames = [
 
 export const singleWeekName = __('Hours', 'flexible-open-hours-domain')
 
-export const defaultNormalTitle = __(
-	'Normal open hours',
-	'flexible-open-hours-domain'
-)
-
-export const toNormalHours =
-	__('Show', 'flexible-open-hours-domain') +
-	' ' +
-	defaultNormalTitle.toLocaleLowerCase()
-
-export const backName = __(
-	'Back to current hours',
-	'flexible-open-hours-domain'
-)
+export const normalTitle = {
+	default: __('Open hours', 'flexible-open-hours-domain'),
+	whenTemp: __('Normal open hours', 'flexible-open-hours-domain'),
+	showNormal: __('Show normal open hours', 'flexible-open-hours-domain'),
+	backName: __('Back to current hours', 'flexible-open-hours-domain'),
+}
