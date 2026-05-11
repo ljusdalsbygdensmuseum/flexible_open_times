@@ -50,6 +50,11 @@ class FlexibleOpenHours
         //Submenu pages for custom post type
         add_submenu_page('open-hours', 'Extra hours', __('Extra hours', 'flexible-open-hours-domain'), 'edit_pages', 'edit.php?post_type=foh-extra-hours');
         add_submenu_page('open-hours', 'Temporary hours', __('Temporary hours', 'flexible-open-hours-domain'), 'edit_pages', 'edit.php?post_type=foh-temporary-hours');
+
+        //Additional submenu page
+        $settingsPage = add_submenu_page('open-hours', 'Settings', __('Settings', 'flexible-open-hours-domain'), 'edit_pages', 'open-hours-settings', array($this, 'settings_page_html'));
+
+        add_action('load-' . $settingsPage, array($this, 'load_settings_page'));
     }
 
     function main_page_html()
@@ -69,13 +74,35 @@ class FlexibleOpenHours
     <?php
     }
 
+    function settings_page_html()
+    {
+    ?>
+        <div class="wrap">
+            <h1><?php _e('Open Hour Settings', 'flexible-open-hours-domain'); ?></h1>
+            <form action="options.php" method="POST">
+                <?php
+                settings_errors();
+                settings_fields('open_hours_week_name_settings');
+                do_settings_sections('open-hours-settings');
+                submit_button();
+                ?>
+            </form>
+        </div>
+    <?php
+    }
+
     function load_main_page()
     {
-        add_action('admin_enqueue_scripts', array($this, 'enqueue_settings'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_main_page'));
+    }
+
+    function load_settings_page()
+    {
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_settings_page'));
     }
 
     //Enqueue
-    function enqueue_settings()
+    function enqueue_main_page()
     {
         //Grab dependencies
         $assets = include plugin_dir_path(__FILE__) . 'build/settings.asset.php';
@@ -86,6 +113,12 @@ class FlexibleOpenHours
         //Enqueue styles
         wp_enqueue_style('wp-components');
 
+        //Set translation
+        wp_set_script_translations('foh-settings-js', 'flexible-open-hours-domain', plugin_dir_path(__FILE__) . '/languages');
+    }
+
+    function enqueue_settings_page()
+    {
         //Set translation
         wp_set_script_translations('foh-settings-js', 'flexible-open-hours-domain', plugin_dir_path(__FILE__) . '/languages');
     }
@@ -133,24 +166,81 @@ class FlexibleOpenHours
             'default' => '[ [], [], [], [], [], [], [] ]'
         ));
 
-        add_settings_section('normal_open_hours', null, array($this, 'open_hours_settings_html'), 'open-hours');
+        add_settings_section('normal_open_hours', null, array($this, 'open_hours_normal_hours_section_html'), 'open-hours');
 
-        add_settings_field('foh_normal_open_hours', null, array($this, 'settings_field_html'), 'open-hours', 'normal_open_hours');
+        add_settings_field('foh_normal_open_hours', null, array($this, 'open_hours_normal_hours_field_html'), 'open-hours', 'normal_open_hours');
+
+        register_setting('open_hours_week_name_settings', 'week_names_format', array(
+            'sanitize_callback' => array($this, 'sanitize_integer'),
+            'show_in_rest' => true,
+            'default' => 0
+        ));
+
+        add_settings_section('open_hours_week_name_settings', __('Week name format', 'flexible-open-hours-domain'), array($this, 'open_hours_week_name_settings_section_html'), 'open-hours-settings');
+
+        add_settings_field('week_names_format', __('Normal Open Hours', 'flexible-open-hours-domain'), array($this, 'open_hours_settings_week_day_format_field_html'), 'open-hours-settings', 'open_hours_week_name_settings');
+        add_settings_field('week_names_format_extra', __('Extra Open Hours', 'flexible-open-hours-domain'), array($this, 'open_hours_settings_week_day_format_extra_field_html'), 'open-hours-settings', 'open_hours_week_name_settings');
     }
 
     //Div to display full week
-    function open_hours_settings_html()
+    function open_hours_normal_hours_section_html()
     {
     ?>
         <div id="foh_normal_open_hours-input"></div>
     <?php
     }
 
+    function open_hours_week_name_settings_section_html() {}
+
     //Field to save the data in
-    function settings_field_html()
+    function open_hours_normal_hours_field_html()
     {
     ?>
         <input id="foh_normal_open_hours" name="foh_normal_open_hours" type="text" value='<?php echo esc_html(get_option('foh_normal_open_hours')) ?>' style="display:none;">
+    <?php
+    }
+
+    function open_hours_settings_week_day_format_field_html()
+    {
+    ?>
+        <fieldset>
+            <div>
+                <input type="radio" id="week_day_format_0" name="week_day_format" id="0">
+                <label for="week_day_format_0"><?php _e('Full', 'flexible-open-hours-domain') ?></label>
+                <code><?php _e('Monday', 'flexible-open-hours-domain') ?></code>
+                <br>
+                <input type="radio" id="week_day_format_1" name="week_day_format" id="1">
+                <label for="week_day_format_1"><?php _e('Half', 'flexible-open-hours-domain') ?></label>
+                <code><?php _e('Mon', 'flexible-open-hours-domain') ?></code>
+            </div>
+            <p class="description"><?php _e('For normal open hours', 'flexible-open-hours-domain') ?></p>
+        </fieldset>
+    <?php
+    }
+
+    function open_hours_settings_week_day_format_extra_field_html()
+    {
+    ?>
+        <fieldset>
+            <div>
+                <input type="radio" id="week_day_format_0" name="week_day_format_extra" id="0">
+                <label for="week_day_format_0"><?php _e('Full', 'flexible-open-hours-domain') ?></label>
+                <code><?php _e('Monday 15/11', 'flexible-open-hours-domain') ?></code>
+                <br>
+                <input type="radio" id="week_day_format_1" name="week_day_format_extra" id="1">
+                <label for="week_day_format_1"><?php _e('Definite form', 'flexible-open-hours-domain') ?></label>
+                <code><?php _e('Monday the 15/11', 'flexible-open-hours-domain') ?></code>
+                <br>
+                <input type="radio" id="week_day_format_2" name="week_day_format_extra" id="2">
+                <label for="week_day_format_2"><?php _e('Half', 'flexible-open-hours-domain') ?></label>
+                <code><?php _e('Mon 15/11', 'flexible-open-hours-domain') ?></code>
+                <br>
+                <input type="radio" id="week_day_format_3" name="week_day_format_extra" id="3">
+                <label for="week_day_format_3"><?php _e('None', 'flexible-open-hours-domain') ?></label>
+                <code><?php _e('only 15/11', 'flexible-open-hours-domain') ?></code>
+            </div>
+            <p class="description"><?php _e('For extra hours', 'flexible-open-hours-domain') ?></p>
+        </fieldset>
     <?php
     }
 
