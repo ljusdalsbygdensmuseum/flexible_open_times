@@ -1,5 +1,6 @@
 import DisplayHours from './foh-block-display-hours'
 import { ExtraHoursData } from '../types/foh-settings-types'
+import { __ } from '@wordpress/i18n'
 
 interface Props {
 	event: ExtraHoursData[]
@@ -29,7 +30,14 @@ export default function DisplayExtraHours({ event }: Props) {
 		sortedDates = [...new Set(sortedDates)]
 
 		const dates = sortedDates.map((date, index, array) => {
-			const comma = array.length - 1 == index ? '' : ', '
+			let comma = ', '
+
+			if (array.length - 1 == index) {
+				comma = ''
+			} else if (array.length - 2 == index) {
+				comma = ` ${__('and', 'flexible-open-hours-domain')} `
+			}
+
 			return (
 				<li>{`${new Date(date).getDate()}/${
 					new Date(date).getMonth() + 1
