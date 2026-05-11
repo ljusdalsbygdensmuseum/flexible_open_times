@@ -54,7 +54,7 @@ export function FullWeek({ week, input }: Props) {
 		const changeItem = (
 			newTime: TimeInputValue,
 			open: boolean,
-			itemIndex: number
+			itemIndex: number,
 		) => {
 			setWeekArray((oldWeek) => {
 				const newWeek = oldWeek.concat([])
@@ -82,7 +82,7 @@ export function FullWeek({ week, input }: Props) {
 					<PanelRow>
 						{week[index].length < 4 && (
 							<Button variant='secondary' onClick={addMoreHours}>
-								{__('Add More', 'flexible-open-hours-domain')}
+								{__('Add Additional hours', 'flexible-open-hours-domain')}
 							</Button>
 						)}
 					</PanelRow>
