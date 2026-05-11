@@ -1,6 +1,7 @@
 import DisplayHours from './foh-block-display-hours'
 import { ExtraHoursData } from '../types/foh-settings-types'
 import { __ } from '@wordpress/i18n'
+import { weekNames } from '../utility/fohNames'
 
 interface Props {
 	event: ExtraHoursData[]
@@ -39,9 +40,9 @@ export default function DisplayExtraHours({ event }: Props) {
 			}
 
 			return (
-				<li>{`${new Date(date).getDate()}/${
-					new Date(date).getMonth() + 1
-				}${comma}`}</li>
+				<li>{`${weekNames.pointing[new Date(date).getDay()]} ${new Date(
+					date,
+				).getDate()}/${new Date(date).getMonth() + 1}${comma}`}</li>
 			)
 		})
 		const hours = theEvent.hours[0].length ? (

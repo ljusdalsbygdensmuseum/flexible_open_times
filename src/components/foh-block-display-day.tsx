@@ -22,7 +22,7 @@ export default function DisplayDays({ days, showTitle, header }: Props) {
 		}
 		let theDay = ''
 		if (showTitle) {
-			theDay = weekNames[index]
+			theDay = weekNames.default[index]
 		}
 
 		return (
