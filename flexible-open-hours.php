@@ -170,7 +170,13 @@ class FlexibleOpenHours
 
         add_settings_field('foh_normal_open_hours', null, array($this, 'open_hours_normal_hours_field_html'), 'open-hours', 'normal_open_hours');
 
-        register_setting('open_hours_week_name_settings', 'week_names_format', array(
+        register_setting('open_hours_week_name_settings', 'foh_week_name_format', array(
+            'sanitize_callback' => array($this, 'sanitize_integer'),
+            'show_in_rest' => true,
+            'default' => 0
+        ));
+
+        register_setting('open_hours_week_name_settings', 'foh_week_name_format_extra', array(
             'sanitize_callback' => array($this, 'sanitize_integer'),
             'show_in_rest' => true,
             'default' => 0
@@ -178,8 +184,8 @@ class FlexibleOpenHours
 
         add_settings_section('open_hours_week_name_settings', __('Week name format', 'flexible-open-hours-domain'), array($this, 'open_hours_week_name_settings_section_html'), 'open-hours-settings');
 
-        add_settings_field('week_names_format', __('Normal Open Hours', 'flexible-open-hours-domain'), array($this, 'open_hours_settings_week_day_format_field_html'), 'open-hours-settings', 'open_hours_week_name_settings');
-        add_settings_field('week_names_format_extra', __('Extra Open Hours', 'flexible-open-hours-domain'), array($this, 'open_hours_settings_week_day_format_extra_field_html'), 'open-hours-settings', 'open_hours_week_name_settings');
+        add_settings_field('foh_week_name_format', __('Normal Open Hours', 'flexible-open-hours-domain'), array($this, 'open_hours_settings_week_day_format_field_html'), 'open-hours-settings', 'open_hours_week_name_settings');
+        add_settings_field('foh_week_name_format_extra', __('Extra Open Hours', 'flexible-open-hours-domain'), array($this, 'open_hours_settings_week_day_format_extra_field_html'), 'open-hours-settings', 'open_hours_week_name_settings');
     }
 
     //Div to display full week
@@ -205,11 +211,11 @@ class FlexibleOpenHours
     ?>
         <fieldset>
             <div>
-                <input type="radio" id="week_day_format_0" name="week_day_format" id="0">
+                <input type="radio" id="week_day_format_0" name="foh_week_name_format" value="0" <?php if (esc_html(get_option('foh_week_name_format'))  == 0) echo 'checked="checked"' ?>>
                 <label for="week_day_format_0"><?php _e('Full', 'flexible-open-hours-domain') ?></label>
                 <code><?php _e('Monday', 'flexible-open-hours-domain') ?></code>
                 <br>
-                <input type="radio" id="week_day_format_1" name="week_day_format" id="1">
+                <input type="radio" id="week_day_format_1" name="foh_week_name_format" value="1" <?php if (esc_html(get_option('foh_week_name_format'))  == 1) echo 'checked="checked"' ?>>
                 <label for="week_day_format_1"><?php _e('Half', 'flexible-open-hours-domain') ?></label>
                 <code><?php _e('Mon', 'flexible-open-hours-domain') ?></code>
             </div>
@@ -223,21 +229,21 @@ class FlexibleOpenHours
     ?>
         <fieldset>
             <div>
-                <input type="radio" id="week_day_format_0" name="week_day_format_extra" id="0">
+                <input type="radio" id="week_day_format_0" name="foh_week_name_format_extra" value="0" <?php if (esc_html(get_option('foh_week_name_format_extra'))  == 0) echo 'checked="checked"' ?>>
                 <label for="week_day_format_0"><?php _e('Full', 'flexible-open-hours-domain') ?></label>
                 <code><?php _e('Monday 15/11', 'flexible-open-hours-domain') ?></code>
                 <br>
-                <input type="radio" id="week_day_format_1" name="week_day_format_extra" id="1">
+                <input type="radio" id="week_day_format_1" name="foh_week_name_format_extra" value="1" <?php if (esc_html(get_option('foh_week_name_format_extra'))  == 1) echo 'checked="checked"' ?>>
                 <label for="week_day_format_1"><?php _e('Definite form', 'flexible-open-hours-domain') ?></label>
                 <code><?php _e('Monday the 15/11', 'flexible-open-hours-domain') ?></code>
                 <br>
-                <input type="radio" id="week_day_format_2" name="week_day_format_extra" id="2">
+                <input type="radio" id="week_day_format_2" name="foh_week_name_format_extra" value="2" <?php if (esc_html(get_option('foh_week_name_format_extra'))  == 2) echo 'checked="checked"' ?>>
                 <label for="week_day_format_2"><?php _e('Half', 'flexible-open-hours-domain') ?></label>
                 <code><?php _e('Mon 15/11', 'flexible-open-hours-domain') ?></code>
                 <br>
-                <input type="radio" id="week_day_format_3" name="week_day_format_extra" id="3">
+                <input type="radio" id="week_day_format_3" name="foh_week_name_format_extra" value="3" <?php if (esc_html(get_option('foh_week_name_format_extra'))  == 3) echo 'checked="checked"' ?>>
                 <label for="week_day_format_3"><?php _e('None', 'flexible-open-hours-domain') ?></label>
-                <code><?php _e('only 15/11', 'flexible-open-hours-domain') ?></code>
+                <code><?php _e('15/11', 'flexible-open-hours-domain') ?></code>
             </div>
             <p class="description"><?php _e('For extra hours', 'flexible-open-hours-domain') ?></p>
         </fieldset>
@@ -472,6 +478,12 @@ class FlexibleOpenHours
             'temporary_hours' => $temporaryHours
         );
         return $returnValue;
+    }
+    function sanitize_integer($value)
+    {
+        $value = (int) $value;
+
+        return $value;
     }
 }
 
