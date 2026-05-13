@@ -473,6 +473,10 @@ class FlexibleOpenHours
 
         // Return
         $returnValue = array(
+            'settings' => array(
+                'week_name_format' => (int) esc_html(get_option('foh_week_name_format')),
+                'week_name_format_extra' => (int) esc_html(get_option('foh_week_name_format_extra'))
+            ),
             'normal_hours' => json_decode($normalHours),
             'extra_hours' => $extraHours,
             'temporary_hours' => $temporaryHours
