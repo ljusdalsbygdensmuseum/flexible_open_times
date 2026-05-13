@@ -5,13 +5,12 @@ import { FOHDateRange } from './foh-date-range'
 import { Day, DaysSchema } from '../types/foh-settings-types'
 
 import isJSON from '../utility/is-json'
-import { DatesRange } from '../types/foh-metabox-temporary-types'
 
 export function FohTemporaryHours() {
 	//get input and data
 	//hours
 	const hoursInput: HTMLInputElement | null = document.querySelector(
-		'#foh-temporary-hours_hours_field'
+		'#foh-temporary-hours_hours_field',
 	)
 	if (!hoursInput) {
 		throw new Error('#foh-temporary-hours_hours_field not found')
@@ -26,10 +25,10 @@ export function FohTemporaryHours() {
 
 	//date
 	const mindateInput: HTMLInputElement | null = document.querySelector(
-		'#foh-temporary-hours_min_date_field'
+		'#foh-temporary-hours_hours_min_date_field',
 	)
 	const maxdateInput: HTMLInputElement | null = document.querySelector(
-		'#foh-temporary-hours_max_date_field'
+		'#foh-temporary-hours_hours_max_date_field',
 	)
 	if (!mindateInput || !maxdateInput) {
 		throw new Error('dates_field not found')

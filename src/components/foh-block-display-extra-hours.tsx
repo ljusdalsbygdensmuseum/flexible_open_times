@@ -50,7 +50,7 @@ export default function DisplayExtraHours({ event, weekNameFormat }: Props) {
 			if (array.length - 1 == index) {
 				comma = ''
 			} else if (array.length - 2 == index) {
-				comma = ` ${__('and', 'flexible-open-hours-domain')} `
+				comma = ` ${__('and', 'foh-domain')} `
 			}
 
 			return (

@@ -1,39 +1,39 @@
 import { __ } from '@wordpress/i18n'
 export const weekNames = {
 	default: [
-		__('Monday', 'flexible-open-hours-domain'),
-		__('Tuesday', 'flexible-open-hours-domain'),
-		__('Wednesday', 'flexible-open-hours-domain'),
-		__('Thursday', 'flexible-open-hours-domain'),
-		__('Friday', 'flexible-open-hours-domain'),
-		__('Saturday', 'flexible-open-hours-domain'),
-		__('Sunday', 'flexible-open-hours-domain'),
+		__('Monday', 'foh-domain'),
+		__('Tuesday', 'foh-domain'),
+		__('Wednesday', 'foh-domain'),
+		__('Thursday', 'foh-domain'),
+		__('Friday', 'foh-domain'),
+		__('Saturday', 'foh-domain'),
+		__('Sunday', 'foh-domain'),
 	],
 	short: [
-		__('Mon', 'flexible-open-hours-domain'),
-		__('Tue', 'flexible-open-hours-domain'),
-		__('Wed', 'flexible-open-hours-domain'),
-		__('Thu', 'flexible-open-hours-domain'),
-		__('Fri', 'flexible-open-hours-domain'),
-		__('Sat', 'flexible-open-hours-domain'),
-		__('Sun', 'flexible-open-hours-domain'),
+		__('Mon', 'foh-domain'),
+		__('Tue', 'foh-domain'),
+		__('Wed', 'foh-domain'),
+		__('Thu', 'foh-domain'),
+		__('Fri', 'foh-domain'),
+		__('Sat', 'foh-domain'),
+		__('Sun', 'foh-domain'),
 	],
 	pointing: [
-		__('Monday the', 'flexible-open-hours-domain'),
-		__('Tuesday the', 'flexible-open-hours-domain'),
-		__('Wednesday the', 'flexible-open-hours-domain'),
-		__('Thursday the', 'flexible-open-hours-domain'),
-		__('Friday the', 'flexible-open-hours-domain'),
-		__('Saturday the', 'flexible-open-hours-domain'),
-		__('Sunday the', 'flexible-open-hours-domain'),
+		__('Monday the', 'foh-domain'),
+		__('Tuesday the', 'foh-domain'),
+		__('Wednesday the', 'foh-domain'),
+		__('Thursday the', 'foh-domain'),
+		__('Friday the', 'foh-domain'),
+		__('Saturday the', 'foh-domain'),
+		__('Sunday the', 'foh-domain'),
 	],
 }
 
-export const singleWeekName = __('Hours', 'flexible-open-hours-domain')
+export const singleWeekName = __('Hours', 'foh-domain')
 
 export const normalTitle = {
-	default: __('Open hours', 'flexible-open-hours-domain'),
-	whenTemp: __('Normal open hours', 'flexible-open-hours-domain'),
-	showNormal: __('Show normal open hours', 'flexible-open-hours-domain'),
-	backName: __('Back to current hours', 'flexible-open-hours-domain'),
+	default: __('Open hours', 'foh-domain'),
+	whenTemp: __('Normal open hours', 'foh-domain'),
+	showNormal: __('Show normal open hours', 'foh-domain'),
+	backName: __('Back to current hours', 'foh-domain'),
 }

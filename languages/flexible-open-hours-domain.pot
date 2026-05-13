@@ -12,7 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2025-03-05T09:44:25+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
-"X-Domain: flexible-open-hours-domain\n"
+"X-Domain: foh-domain\n"
 
 #. Plugin Name of the plugin
 #: flexible-open-hours.php
