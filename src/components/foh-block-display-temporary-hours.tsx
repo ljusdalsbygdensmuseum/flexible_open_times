@@ -5,16 +5,26 @@ import { normalTitle } from '../utility/fohNames'
 import { useState } from 'react'
 
 interface Props {
+	weekNameFormat: number
 	temporary: TemporaryHoursData[]
 	normal: Day[]
 }
-export default function DisplayTemporaryHours({ temporary, normal }: Props) {
+export default function DisplayTemporaryHours({
+	temporary,
+	normal,
+	weekNameFormat,
+}: Props) {
 	const [showNormal, setShowNormal] = useState(false)
 
 	const allTemporary = temporary.map((temporary) => {
 		const title = temporary.title
 		return (
-			<DisplayDays showTitle={true} days={temporary.hours} header={title} />
+			<DisplayDays
+				showTitle={true}
+				days={temporary.hours}
+				header={title}
+				weekNameFormat={weekNameFormat}
+			/>
 		)
 	})
 
@@ -52,6 +62,7 @@ export default function DisplayTemporaryHours({ temporary, normal }: Props) {
 					showTitle={true}
 					days={normal}
 					header={normalTitle.whenTemp}
+					weekNameFormat={weekNameFormat}
 				/>
 			)}
 			{changeButton}

@@ -1,10 +1,26 @@
 import DisplayHours from './foh-block-display-hours'
 import { ExtraHoursData } from '../types/foh-settings-types'
+import { __ } from '@wordpress/i18n'
+import { weekNames } from '../utility/fohNames'
 
 interface Props {
 	event: ExtraHoursData[]
+	weekNameFormat: number
 }
-export default function DisplayExtraHours({ event }: Props) {
+export default function DisplayExtraHours({ event, weekNameFormat }: Props) {
+	// sets which weekNames to use
+	let weekNamesFormated = weekNames.default
+
+	if (weekNameFormat == 1) {
+		weekNamesFormated = weekNames.pointing
+	}
+	if (weekNameFormat == 2) {
+		weekNamesFormated = weekNames.short
+	}
+	if (weekNameFormat == 3) {
+		weekNamesFormated = ['', '', '', '', '', '', '']
+	}
+
 	const theDays = event.map((theEvent) => {
 		const title = theEvent.title ? (
 			<li>
@@ -29,11 +45,18 @@ export default function DisplayExtraHours({ event }: Props) {
 		sortedDates = [...new Set(sortedDates)]
 
 		const dates = sortedDates.map((date, index, array) => {
-			const comma = array.length - 1 == index ? '' : ', '
+			let comma = ', '
+
+			if (array.length - 1 == index) {
+				comma = ''
+			} else if (array.length - 2 == index) {
+				comma = ` ${__('and', 'flexible-open-hours-domain')} `
+			}
+
 			return (
-				<li>{`${new Date(date).getDate()}/${
-					new Date(date).getMonth() + 1
-				}${comma}`}</li>
+				<li>{`${weekNamesFormated[new Date(date).getDay()]} ${new Date(
+					date,
+				).getDate()}/${new Date(date).getMonth() + 1}${comma}`}</li>
 			)
 		})
 		const hours = theEvent.hours[0].length ? (

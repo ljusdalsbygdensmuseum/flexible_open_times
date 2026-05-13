@@ -17,7 +17,7 @@ export function FullWeek({ week, input }: Props) {
 	const theWeek = week.map((dayObj: Day, index, array) => {
 		const [hours, setHours] = useState(dayObj)
 
-		const title = array.length == 7 ? weekNames[index] : singleWeekName
+		const title = array.length == 7 ? weekNames.default[index] : singleWeekName
 
 		const addMoreHours = () => {
 			const emptyHoursObj: Hour = {

@@ -41,6 +41,10 @@ export const TemporaryHoursSchema = z.object({
 })
 
 export const AllHoursDataSchema = z.object({
+	settings: z.object({
+		week_name_format: z.number(),
+		week_name_format_extra: z.number(),
+	}),
 	normal_hours: z.array(DaySchema).length(7),
 	extra_hours: z.array(ExtraHoursSchema),
 	temporary_hours: z.array(TemporaryHoursSchema),
