@@ -4,10 +4,16 @@ import { weekNames } from '../utility/fohNames'
 
 interface Props {
 	days: Day[]
+	weekNameFormat: number
 	showTitle: boolean
 	header?: string
 }
-export default function DisplayDays({ days, showTitle, header }: Props) {
+export default function DisplayDays({
+	days,
+	showTitle,
+	header,
+	weekNameFormat,
+}: Props) {
 	const theHeader = header ? (
 		<li>
 			<h2>{header}</h2>

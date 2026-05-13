@@ -5,8 +5,9 @@ import { weekNames } from '../utility/fohNames'
 
 interface Props {
 	event: ExtraHoursData[]
+	weekNameFormat: number
 }
-export default function DisplayExtraHours({ event }: Props) {
+export default function DisplayExtraHours({ event, weekNameFormat }: Props) {
 	const theDays = event.map((theEvent) => {
 		const title = theEvent.title ? (
 			<li>

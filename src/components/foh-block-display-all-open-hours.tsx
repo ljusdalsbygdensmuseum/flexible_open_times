@@ -18,6 +18,10 @@ export default function DisplayAllOpenHours({
 	title,
 }: Props) {
 	const fullWeekInfo: AllHoursData = {
+		settings: {
+			week_name_format: 0,
+			week_name_format_extra: 0,
+		},
 		normal_hours: [[], [], [], [], [], [], []],
 		extra_hours: [],
 		temporary_hours: [],
@@ -50,18 +54,23 @@ export default function DisplayAllOpenHours({
 			<DisplayTemporaryHours
 				temporary={allHours.temporary_hours}
 				normal={allHours.normal_hours}
+				weekNameFormat={allHours.settings.week_name_format}
 			/>
 		) : (
 			<DisplayDays
 				showTitle={true}
 				days={allHours.normal_hours}
 				header={normalTitle.default}
+				weekNameFormat={allHours.settings.week_name_format}
 			/>
 		)
 
 	//Extra hours
 	const ExtraHours = showExtra ? (
-		<DisplayExtraHours event={allHours.extra_hours} />
+		<DisplayExtraHours
+			event={allHours.extra_hours}
+			weekNameFormat={allHours.settings.week_name_format_extra}
+		/>
 	) : (
 		''
 	)
