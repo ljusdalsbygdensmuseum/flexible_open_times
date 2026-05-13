@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"outDir": "./build/",
 		"jsx": "react-jsx",
 		"target": "ES6",
 		"strict": true,
@@ -10,9 +9,8 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"resolveJsonModule": true,
-		"baseUrl": "./",
 		"paths": {
-			"*": ["node_modules/*"]
+			"*": ["./node_modules/*"]
 		}
 	},
 	"include": ["src", "src/**/*.ts", "src/**/*.tsx", "src/**/block.json"],
