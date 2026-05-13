@@ -8,6 +8,19 @@ interface Props {
 	weekNameFormat: number
 }
 export default function DisplayExtraHours({ event, weekNameFormat }: Props) {
+	// sets which weekNames to use
+	let weekNamesFormated = weekNames.default
+
+	if (weekNameFormat == 1) {
+		weekNamesFormated = weekNames.pointing
+	}
+	if (weekNameFormat == 2) {
+		weekNamesFormated = weekNames.short
+	}
+	if (weekNameFormat == 3) {
+		weekNamesFormated = ['', '', '', '', '', '', '']
+	}
+
 	const theDays = event.map((theEvent) => {
 		const title = theEvent.title ? (
 			<li>
@@ -41,7 +54,7 @@ export default function DisplayExtraHours({ event, weekNameFormat }: Props) {
 			}
 
 			return (
-				<li>{`${weekNames.pointing[new Date(date).getDay()]} ${new Date(
+				<li>{`${weekNamesFormated[new Date(date).getDay()]} ${new Date(
 					date,
 				).getDate()}/${new Date(date).getMonth() + 1}${comma}`}</li>
 			)

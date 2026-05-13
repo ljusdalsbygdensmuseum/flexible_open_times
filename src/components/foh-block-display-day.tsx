@@ -28,7 +28,9 @@ export default function DisplayDays({
 		}
 		let theDay = ''
 		if (showTitle) {
-			theDay = weekNames.default[index]
+			theDay = weekNameFormat
+				? weekNames.short[index]
+				: weekNames.default[index]
 		}
 
 		return (
