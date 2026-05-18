@@ -7,7 +7,7 @@
 		"start": "wp-scripts start",
 		"dev": "wp-scripts start",
 		"devFast": "wp-scripts start",
-		"make-pot": "wp i18n make-pot . languages/flexible-open-hours-domain.pot",
+		"make-pot": "wp i18n make-pot . languages/foh-domain.pot",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
@@ -21,7 +21,8 @@
 		"@babel/runtime": "7.26.10"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.8.1",
+		"@types/react": "^18.3.28",
+		"@wordpress/scripts": "^32.1.0",
 		"ts-loader": "^9.5.1",
 		"typescript": "^5.7.2"
 	},

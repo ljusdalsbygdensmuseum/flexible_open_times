@@ -5,9 +5,13 @@ module.exports = {
 	...defaults,
 	entry: {
 		...defaults.entry(),
-		settings: path.resolve(process.cwd(), 'src', 'settings.tsx'),
-		extra_open: path.resolve(process.cwd(), 'src', 'metabox-extra.tsx'),
-		temporary: path.resolve(process.cwd(), 'src', 'metabox-temporary.tsx'),
+		main_page: path.resolve(process.cwd(), 'src', 'main-page.tsx'),
+		metabox_extra: path.resolve(process.cwd(), 'src', 'metabox-extra.tsx'),
+		metabox_temporary: path.resolve(
+			process.cwd(),
+			'src',
+			'metabox-temporary.tsx',
+		),
 		block_frontend: path.resolve(process.cwd(), 'src', 'block-frontend.tsx'),
 	},
 	output: {

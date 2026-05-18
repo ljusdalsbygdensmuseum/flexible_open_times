@@ -82,7 +82,7 @@ export function FullWeek({ week, input }: Props) {
 					<PanelRow>
 						{week[index].length < 4 && (
 							<Button variant='secondary' onClick={addMoreHours}>
-								{__('Add Additional hours', 'flexible-open-hours-domain')}
+								{__('Add Additional hours', 'foh-domain')}
 							</Button>
 						)}
 					</PanelRow>

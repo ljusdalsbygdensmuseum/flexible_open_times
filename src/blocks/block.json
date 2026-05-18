@@ -11,7 +11,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "flexible-open-hours-domain",
+	"textdomain": "foh-domain",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

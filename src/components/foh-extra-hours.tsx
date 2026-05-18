@@ -18,7 +18,7 @@ export default function FohExtraHours() {
 	//get input and data
 	//hours
 	const hoursInput: HTMLInputElement | null = document.querySelector(
-		'#foh-extra-hours_hours_field'
+		'#foh-extra-hours_hours_field',
 	)
 	if (!hoursInput) {
 		throw new Error('#foh-extra-hours_hours_field not found')
@@ -33,16 +33,16 @@ export default function FohExtraHours() {
 
 	//date
 	const dateInput: HTMLInputElement | null = document.querySelector(
-		'#foh-extra-hours_dates_field'
+		'#foh-extra-hours_hours_dates_field',
 	)
 	const mindateInput: HTMLInputElement | null = document.querySelector(
-		'#foh-extra-hours_min_date_field'
+		'#foh-extra-hours_hours_min_date_field',
 	)
 	const maxdateInput: HTMLInputElement | null = document.querySelector(
-		'#foh-extra-hours_max_date_field'
+		'#foh-extra-hours_hours_max_date_field',
 	)
 	if (!dateInput || !mindateInput || !maxdateInput) {
-		throw new Error('#foh-extra-hours_dates_field not found')
+		throw new Error('#foh-extra-hours_hours_dates_field not found')
 	}
 	let datesInfo: Dates = []
 	if (isJSON(dateInput.value)) {

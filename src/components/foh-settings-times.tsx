@@ -16,7 +16,7 @@ interface Props {
 	onChangeItem: (
 		newTime: TimeInputValue,
 		open: boolean,
-		itemIndex: number
+		itemIndex: number,
 	) => void
 }
 
@@ -27,7 +27,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 				<Flex align='flex-end'>
 					<FlexItem>
 						<TimePicker.TimeInput
-							label={__('Open', 'flexible-open-hours-domain')}
+							label={__('Open', 'foh-domain')}
 							value={timeObj.open}
 							onChange={(newTime) => {
 								onChangeItem(newTime, true, index)
@@ -36,7 +36,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 					</FlexItem>
 					<FlexItem>
 						<TimePicker.TimeInput
-							label={__('Close', 'flexible-open-hours-domain')}
+							label={__('Close', 'foh-domain')}
 							value={timeObj.close}
 							onChange={(newTime) => {
 								onChangeItem(newTime, false, index)
@@ -51,7 +51,7 @@ export function Times({ hours, onRemoveItem, onChangeItem }: Props) {
 								onRemoveItem(index)
 							}}
 						>
-							{__('Remove', 'flexible-open-hours-domain')}
+							{__('Remove', 'foh-domain')}
 						</Button>
 					</FlexBlock>
 				</Flex>
