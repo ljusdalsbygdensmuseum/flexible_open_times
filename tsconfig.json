@@ -4,7 +4,7 @@
 		"target": "ES6",
 		"strict": true,
 		"allowSyntheticDefaultImports": true,
-		"moduleResolution": "bundler",
+		"moduleResolution": "node",
 		"allowJs": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
