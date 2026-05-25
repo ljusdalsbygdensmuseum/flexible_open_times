@@ -184,8 +184,8 @@ class FlexibleOpenHours
 
         add_settings_section('foh_open_hours_week_name_settings_section', __('Week name format', 'foh-domain'), null, 'open-hours-settings');
 
-        add_settings_field('foh_week_name_format', __('Normal Open Hours', 'foh-domain'), array($this, 'open_hours_settings_week_day_format_field_html'), 'open-hours-settings', 'foh_open_hours_week_name_settings_section');
-        add_settings_field('foh_week_name_format_extra', __('Extra Open Hours', 'foh-domain'), array($this, 'open_hours_settings_week_day_format_extra_field_html'), 'open-hours-settings', 'foh_open_hours_week_name_settings_section');
+        add_settings_field('foh_week_name_format', __('Normal Open Hours', 'foh-domain'), array($this, 'open_hours_week_name_format_settings_field_html'), 'open-hours-settings', 'foh_open_hours_week_name_settings_section');
+        add_settings_field('foh_week_name_format_extra', __('Extra Open Hours', 'foh-domain'), array($this, 'open_hours_week_name_format_settings_extra_field_html'), 'open-hours-settings', 'foh_open_hours_week_name_settings_section');
     }
 
     //Div to display full week
@@ -204,7 +204,7 @@ class FlexibleOpenHours
     <?php
     }
 
-    function open_hours_settings_week_day_format_field_html()
+    function open_hours_week_name_format_settings_field_html()
     {
     ?>
         <fieldset>
@@ -221,7 +221,7 @@ class FlexibleOpenHours
     <?php
     }
 
-    function open_hours_settings_week_day_format_extra_field_html()
+    function open_hours_week_name_format_settings_extra_field_html()
     {
     ?>
         <fieldset>
