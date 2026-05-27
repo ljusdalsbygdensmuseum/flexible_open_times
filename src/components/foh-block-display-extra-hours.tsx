@@ -6,8 +6,13 @@ import { weekNames } from '../utility/fohNames'
 interface Props {
 	event: ExtraHoursData[]
 	weekNameFormat: number
+	hourNameFormat: number
 }
-export default function DisplayExtraHours({ event, weekNameFormat }: Props) {
+export default function DisplayExtraHours({
+	event,
+	weekNameFormat,
+	hourNameFormat,
+}: Props) {
 	// sets which weekNames to use
 	let weekNamesFormated = weekNames.default
 
@@ -60,7 +65,7 @@ export default function DisplayExtraHours({ event, weekNameFormat }: Props) {
 			)
 		})
 		const hours = theEvent.hours[0].length ? (
-			<DisplayHours hours={theEvent.hours[0]} />
+			<DisplayHours hours={theEvent.hours[0]} hourNameFormat={hourNameFormat} />
 		) : (
 			'Closed'
 		)
