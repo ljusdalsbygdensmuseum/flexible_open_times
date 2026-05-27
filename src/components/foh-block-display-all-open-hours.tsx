@@ -21,6 +21,7 @@ export default function DisplayAllOpenHours({
 		settings: {
 			week_name_format: 0,
 			week_name_format_extra: 0,
+			hour_name_format: 0,
 		},
 		normal_hours: [[], [], [], [], [], [], []],
 		extra_hours: [],
@@ -55,6 +56,7 @@ export default function DisplayAllOpenHours({
 				temporary={allHours.temporary_hours}
 				normal={allHours.normal_hours}
 				weekNameFormat={allHours.settings.week_name_format}
+				hourNameFormat={allHours.settings.hour_name_format}
 			/>
 		) : (
 			<DisplayDays
@@ -62,6 +64,7 @@ export default function DisplayAllOpenHours({
 				days={allHours.normal_hours}
 				header={normalTitle.default}
 				weekNameFormat={allHours.settings.week_name_format}
+				hourNameFormat={allHours.settings.hour_name_format}
 			/>
 		)
 
@@ -70,6 +73,7 @@ export default function DisplayAllOpenHours({
 		<DisplayExtraHours
 			event={allHours.extra_hours}
 			weekNameFormat={allHours.settings.week_name_format_extra}
+			hourNameFormat={allHours.settings.hour_name_format}
 		/>
 	) : (
 		''

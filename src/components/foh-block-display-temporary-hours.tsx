@@ -6,6 +6,7 @@ import { useState } from 'react'
 
 interface Props {
 	weekNameFormat: number
+	hourNameFormat: number
 	temporary: TemporaryHoursData[]
 	normal: Day[]
 }
@@ -13,6 +14,7 @@ export default function DisplayTemporaryHours({
 	temporary,
 	normal,
 	weekNameFormat,
+	hourNameFormat,
 }: Props) {
 	const [showNormal, setShowNormal] = useState(false)
 
@@ -24,6 +26,7 @@ export default function DisplayTemporaryHours({
 				days={temporary.hours}
 				header={title}
 				weekNameFormat={weekNameFormat}
+				hourNameFormat={hourNameFormat}
 			/>
 		)
 	})
@@ -63,6 +66,7 @@ export default function DisplayTemporaryHours({
 					days={normal}
 					header={normalTitle.whenTemp}
 					weekNameFormat={weekNameFormat}
+					hourNameFormat={hourNameFormat}
 				/>
 			)}
 			{changeButton}

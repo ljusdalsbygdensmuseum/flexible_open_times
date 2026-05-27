@@ -5,6 +5,7 @@ import { weekNames } from '../utility/fohNames'
 interface Props {
 	days: Day[]
 	weekNameFormat: number
+	hourNameFormat: number
 	showTitle: boolean
 	header?: string
 }
@@ -13,6 +14,7 @@ export default function DisplayDays({
 	showTitle,
 	header,
 	weekNameFormat,
+	hourNameFormat,
 }: Props) {
 	const theHeader = header ? (
 		<li>
@@ -35,7 +37,7 @@ export default function DisplayDays({
 
 		return (
 			<li>
-				{theDay} <DisplayHours hours={day} />
+				{theDay} <DisplayHours hours={day} hourNameFormat={hourNameFormat} />
 			</li>
 		)
 	})

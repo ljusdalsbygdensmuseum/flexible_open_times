@@ -82,7 +82,7 @@ class FlexibleOpenHours
             <form action="options.php" method="POST">
                 <?php
                 settings_errors();
-                settings_fields('foh_open_hours_week_name_settings_section');
+                settings_fields('foh_open_hours_settings_section');
                 do_settings_sections('open-hours-settings');
                 submit_button();
                 ?>
@@ -119,6 +119,9 @@ class FlexibleOpenHours
 
     function enqueue_settings_page()
     {
+        //Enqueue styles
+        wp_enqueue_style('foh-settings-style', plugin_dir_url(__FILE__) . 'build/settings_page.css');
+
         //Set translation
         wp_set_script_translations('foh-settings-js', 'foh-domain', plugin_dir_path(__FILE__) . '/languages');
     }
@@ -170,13 +173,13 @@ class FlexibleOpenHours
 
         add_settings_field('foh_normal_open_hours', null, array($this, 'open_hours_normal_hours_field_html'), 'open-hours', 'foh_normal_open_hours_section');
 
-        register_setting('foh_open_hours_week_name_settings_section', 'foh_week_name_format', array(
+        register_setting('foh_open_hours_settings_section', 'foh_week_name_format', array(
             'sanitize_callback' => array($this, 'sanitize_integer'),
             'show_in_rest' => true,
             'default' => 0
         ));
 
-        register_setting('foh_open_hours_week_name_settings_section', 'foh_week_name_format_extra', array(
+        register_setting('foh_open_hours_settings_section', 'foh_week_name_format_extra', array(
             'sanitize_callback' => array($this, 'sanitize_integer'),
             'show_in_rest' => true,
             'default' => 0
@@ -186,6 +189,17 @@ class FlexibleOpenHours
 
         add_settings_field('foh_week_name_format', __('Normal Open Hours', 'foh-domain'), array($this, 'open_hours_week_name_format_settings_field_html'), 'open-hours-settings', 'foh_open_hours_week_name_settings_section');
         add_settings_field('foh_week_name_format_extra', __('Extra Open Hours', 'foh-domain'), array($this, 'open_hours_week_name_format_settings_extra_field_html'), 'open-hours-settings', 'foh_open_hours_week_name_settings_section');
+
+
+        register_setting('foh_open_hours_settings_section', 'foh_hour_name_format', array(
+            'sanitize_callback' => array($this, 'sanitize_integer'),
+            'show_in_rest' => true,
+            'default' => 0
+        ));
+
+        add_settings_section('foh_open_hours_hour_name_settings_section', __('Hours format', 'foh-domain'), null, 'open-hours-settings');
+
+        add_settings_field('foh_hour_name_format', __('Hours', 'foh-domain'), array($this, 'open_hours_hour_name_format_settings_field_html'), 'open-hours-settings', 'foh_open_hours_hour_name_settings_section');
     }
 
     //Div to display full week
@@ -241,6 +255,23 @@ class FlexibleOpenHours
                 <input type="radio" id="week_day_format_3" name="foh_week_name_format_extra" value="3" <?php if (esc_html(get_option('foh_week_name_format_extra'))  == 3) echo 'checked="checked"' ?>>
                 <label for="week_day_format_3"><?php _e('None', 'foh-domain') ?></label>
                 <code><?php _e('15/11', 'foh-domain') ?></code>
+            </div>
+        </fieldset>
+    <?php
+    }
+
+    function open_hours_hour_name_format_settings_field_html()
+    {
+    ?>
+        <fieldset>
+            <div>
+                <input type="radio" id="hours_format_0" name="foh_hour_name_format" value="0" <?php if (esc_html(get_option('foh_hour_name_format'))  == 0) echo 'checked="checked"' ?>>
+                <label for="hours_format_0"><?php _e('Full', 'foh-domain') ?></label>
+                <code>12:00 - 15:00, 16:00 - 18:30</code>
+                <br>
+                <input type="radio" id="hours_format_1" name="foh_hour_name_format" value="1" <?php if (esc_html(get_option('foh_hour_name_format'))  == 1) echo 'checked="checked"' ?>>
+                <label for="hours_format_1"><?php _e('Half', 'foh-domain') ?></label>
+                <code>12 - 15, 16 - 18:30</code>
             </div>
         </fieldset>
     <?php
@@ -471,7 +502,8 @@ class FlexibleOpenHours
         $returnValue = array(
             'settings' => array(
                 'week_name_format' => (int) esc_html(get_option('foh_week_name_format')),
-                'week_name_format_extra' => (int) esc_html(get_option('foh_week_name_format_extra'))
+                'week_name_format_extra' => (int) esc_html(get_option('foh_week_name_format_extra')),
+                'hour_name_format' => (int) esc_html(get_option('foh_hour_name_format'))
             ),
             'normal_hours' => json_decode($normalHours),
             'extra_hours' => $extraHours,
