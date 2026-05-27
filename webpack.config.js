@@ -6,6 +6,7 @@ module.exports = {
 	entry: {
 		...defaults.entry(),
 		main_page: path.resolve(process.cwd(), 'src', 'main-page.tsx'),
+		settings_page: path.resolve(process.cwd(), 'src', 'settings-page.tsx'),
 		metabox_extra: path.resolve(process.cwd(), 'src', 'metabox-extra.tsx'),
 		metabox_temporary: path.resolve(
 			process.cwd(),

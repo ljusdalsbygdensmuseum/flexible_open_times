@@ -119,6 +119,9 @@ class FlexibleOpenHours
 
     function enqueue_settings_page()
     {
+        //Enqueue styles
+        wp_enqueue_style('foh-settings-style', plugin_dir_url(__FILE__) . 'build/settings_page.css');
+
         //Set translation
         wp_set_script_translations('foh-settings-js', 'foh-domain', plugin_dir_path(__FILE__) . '/languages');
     }
