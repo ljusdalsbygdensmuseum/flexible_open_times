@@ -1,0 +1,39 @@
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-flexible-open-hours-openhours ul {
+  padding: 0;
+}
+.wp-block-flexible-open-hours-openhours li {
+  display: inline;
+}
+.wp-block-flexible-open-hours-openhours .foh-display__dates {
+  font-weight: bold;
+}
+.wp-block-flexible-open-hours-openhours .foh-display__button {
+  padding: 0;
+  margin-bottom: var(--wp--custom--gapo--m);
+  text-align: right;
+  border: none;
+  background-color: transparent;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+.wp-block-flexible-open-hours-openhours .foh-display__button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+.wp-block-flexible-open-hours-openhours .foh-display__full-temporary {
+  transition: 0.3s;
+  transform: translate(0);
+}
+.wp-block-flexible-open-hours-openhours .foh-display__left-out {
+  transform: translate(1em);
+  opacity: 0;
+}
