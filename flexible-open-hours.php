@@ -3,7 +3,7 @@
 /*
     Plugin Name: Flexible Open Hours
     Description: Easily change open times on the fly.
-    Version: 0.0.1
+    Version: 1.0.0
     Author: ina
     Text domain: foh-domain
     Domain Path: /languages
