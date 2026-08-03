@@ -28,12 +28,3 @@ export const weekNames = {
 		__('Sunday the', 'foh-domain'),
 	],
 }
-
-export const singleWeekName = __('Hours', 'foh-domain')
-
-export const normalTitle = {
-	default: __('Open hours', 'foh-domain'),
-	whenTemp: __('Normal open hours', 'foh-domain'),
-	showNormal: __('Show normal open hours', 'foh-domain'),
-	backName: __('Back to current hours', 'foh-domain'),
-}
