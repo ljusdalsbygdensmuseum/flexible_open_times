@@ -314,7 +314,7 @@ function DisplayExtraHours({
     const hours = theEvent.hours[0].length ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_block_display_hours__WEBPACK_IMPORTED_MODULE_1__["default"], {
       hours: theEvent.hours[0],
       hourNameFormat: hourNameFormat
-    }) : 'Closed';
+    }) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Closed', 'foh-domain');
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
       className: 'foh-display__wrap',
       children: [title, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", {

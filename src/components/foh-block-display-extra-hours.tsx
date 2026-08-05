@@ -67,7 +67,7 @@ export default function DisplayExtraHours({
 		const hours = theEvent.hours[0].length ? (
 			<DisplayHours hours={theEvent.hours[0]} hourNameFormat={hourNameFormat} />
 		) : (
-			'Closed'
+			__('Closed', 'foh-domain')
 		)
 
 		return (
