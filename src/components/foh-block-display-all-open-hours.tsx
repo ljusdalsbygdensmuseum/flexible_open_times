@@ -62,7 +62,7 @@ export default function DisplayAllOpenHours({
 			<DisplayDays
 				showTitle={true}
 				days={allHours.normal_hours}
-				header={__('Open hours', 'foh-domain')}
+				header={__('Open hour', 'foh-domain')}
 				weekNameFormat={allHours.settings.week_name_format}
 				hourNameFormat={allHours.settings.hour_name_format}
 			/>

@@ -239,7 +239,7 @@ function FullWeek({
   const [weekArray, setWeekArray] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(week);
   const theWeek = week.map((dayObj, index, array) => {
     const [hours, setHours] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(dayObj);
-    const title = array.length == 7 ? _utility_fohNames__WEBPACK_IMPORTED_MODULE_5__.weekNames.default[index] : _utility_fohNames__WEBPACK_IMPORTED_MODULE_5__.singleWeekName;
+    const title = array.length == 7 ? _utility_fohNames__WEBPACK_IMPORTED_MODULE_5__.weekNames.default[index] : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hours', 'foh-domain');
     const addMoreHours = () => {
       const emptyHoursObj = {
         open: {
@@ -442,8 +442,6 @@ const AllHoursDataSchema = zod__WEBPACK_IMPORTED_MODULE_0__.object({
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   normalTitle: () => (/* binding */ normalTitle),
-/* harmony export */   singleWeekName: () => (/* binding */ singleWeekName),
 /* harmony export */   weekNames: () => (/* binding */ weekNames)
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
@@ -453,13 +451,6 @@ const weekNames = {
   default: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Monday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tuesday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wednesday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thursday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Friday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Saturday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sunday', 'foh-domain')],
   short: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Mon', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tue', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wed', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thu', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Fri', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sat', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sun', 'foh-domain')],
   pointing: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Monday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tuesday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wednesday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thursday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Friday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Saturday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sunday the', 'foh-domain')]
-};
-const singleWeekName = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hours', 'foh-domain');
-const normalTitle = {
-  default: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Open hours', 'foh-domain'),
-  whenTemp: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Normal open hours', 'foh-domain'),
-  showNormal: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show normal open hours', 'foh-domain'),
-  backName: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Back to current hours', 'foh-domain')
 };
 
 /***/ },
