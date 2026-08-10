@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-05T17:52:49+00:00\n"
+"POT-Creation-Date: 2026-08-10T07:32:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: foh-domain\n"
@@ -92,9 +92,9 @@ msgid "Full"
 msgstr ""
 
 #: flexible-open-hours.php:228
-#: build/blocks/index.js:551
-#: build/blocks/view.js:453
-#: build/block_frontend.js:453
+#: build/blocks/index.js:553
+#: build/blocks/view.js:455
+#: build/block_frontend.js:455
 #: build/main_page.js:295
 #: build/metabox_extra.js:457
 #: build/metabox_temporary.js:400
@@ -114,9 +114,9 @@ msgid "Half"
 msgstr ""
 
 #: flexible-open-hours.php:232
-#: build/blocks/index.js:552
-#: build/blocks/view.js:454
-#: build/block_frontend.js:454
+#: build/blocks/index.js:554
+#: build/blocks/view.js:456
+#: build/block_frontend.js:456
 #: build/main_page.js:296
 #: build/metabox_extra.js:458
 #: build/metabox_temporary.js:401
@@ -166,62 +166,65 @@ msgstr ""
 msgid "Open hour"
 msgstr ""
 
-#: build/blocks/index.js:308
-#: build/blocks/view.js:210
-#: build/block_frontend.js:210
+#: build/blocks/index.js:188
+#: build/blocks/view.js:90
+#: build/block_frontend.js:90
+#: build/blocks/index.js:102
+#: build/blocks/view.js:42
+#: build/block_frontend.js:42
+msgid "testing"
+msgstr ""
+
+#: build/blocks/index.js:310
+#: build/blocks/view.js:212
+#: build/block_frontend.js:212
 #: build/blocks/index.js:162
 #: build/blocks/view.js:102
 #: build/block_frontend.js:102
 msgid "and"
 msgstr ""
 
-#: build/blocks/index.js:317
-#: build/blocks/index.js:333
-#: build/blocks/view.js:219
-#: build/blocks/view.js:235
-#: build/block_frontend.js:219
-#: build/block_frontend.js:235
+#: build/blocks/index.js:319
+#: build/blocks/view.js:221
+#: build/block_frontend.js:221
 #: build/metabox_extra.js:197
 #: build/blocks/index.js:166
-#: build/blocks/index.js:169
 #: build/blocks/view.js:106
-#: build/blocks/view.js:109
 #: build/block_frontend.js:106
-#: build/block_frontend.js:109
 #: build/metabox_extra.js:110
 msgid "Closed"
 msgstr ""
 
-#: build/blocks/index.js:432
-#: build/blocks/view.js:334
-#: build/block_frontend.js:334
+#: build/blocks/index.js:434
+#: build/blocks/view.js:336
+#: build/block_frontend.js:336
 #: build/blocks/index.js:214
 #: build/blocks/view.js:154
 #: build/block_frontend.js:154
 msgid "Back to current hours"
 msgstr ""
 
-#: build/blocks/index.js:432
-#: build/blocks/view.js:334
-#: build/block_frontend.js:334
+#: build/blocks/index.js:434
+#: build/blocks/view.js:336
+#: build/block_frontend.js:336
 #: build/blocks/index.js:215
 #: build/blocks/view.js:155
 #: build/block_frontend.js:155
 msgid "Show normal open hours"
 msgstr ""
 
-#: build/blocks/index.js:442
-#: build/blocks/view.js:344
-#: build/block_frontend.js:344
+#: build/blocks/index.js:444
+#: build/blocks/view.js:346
+#: build/block_frontend.js:346
 #: build/blocks/index.js:216
 #: build/blocks/view.js:156
 #: build/block_frontend.js:156
 msgid "Normal open hours"
 msgstr ""
 
-#: build/blocks/index.js:551
-#: build/blocks/view.js:453
-#: build/block_frontend.js:453
+#: build/blocks/index.js:553
+#: build/blocks/view.js:455
+#: build/block_frontend.js:455
 #: build/main_page.js:295
 #: build/metabox_extra.js:457
 #: build/metabox_temporary.js:400
@@ -234,9 +237,9 @@ msgstr ""
 msgid "Tuesday"
 msgstr ""
 
-#: build/blocks/index.js:551
-#: build/blocks/view.js:453
-#: build/block_frontend.js:453
+#: build/blocks/index.js:553
+#: build/blocks/view.js:455
+#: build/block_frontend.js:455
 #: build/main_page.js:295
 #: build/metabox_extra.js:457
 #: build/metabox_temporary.js:400
@@ -249,9 +252,9 @@ msgstr ""
 msgid "Wednesday"
 msgstr ""
 
-#: build/blocks/index.js:551
-#: build/blocks/view.js:453
-#: build/block_frontend.js:453
+#: build/blocks/index.js:553
+#: build/blocks/view.js:455
+#: build/block_frontend.js:455
 #: build/main_page.js:295
 #: build/metabox_extra.js:457
 #: build/metabox_temporary.js:400
@@ -264,9 +267,9 @@ msgstr ""
 msgid "Thursday"
 msgstr ""
 
-#: build/blocks/index.js:551
-#: build/blocks/view.js:453
-#: build/block_frontend.js:453
+#: build/blocks/index.js:553
+#: build/blocks/view.js:455
+#: build/block_frontend.js:455
 #: build/main_page.js:295
 #: build/metabox_extra.js:457
 #: build/metabox_temporary.js:400
@@ -279,9 +282,9 @@ msgstr ""
 msgid "Friday"
 msgstr ""
 
-#: build/blocks/index.js:551
-#: build/blocks/view.js:453
-#: build/block_frontend.js:453
+#: build/blocks/index.js:553
+#: build/blocks/view.js:455
+#: build/block_frontend.js:455
 #: build/main_page.js:295
 #: build/metabox_extra.js:457
 #: build/metabox_temporary.js:400
@@ -294,9 +297,9 @@ msgstr ""
 msgid "Saturday"
 msgstr ""
 
-#: build/blocks/index.js:551
-#: build/blocks/view.js:453
-#: build/block_frontend.js:453
+#: build/blocks/index.js:553
+#: build/blocks/view.js:455
+#: build/block_frontend.js:455
 #: build/main_page.js:295
 #: build/metabox_extra.js:457
 #: build/metabox_temporary.js:400
@@ -309,9 +312,9 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
-#: build/blocks/index.js:552
-#: build/blocks/view.js:454
-#: build/block_frontend.js:454
+#: build/blocks/index.js:554
+#: build/blocks/view.js:456
+#: build/block_frontend.js:456
 #: build/main_page.js:296
 #: build/metabox_extra.js:458
 #: build/metabox_temporary.js:401
@@ -324,9 +327,9 @@ msgstr ""
 msgid "Tue"
 msgstr ""
 
-#: build/blocks/index.js:552
-#: build/blocks/view.js:454
-#: build/block_frontend.js:454
+#: build/blocks/index.js:554
+#: build/blocks/view.js:456
+#: build/block_frontend.js:456
 #: build/main_page.js:296
 #: build/metabox_extra.js:458
 #: build/metabox_temporary.js:401
@@ -339,9 +342,9 @@ msgstr ""
 msgid "Wed"
 msgstr ""
 
-#: build/blocks/index.js:552
-#: build/blocks/view.js:454
-#: build/block_frontend.js:454
+#: build/blocks/index.js:554
+#: build/blocks/view.js:456
+#: build/block_frontend.js:456
 #: build/main_page.js:296
 #: build/metabox_extra.js:458
 #: build/metabox_temporary.js:401
@@ -354,9 +357,9 @@ msgstr ""
 msgid "Thu"
 msgstr ""
 
-#: build/blocks/index.js:552
-#: build/blocks/view.js:454
-#: build/block_frontend.js:454
+#: build/blocks/index.js:554
+#: build/blocks/view.js:456
+#: build/block_frontend.js:456
 #: build/main_page.js:296
 #: build/metabox_extra.js:458
 #: build/metabox_temporary.js:401
@@ -369,9 +372,9 @@ msgstr ""
 msgid "Fri"
 msgstr ""
 
-#: build/blocks/index.js:552
-#: build/blocks/view.js:454
-#: build/block_frontend.js:454
+#: build/blocks/index.js:554
+#: build/blocks/view.js:456
+#: build/block_frontend.js:456
 #: build/main_page.js:296
 #: build/metabox_extra.js:458
 #: build/metabox_temporary.js:401
@@ -384,9 +387,9 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
-#: build/blocks/index.js:552
-#: build/blocks/view.js:454
-#: build/block_frontend.js:454
+#: build/blocks/index.js:554
+#: build/blocks/view.js:456
+#: build/block_frontend.js:456
 #: build/main_page.js:296
 #: build/metabox_extra.js:458
 #: build/metabox_temporary.js:401
@@ -399,9 +402,9 @@ msgstr ""
 msgid "Sun"
 msgstr ""
 
-#: build/blocks/index.js:553
-#: build/blocks/view.js:455
-#: build/block_frontend.js:455
+#: build/blocks/index.js:555
+#: build/blocks/view.js:457
+#: build/block_frontend.js:457
 #: build/main_page.js:297
 #: build/metabox_extra.js:459
 #: build/metabox_temporary.js:402
@@ -414,9 +417,9 @@ msgstr ""
 msgid "Monday the"
 msgstr ""
 
-#: build/blocks/index.js:553
-#: build/blocks/view.js:455
-#: build/block_frontend.js:455
+#: build/blocks/index.js:555
+#: build/blocks/view.js:457
+#: build/block_frontend.js:457
 #: build/main_page.js:297
 #: build/metabox_extra.js:459
 #: build/metabox_temporary.js:402
@@ -429,9 +432,9 @@ msgstr ""
 msgid "Tuesday the"
 msgstr ""
 
-#: build/blocks/index.js:553
-#: build/blocks/view.js:455
-#: build/block_frontend.js:455
+#: build/blocks/index.js:555
+#: build/blocks/view.js:457
+#: build/block_frontend.js:457
 #: build/main_page.js:297
 #: build/metabox_extra.js:459
 #: build/metabox_temporary.js:402
@@ -444,9 +447,9 @@ msgstr ""
 msgid "Wednesday the"
 msgstr ""
 
-#: build/blocks/index.js:553
-#: build/blocks/view.js:455
-#: build/block_frontend.js:455
+#: build/blocks/index.js:555
+#: build/blocks/view.js:457
+#: build/block_frontend.js:457
 #: build/main_page.js:297
 #: build/metabox_extra.js:459
 #: build/metabox_temporary.js:402
@@ -459,9 +462,9 @@ msgstr ""
 msgid "Thursday the"
 msgstr ""
 
-#: build/blocks/index.js:553
-#: build/blocks/view.js:455
-#: build/block_frontend.js:455
+#: build/blocks/index.js:555
+#: build/blocks/view.js:457
+#: build/block_frontend.js:457
 #: build/main_page.js:297
 #: build/metabox_extra.js:459
 #: build/metabox_temporary.js:402
@@ -474,9 +477,9 @@ msgstr ""
 msgid "Friday the"
 msgstr ""
 
-#: build/blocks/index.js:553
-#: build/blocks/view.js:455
-#: build/block_frontend.js:455
+#: build/blocks/index.js:555
+#: build/blocks/view.js:457
+#: build/block_frontend.js:457
 #: build/main_page.js:297
 #: build/metabox_extra.js:459
 #: build/metabox_temporary.js:402
@@ -489,9 +492,9 @@ msgstr ""
 msgid "Saturday the"
 msgstr ""
 
-#: build/blocks/index.js:553
-#: build/blocks/view.js:455
-#: build/block_frontend.js:455
+#: build/blocks/index.js:555
+#: build/blocks/view.js:457
+#: build/block_frontend.js:457
 #: build/main_page.js:297
 #: build/metabox_extra.js:459
 #: build/metabox_temporary.js:402
