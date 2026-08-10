@@ -2,6 +2,8 @@ import DisplayDays from '../components/foh-block-display-day'
 import { Day, TemporaryHoursData } from '../types/foh-settings-types'
 import { normalTitle } from '../utility/fohNames'
 
+import { __ } from '@wordpress/i18n'
+
 import { useState } from 'react'
 
 interface Props {
@@ -51,7 +53,9 @@ export default function DisplayTemporaryHours({
 					}}
 					className='foh-display__button'
 				>
-					{showNormal ? `${normalTitle.backName}` : `${normalTitle.showNormal}`}
+					{showNormal
+						? `${__('Back to current hours', 'foh-domain')}`
+						: `${__('Show normal open hours', 'foh-domain')}`}
 				</button>
 			</li>
 		</ul>
@@ -64,7 +68,7 @@ export default function DisplayTemporaryHours({
 				<DisplayDays
 					showTitle={true}
 					days={normal}
-					header={normalTitle.whenTemp}
+					header={__('Normal open hours', 'foh-domain')}
 					weekNameFormat={weekNameFormat}
 					hourNameFormat={hourNameFormat}
 				/>

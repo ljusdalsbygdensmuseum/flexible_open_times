@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import DisplayDays from '../components/foh-block-display-day'
 import DisplayExtraHours from '../components/foh-block-display-extra-hours'
 import DisplayTemporaryHours from '../components/foh-block-display-temporary-hours'
-import { normalTitle } from '../utility/fohNames'
+import { __ } from '@wordpress/i18n'
 
 import { AllHoursDataSchema, AllHoursData } from '../types/foh-settings-types'
 
@@ -62,7 +62,7 @@ export default function DisplayAllOpenHours({
 			<DisplayDays
 				showTitle={true}
 				days={allHours.normal_hours}
-				header={normalTitle.default}
+				header={__('Open hour', 'foh-domain')}
 				weekNameFormat={allHours.settings.week_name_format}
 				hourNameFormat={allHours.settings.hour_name_format}
 			/>

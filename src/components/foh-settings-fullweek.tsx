@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import { Day, Hour, TimeInputValue } from '../types/foh-settings-types'
 import { Times } from './foh-settings-times'
-import { weekNames, singleWeekName } from '../utility/fohNames'
+import { weekNames } from '../utility/fohNames'
 
 interface Props {
 	week: Day[]
@@ -17,7 +17,8 @@ export function FullWeek({ week, input }: Props) {
 	const theWeek = week.map((dayObj: Day, index, array) => {
 		const [hours, setHours] = useState(dayObj)
 
-		const title = array.length == 7 ? weekNames.default[index] : singleWeekName
+		const title =
+			array.length == 7 ? weekNames.default[index] : __('Hours', 'foh-domain')
 
 		const addMoreHours = () => {
 			const emptyHoursObj: Hour = {

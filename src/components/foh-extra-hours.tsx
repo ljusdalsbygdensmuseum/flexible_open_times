@@ -1,5 +1,7 @@
 import { Panel, PanelBody, ToggleControl } from '@wordpress/components'
 
+import { __ } from '@wordpress/i18n'
+
 import { FullWeek } from './foh-settings-fullweek'
 import { DaySelect } from './foh-day-select'
 
@@ -74,7 +76,7 @@ export default function FohExtraHours() {
 				<div id='full-week'>
 					<PanelBody>
 						<ToggleControl
-							label='Closed'
+							label={__('Closed', 'foh-domain')}
 							checked={closed}
 							onChange={(value) =>
 								setClosed(() => {

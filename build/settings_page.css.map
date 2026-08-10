@@ -1,1 +1,1 @@
-{"version":3,"file":"settings_page.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack://second_test_plugin/./src/scss/settings-page.scss"],"sourcesContent":["label {\r\n\tmin-width: 10em;\r\n}\r\n"],"names":[],"sourceRoot":""}
+{"version":3,"file":"settings_page.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack://flexible_open_hours/./src/scss/settings-page.scss"],"sourcesContent":["label {\r\n\tmin-width: 10em;\r\n}\r\n"],"names":[],"sourceRoot":""}

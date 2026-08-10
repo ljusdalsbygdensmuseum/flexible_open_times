@@ -18,6 +18,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -85,7 +88,7 @@ function DaySelect({
   };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-      title: 'Dates',
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Dates', 'foh-domain'),
       children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
         children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.DatePicker, {
           startOfWeek: 1,
@@ -95,13 +98,13 @@ function DaySelect({
         })
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
         children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-          label: 'Select multiple days',
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Select multiple days', 'foh-domain'),
           checked: multipleState,
           onChange: value => setMultipleState(() => value)
         })
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
         children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-          label: 'Remove days',
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Remove days', 'foh-domain'),
           checked: removeState,
           onChange: value => setRemoveState(() => value)
         })
@@ -126,12 +129,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _foh_settings_fullweek__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foh-settings-fullweek */ "./src/components/foh-settings-fullweek.tsx");
-/* harmony import */ var _foh_day_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foh-day-select */ "./src/components/foh-day-select.tsx");
-/* harmony import */ var _types_foh_settings_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../types/foh-settings-types */ "./src/types/foh-settings-types.ts");
-/* harmony import */ var _utility_is_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utility/is-json */ "./src/utility/is-json.ts");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foh_settings_fullweek__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foh-settings-fullweek */ "./src/components/foh-settings-fullweek.tsx");
+/* harmony import */ var _foh_day_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foh-day-select */ "./src/components/foh-day-select.tsx");
+/* harmony import */ var _types_foh_settings_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../types/foh-settings-types */ "./src/types/foh-settings-types.ts");
+/* harmony import */ var _utility_is_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utility/is-json */ "./src/utility/is-json.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -147,9 +153,9 @@ function FohExtraHours() {
     throw new Error('#foh-extra-hours_hours_field not found');
   }
   let hoursinfo = [[]];
-  if ((0,_utility_is_json__WEBPACK_IMPORTED_MODULE_5__["default"])(hoursInput.value)) {
+  if ((0,_utility_is_json__WEBPACK_IMPORTED_MODULE_6__["default"])(hoursInput.value)) {
     let json = JSON.parse(hoursInput.value);
-    if (_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_4__.DaysSchema.safeParse(json)) {
+    if (_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_5__.DaysSchema.safeParse(json)) {
       hoursinfo = json;
     }
   }
@@ -161,9 +167,9 @@ function FohExtraHours() {
     throw new Error('#foh-extra-hours_hours_dates_field not found');
   }
   let datesInfo = [];
-  if ((0,_utility_is_json__WEBPACK_IMPORTED_MODULE_5__["default"])(dateInput.value)) {
+  if ((0,_utility_is_json__WEBPACK_IMPORTED_MODULE_6__["default"])(dateInput.value)) {
     let json = JSON.parse(dateInput.value);
-    if (_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_4__.DatesSchema.safeParse(json)) {
+    if (_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_5__.DatesSchema.safeParse(json)) {
       datesInfo = json;
     }
   }
@@ -173,12 +179,12 @@ function FohExtraHours() {
   if (hoursinfo[0].length <= 0) {
     closedCheck = true;
   }
-  const [closed, setClosed] = (0,react__WEBPACK_IMPORTED_MODULE_6__.useState)(closedCheck);
+  const [closed, setClosed] = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(closedCheck);
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Panel, {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         id: 'day-select',
-        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_day_select__WEBPACK_IMPORTED_MODULE_3__.DaySelect, {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_day_select__WEBPACK_IMPORTED_MODULE_4__.DaySelect, {
           dates: datesInfo,
           input: [dateInput, mindateInput, maxdateInput]
         })
@@ -188,14 +194,14 @@ function FohExtraHours() {
         id: 'full-week',
         children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-            label: 'Closed',
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Closed', 'foh-domain'),
             checked: closed,
             onChange: value => setClosed(() => {
               hoursInput.value = '[[]]';
               return value;
             })
           })
-        }), !closed && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_settings_fullweek__WEBPACK_IMPORTED_MODULE_2__.FullWeek, {
+        }), !closed && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_settings_fullweek__WEBPACK_IMPORTED_MODULE_3__.FullWeek, {
           week: hoursinfo,
           input: hoursInput
         })]
@@ -239,7 +245,7 @@ function FullWeek({
   const [weekArray, setWeekArray] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(week);
   const theWeek = week.map((dayObj, index, array) => {
     const [hours, setHours] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(dayObj);
-    const title = array.length == 7 ? _utility_fohNames__WEBPACK_IMPORTED_MODULE_5__.weekNames.default[index] : _utility_fohNames__WEBPACK_IMPORTED_MODULE_5__.singleWeekName;
+    const title = array.length == 7 ? _utility_fohNames__WEBPACK_IMPORTED_MODULE_5__.weekNames.default[index] : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hours', 'foh-domain');
     const addMoreHours = () => {
       const emptyHoursObj = {
         open: {
@@ -442,8 +448,6 @@ const AllHoursDataSchema = zod__WEBPACK_IMPORTED_MODULE_0__.object({
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   normalTitle: () => (/* binding */ normalTitle),
-/* harmony export */   singleWeekName: () => (/* binding */ singleWeekName),
 /* harmony export */   weekNames: () => (/* binding */ weekNames)
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
@@ -453,13 +457,6 @@ const weekNames = {
   default: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Monday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tuesday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wednesday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thursday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Friday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Saturday', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sunday', 'foh-domain')],
   short: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Mon', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tue', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wed', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thu', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Fri', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sat', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sun', 'foh-domain')],
   pointing: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Monday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tuesday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wednesday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thursday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Friday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Saturday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sunday the', 'foh-domain')]
-};
-const singleWeekName = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hours', 'foh-domain');
-const normalTitle = {
-  default: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Open hours', 'foh-domain'),
-  whenTemp: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Normal open hours', 'foh-domain'),
-  showNormal: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show normal open hours', 'foh-domain'),
-  backName: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Back to current hours', 'foh-domain')
 };
 
 /***/ },
