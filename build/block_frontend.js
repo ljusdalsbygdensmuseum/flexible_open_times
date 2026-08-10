@@ -267,6 +267,7 @@ function DisplayHours({
     const openHour = `${(0,_utility_fohFixMissingZero__WEBPACK_IMPORTED_MODULE_1__["default"])(hour.open.hours)}${minutes(hour.open.minutes)}`;
     const closeHour = `${(0,_utility_fohFixMissingZero__WEBPACK_IMPORTED_MODULE_1__["default"])(hour.close.hours)}${minutes(hour.close.minutes)}`;
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+      className: 'foh-display__hours-hour',
       children: [openHour, " - ", closeHour, comma]
     });
   });

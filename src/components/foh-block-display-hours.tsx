@@ -23,7 +23,7 @@ export default function DisplayHours({ hours, hourNameFormat }: Prorps) {
 			hour.close.minutes,
 		)}`
 		return (
-			<li>
+			<li className='foh-display__hours-hour'>
 				{openHour} - {closeHour}
 				{comma}
 			</li>
