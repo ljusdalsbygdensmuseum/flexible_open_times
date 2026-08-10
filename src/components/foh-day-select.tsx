@@ -7,6 +7,7 @@ import {
 
 import { Dates } from '../types/foh-settings-types'
 import { useState } from '@wordpress/element'
+import { __ } from '@wordpress/i18n'
 
 interface Props {
 	dates: Dates
@@ -50,7 +51,7 @@ export function DaySelect({ dates, input }: Props) {
 		setDateParam((dates) => {
 			const newDates = dates.filter(
 				(compareItem) =>
-					newDate.toDateString() !== new Date(compareItem.date).toDateString()
+					newDate.toDateString() !== new Date(compareItem.date).toDateString(),
 			)
 			begOrEndDate(new Date(newDates[0].date), [...newDates])
 			input[0].value = JSON.stringify([...newDates])
@@ -85,7 +86,7 @@ export function DaySelect({ dates, input }: Props) {
 
 	return (
 		<>
-			<PanelBody title='Dates'>
+			<PanelBody title={__('Dates', 'foh-domain')}>
 				<PanelRow>
 					<DatePicker
 						startOfWeek={1}
@@ -96,14 +97,14 @@ export function DaySelect({ dates, input }: Props) {
 				</PanelRow>
 				<PanelRow>
 					<ToggleControl
-						label='Select multiple days'
+						label={__('Select multiple days', 'foh-domain')}
 						checked={multipleState}
 						onChange={(value) => setMultipleState(() => value)}
 					/>
 				</PanelRow>
 				<PanelRow>
 					<ToggleControl
-						label='Remove days'
+						label={__('Remove days', 'foh-domain')}
 						checked={removeState}
 						onChange={(value) => setRemoveState(() => value)}
 					/>

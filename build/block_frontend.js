@@ -232,7 +232,7 @@ function DisplayExtraHours({
       })]
     });
   });
-  return theDays;
+  return (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Closed', 'foh-domain');
 }
 
 /***/ },
