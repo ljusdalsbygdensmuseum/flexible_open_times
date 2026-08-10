@@ -10,6 +10,12 @@
 .wp-block-flexible-open-hours-openhours ul {
   padding: 0;
 }
+.wp-block-flexible-open-hours-openhours ul .foh-display__hours-hour {
+  display: inline-block;
+}
+.wp-block-flexible-open-hours-openhours ul .foh-display__hours-hour:not(:first-child) {
+  padding-right: 0.2rem;
+}
 .wp-block-flexible-open-hours-openhours li {
   display: inline;
 }

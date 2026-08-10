@@ -217,6 +217,7 @@ msgstr "Öppettider"
 
 #: build/blocks/index.js:176 build/blocks/view.js:78 build/block_frontend.js:78
 #: build/blocks/index.js:99 build/blocks/view.js:39 build/block_frontend.js:39
+#, fuzzy
 #| msgid "Open hour"
 msgid "Open hours"
 msgstr "Öppettider"

@@ -173,7 +173,7 @@ function DisplayAllOpenHours({
   }) : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_foh_block_display_day__WEBPACK_IMPORTED_MODULE_3__["default"], {
     showTitle: true,
     days: allHours.normal_hours,
-    header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Open hour', 'foh-domain'),
+    header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Open hours', 'foh-domain'),
     weekNameFormat: allHours.settings.week_name_format,
     hourNameFormat: allHours.settings.hour_name_format
   });
@@ -365,6 +365,7 @@ function DisplayHours({
     const openHour = `${(0,_utility_fohFixMissingZero__WEBPACK_IMPORTED_MODULE_1__["default"])(hour.open.hours)}${minutes(hour.open.minutes)}`;
     const closeHour = `${(0,_utility_fohFixMissingZero__WEBPACK_IMPORTED_MODULE_1__["default"])(hour.close.hours)}${minutes(hour.close.minutes)}`;
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+      className: 'foh-display__hours-hour',
       children: [openHour, " - ", closeHour, comma]
     });
   });
