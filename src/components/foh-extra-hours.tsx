@@ -15,6 +15,7 @@ import {
 import isJSON from '../utility/is-json'
 
 import { useState } from 'react'
+import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'
 
 export default function FohExtraHours() {
 	//get input and data
@@ -46,7 +47,7 @@ export default function FohExtraHours() {
 	if (!dateInput || !mindateInput || !maxdateInput) {
 		throw new Error('#foh-extra-hours_hours_dates_field not found')
 	}
-	let datesInfo: Dates = []
+	let datesInfo: DatePickerEvent[] = []
 	if (isJSON(dateInput.value)) {
 		let json = JSON.parse(dateInput.value)
 		if (DatesSchema.safeParse(json)) {

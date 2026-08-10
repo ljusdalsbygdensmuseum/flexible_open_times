@@ -8,9 +8,10 @@ import {
 import { Dates } from '../types/foh-settings-types'
 import { useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
+import { DatePickerEvent } from '@wordpress/components/build-types/date-time/types'
 
 interface Props {
-	dates: Dates
+	dates: DatePickerEvent[]
 	input: HTMLInputElement[]
 }
 
