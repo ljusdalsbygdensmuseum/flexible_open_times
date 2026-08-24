@@ -27,6 +27,10 @@ class FlexibleOpenHours
         //Post type and other init
         add_action('init', array($this, 'init_post_type'));
 
+        //Post type description
+        add_filter('views_edit-foh-extra-hours', array($this, 'post_type_description'));
+        add_filter('views_edit-foh-temporary-hours', array($this, 'post_type_description'));
+
         //Meta boxes
         add_action('add_meta_boxes', array($this, 'init_meta_boxes'));
         add_action('save_post_foh-extra-hours', array($this, 'save_foh_extra_hours_meta'));
@@ -288,7 +292,8 @@ class FlexibleOpenHours
             'show_in_menu' => FALSE,
             'labels' => array(
                 'name' => __('Extra hours', 'foh-domain'),
-            )
+            ),
+            'description' => __('For induvidual dates or events, example: a seminar at night or closed on christmas day.', 'foh-domain')
         );
         register_post_type('foh-extra-hours', $extra_hours_args);
 
@@ -298,11 +303,24 @@ class FlexibleOpenHours
             'show_in_menu' => FALSE,
             'labels' => array(
                 'name' => __('Temporary hours', 'foh-domain'),
-            )
+            ),
+            'description' => __('For longer periods of time, example: summer open hours or a month closed for renovations.', 'foh-domain')
         );
         register_post_type('foh-temporary-hours', $temporary_hours_args);
 
         register_block_type(__DIR__ . '/build/blocks');
+    }
+
+    //Post type description
+    function post_type_description($views)
+    {
+        $screen = get_current_screen();
+        $post_type = get_post_type_object($screen->post_type);
+
+        if ($post_type->description) {
+            printf('<p>%s</p>', esc_html($post_type->description));
+        }
+        return $views;
     }
 
     //Meta box
