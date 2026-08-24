@@ -4,19 +4,19 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress."
 "org/support/plugin/flexible_open_times\n"
 "Last-Translator: \n"
-"Language-Team: Swedish\n"
+"Language-Team: Svenska\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-05-18T08:39:51+00:00\n"
-"PO-Revision-Date: 2026-08-24 08:59+0000\n"
+"PO-Revision-Date: 2026-08-10 08:46+0000\n"
 "Language: sv_SE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: foh-domain\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Loco-Version: 2.8.8; wp-7.0.2; php-8.3.29\n"
 
-#: flexible-open-hours.php:261
+#: flexible-open-hours.php:257
 msgid "15/11"
 msgstr "15/11"
 
@@ -65,7 +65,7 @@ msgstr "Stängt"
 msgid "Dates"
 msgstr "Datum"
 
-#: flexible-open-hours.php:252
+#: flexible-open-hours.php:248
 msgid "Definite form"
 msgstr "Bestämd form"
 
@@ -74,12 +74,12 @@ msgstr "Bestämd form"
 msgid "Easily change open times on the fly."
 msgstr "Ändra öppettider hur och när du vill"
 
-#: flexible-open-hours.php:55 flexible-open-hours.php:294
-#: flexible-open-hours.php:330
+#: flexible-open-hours.php:51 flexible-open-hours.php:290
+#: flexible-open-hours.php:312
 msgid "Extra hours"
 msgstr "Extra öppettider"
 
-#: flexible-open-hours.php:195
+#: flexible-open-hours.php:191
 msgid "Extra Open Hours"
 msgstr "Extra öppettider"
 
@@ -87,22 +87,6 @@ msgstr "Extra öppettider"
 #: flexible-open-hours.php
 msgid "Flexible Open Hours"
 msgstr "Flexibla Öppettider"
-
-#: flexible-open-hours.php:296
-msgid ""
-"For induvidual dates or events, example: a seminar at night or closed on "
-"christmas day."
-msgstr ""
-"Till enstaka datum eller event, till exempel: ett seminarium på kvällen "
-"eller stängt på julafton."
-
-#: flexible-open-hours.php:307
-msgid ""
-"For longer periods of time, example: summer open hours or a month closed for "
-"renovations."
-msgstr ""
-"Till längre perioder, till exempel: sommar öppettider eller stängt en månad "
-"för renoveringar."
 
 #: build/blocks/index.js:553 build/blocks/view.js:455
 #: build/block_frontend.js:455 build/main_page.js:296
@@ -131,23 +115,23 @@ msgstr "Fredag"
 msgid "Friday the"
 msgstr "Fredagen den"
 
-#: flexible-open-hours.php:231 flexible-open-hours.php:248
-#: flexible-open-hours.php:273
+#: flexible-open-hours.php:227 flexible-open-hours.php:244
+#: flexible-open-hours.php:269
 msgid "Full"
 msgstr "Hela"
 
-#: flexible-open-hours.php:235 flexible-open-hours.php:256
-#: flexible-open-hours.php:277
+#: flexible-open-hours.php:231 flexible-open-hours.php:252
+#: flexible-open-hours.php:273
 msgid "Half"
 msgstr "Halva"
 
-#: flexible-open-hours.php:206 build/main_page.js:38 build/metabox_extra.js:248
+#: flexible-open-hours.php:202 build/main_page.js:38 build/metabox_extra.js:248
 #: build/metabox_temporary.js:119 build/main_page.js:11
 #: build/metabox_extra.js:126 build/metabox_temporary.js:64
 msgid "Hours"
 msgstr "Tider"
 
-#: flexible-open-hours.php:204
+#: flexible-open-hours.php:200
 msgid "Hours format"
 msgstr "Tids format"
 
@@ -156,11 +140,11 @@ msgstr "Tids format"
 msgid "ina"
 msgstr "Ina"
 
-#: flexible-open-hours.php:331
+#: flexible-open-hours.php:313
 msgid "Message"
 msgstr "Medelande"
 
-#: flexible-open-hours.php:236 build/blocks/index.js:553
+#: flexible-open-hours.php:232 build/blocks/index.js:553
 #: build/blocks/view.js:455 build/block_frontend.js:455 build/main_page.js:296
 #: build/metabox_extra.js:458 build/metabox_temporary.js:401
 #: build/blocks/index.js:283 build/blocks/view.js:223
@@ -169,11 +153,11 @@ msgstr "Medelande"
 msgid "Mon"
 msgstr "Mån"
 
-#: flexible-open-hours.php:257
+#: flexible-open-hours.php:253
 msgid "Mon 15/11"
 msgstr "Mån 15/11"
 
-#: flexible-open-hours.php:232 build/blocks/index.js:552
+#: flexible-open-hours.php:228 build/blocks/index.js:552
 #: build/blocks/view.js:454 build/block_frontend.js:454 build/main_page.js:295
 #: build/metabox_extra.js:457 build/metabox_temporary.js:400
 #: build/blocks/index.js:274 build/blocks/view.js:214
@@ -182,7 +166,7 @@ msgstr "Mån 15/11"
 msgid "Monday"
 msgstr "Måndag"
 
-#: flexible-open-hours.php:249
+#: flexible-open-hours.php:245
 msgid "Monday 15/11"
 msgstr "Måndag 15/11"
 
@@ -195,19 +179,19 @@ msgstr "Måndag 15/11"
 msgid "Monday the"
 msgstr "Måndagen"
 
-#: flexible-open-hours.php:253
+#: flexible-open-hours.php:249
 msgid "Monday the 15/11"
 msgstr "Måndagen den 15/11"
 
-#: flexible-open-hours.php:260
+#: flexible-open-hours.php:256
 msgid "None"
 msgstr "Ingen"
 
-#: flexible-open-hours.php:52
+#: flexible-open-hours.php:48
 msgid "Normal hours"
 msgstr "Vanliga öppettider"
 
-#: flexible-open-hours.php:68 flexible-open-hours.php:194
+#: flexible-open-hours.php:64 flexible-open-hours.php:190
 msgid "Normal Open Hours"
 msgstr "Vanliga Öppettider"
 
@@ -223,11 +207,11 @@ msgstr "Vanliga öppettider"
 msgid "Open"
 msgstr "Öppna"
 
-#: flexible-open-hours.php:85
+#: flexible-open-hours.php:81
 msgid "Open Hour Settings"
 msgstr "Öppet tider inställningar"
 
-#: flexible-open-hours.php:47 flexible-open-hours.php:52
+#: flexible-open-hours.php:43 flexible-open-hours.php:48
 msgid "Open Hours"
 msgstr "Öppettider"
 
@@ -278,7 +262,7 @@ msgstr "Lördagen den"
 msgid "Select multiple days"
 msgstr "Välj flera i taget"
 
-#: flexible-open-hours.php:59
+#: flexible-open-hours.php:55
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -315,8 +299,8 @@ msgstr "Söndag"
 msgid "Sunday the"
 msgstr "Söndagen den"
 
-#: flexible-open-hours.php:56 flexible-open-hours.php:305
-#: flexible-open-hours.php:334
+#: flexible-open-hours.php:52 flexible-open-hours.php:300
+#: flexible-open-hours.php:316
 msgid "Temporary hours"
 msgstr "Tillfälliga öppettider"
 
@@ -401,6 +385,6 @@ msgstr "Onsdag"
 msgid "Wednesday the"
 msgstr "Onsdagen den"
 
-#: flexible-open-hours.php:192
+#: flexible-open-hours.php:188
 msgid "Week name format"
 msgstr "Vecko namns format"

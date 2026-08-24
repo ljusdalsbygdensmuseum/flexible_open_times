@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-10T08:45:57+00:00\n"
+"POT-Creation-Date: 2026-08-24T08:55:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: foh-domain\n"
@@ -29,53 +29,53 @@ msgstr ""
 msgid "ina"
 msgstr ""
 
-#: flexible-open-hours.php:43
-#: flexible-open-hours.php:48
+#: flexible-open-hours.php:47
+#: flexible-open-hours.php:52
 msgid "Open Hours"
 msgstr ""
 
-#: flexible-open-hours.php:48
+#: flexible-open-hours.php:52
 msgid "Normal hours"
 msgstr ""
 
-#: flexible-open-hours.php:51
-#: flexible-open-hours.php:290
-#: flexible-open-hours.php:312
+#: flexible-open-hours.php:55
+#: flexible-open-hours.php:294
+#: flexible-open-hours.php:330
 msgid "Extra hours"
 msgstr ""
 
-#: flexible-open-hours.php:52
-#: flexible-open-hours.php:300
-#: flexible-open-hours.php:316
+#: flexible-open-hours.php:56
+#: flexible-open-hours.php:305
+#: flexible-open-hours.php:334
 msgid "Temporary hours"
 msgstr ""
 
-#: flexible-open-hours.php:55
+#: flexible-open-hours.php:59
 msgid "Settings"
 msgstr ""
 
-#: flexible-open-hours.php:64
-#: flexible-open-hours.php:190
+#: flexible-open-hours.php:68
+#: flexible-open-hours.php:194
 msgid "Normal Open Hours"
 msgstr ""
 
-#: flexible-open-hours.php:81
+#: flexible-open-hours.php:85
 msgid "Open Hour Settings"
 msgstr ""
 
-#: flexible-open-hours.php:188
+#: flexible-open-hours.php:192
 msgid "Week name format"
 msgstr ""
 
-#: flexible-open-hours.php:191
+#: flexible-open-hours.php:195
 msgid "Extra Open Hours"
 msgstr ""
 
-#: flexible-open-hours.php:200
+#: flexible-open-hours.php:204
 msgid "Hours format"
 msgstr ""
 
-#: flexible-open-hours.php:202
+#: flexible-open-hours.php:206
 #: build/main_page.js:38
 #: build/metabox_extra.js:248
 #: build/metabox_temporary.js:119
@@ -85,13 +85,13 @@ msgstr ""
 msgid "Hours"
 msgstr ""
 
-#: flexible-open-hours.php:227
-#: flexible-open-hours.php:244
-#: flexible-open-hours.php:269
+#: flexible-open-hours.php:231
+#: flexible-open-hours.php:248
+#: flexible-open-hours.php:273
 msgid "Full"
 msgstr ""
 
-#: flexible-open-hours.php:228
+#: flexible-open-hours.php:232
 #: build/blocks/index.js:552
 #: build/blocks/view.js:454
 #: build/block_frontend.js:454
@@ -107,13 +107,13 @@ msgstr ""
 msgid "Monday"
 msgstr ""
 
-#: flexible-open-hours.php:231
-#: flexible-open-hours.php:252
-#: flexible-open-hours.php:273
+#: flexible-open-hours.php:235
+#: flexible-open-hours.php:256
+#: flexible-open-hours.php:277
 msgid "Half"
 msgstr ""
 
-#: flexible-open-hours.php:232
+#: flexible-open-hours.php:236
 #: build/blocks/index.js:553
 #: build/blocks/view.js:455
 #: build/block_frontend.js:455
@@ -129,31 +129,39 @@ msgstr ""
 msgid "Mon"
 msgstr ""
 
-#: flexible-open-hours.php:245
+#: flexible-open-hours.php:249
 msgid "Monday 15/11"
 msgstr ""
 
-#: flexible-open-hours.php:248
+#: flexible-open-hours.php:252
 msgid "Definite form"
 msgstr ""
 
-#: flexible-open-hours.php:249
+#: flexible-open-hours.php:253
 msgid "Monday the 15/11"
 msgstr ""
 
-#: flexible-open-hours.php:253
+#: flexible-open-hours.php:257
 msgid "Mon 15/11"
 msgstr ""
 
-#: flexible-open-hours.php:256
+#: flexible-open-hours.php:260
 msgid "None"
 msgstr ""
 
-#: flexible-open-hours.php:257
+#: flexible-open-hours.php:261
 msgid "15/11"
 msgstr ""
 
-#: flexible-open-hours.php:313
+#: flexible-open-hours.php:296
+msgid "For induvidual dates or events, example: a seminar at night or closed on christmas day."
+msgstr ""
+
+#: flexible-open-hours.php:307
+msgid "For longer periods of time, example: summer open hours or a month closed for renovations."
+msgstr ""
+
+#: flexible-open-hours.php:331
 msgid "Message"
 msgstr ""
 
