@@ -418,16 +418,10 @@ function DisplayTemporaryHours({
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
         onClick: e => {
-          var _a;
           const target = e.target;
-          (_a = target.closest('.foh-display__full-temporary')) === null || _a === void 0 ? void 0 : _a.classList.add('foh-display__left-out');
-          setTimeout(() => {
-            var _a;
-            setShowNormal(old => {
-              return !old;
-            });
-            (_a = target.closest('.foh-display__full-temporary')) === null || _a === void 0 ? void 0 : _a.classList.remove('foh-display__left-out');
-          }, 300);
+          setShowNormal(old => {
+            return !old;
+          });
         },
         className: 'foh-display__button',
         children: showNormal ? `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Back to current hours', 'foh-domain')}` : `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show normal open hours', 'foh-domain')}`

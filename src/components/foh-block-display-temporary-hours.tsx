@@ -39,17 +39,10 @@ export default function DisplayTemporaryHours({
 				<button
 					onClick={(e) => {
 						const target = e.target as HTMLElement
-						target
-							.closest('.foh-display__full-temporary')
-							?.classList.add('foh-display__left-out')
-						setTimeout(() => {
-							setShowNormal((old) => {
-								return !old
-							})
-							target
-								.closest('.foh-display__full-temporary')
-								?.classList.remove('foh-display__left-out')
-						}, 300)
+
+						setShowNormal((old) => {
+							return !old
+						})
 					}}
 					className='foh-display__button'
 				>
