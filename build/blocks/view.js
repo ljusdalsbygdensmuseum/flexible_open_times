@@ -319,19 +319,15 @@ function DisplayTemporaryHours({
       hourNameFormat: hourNameFormat
     });
   });
-  const changeButton = (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", {
-    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-        onClick: e => {
-          const target = e.target;
-          setShowNormal(old => {
-            return !old;
-          });
-        },
-        className: 'foh-display__button',
-        children: showNormal ? `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Back to current hours', 'foh-domain')}` : `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show normal open hours', 'foh-domain')}`
-      })
-    })
+  const changeButton = (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+    onClick: e => {
+      const target = e.target;
+      setShowNormal(old => {
+        return !old;
+      });
+    },
+    className: 'foh-display__button',
+    children: showNormal ? `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Back to current hours', 'foh-domain')}` : `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show normal open hours', 'foh-domain')}`
   });
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'foh-display__full-temporary',

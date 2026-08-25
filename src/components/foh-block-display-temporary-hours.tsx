@@ -34,24 +34,20 @@ export default function DisplayTemporaryHours({
 	})
 
 	const changeButton = (
-		<ul>
-			<li>
-				<button
-					onClick={(e) => {
-						const target = e.target as HTMLElement
+		<button
+			onClick={(e) => {
+				const target = e.target as HTMLElement
 
-						setShowNormal((old) => {
-							return !old
-						})
-					}}
-					className='foh-display__button'
-				>
-					{showNormal
-						? `${__('Back to current hours', 'foh-domain')}`
-						: `${__('Show normal open hours', 'foh-domain')}`}
-				</button>
-			</li>
-		</ul>
+				setShowNormal((old) => {
+					return !old
+				})
+			}}
+			className='foh-display__button'
+		>
+			{showNormal
+				? `${__('Back to current hours', 'foh-domain')}`
+				: `${__('Show normal open hours', 'foh-domain')}`}
+		</button>
 	)
 
 	return (
