@@ -1,6 +1,5 @@
 import DisplayDays from '../components/foh-block-display-day'
 import { Day, TemporaryHoursData } from '../types/foh-settings-types'
-import { normalTitle } from '../utility/fohNames'
 
 import { __ } from '@wordpress/i18n'
 
