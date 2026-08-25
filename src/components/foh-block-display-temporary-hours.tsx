@@ -4,6 +4,7 @@ import { Day, TemporaryHoursData } from '../types/foh-settings-types'
 import { __ } from '@wordpress/i18n'
 
 import { useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 
 interface Props {
 	weekNameFormat: number
@@ -55,17 +56,35 @@ export default function DisplayTemporaryHours({
 
 	return (
 		<div className='foh-display__full-temporary' aria-live='polite'>
-			{showNormal ? (
-				<DisplayDays
-					showTitle={true}
-					days={normal}
-					header={__('Normal open hours', 'foh-domain')}
-					weekNameFormat={weekNameFormat}
-					hourNameFormat={hourNameFormat}
-				/>
-			) : (
-				allTemporary
-			)}
+			<AnimatePresence initial={false} mode='wait'>
+				{showNormal ? (
+					<motion.div
+						initial={{ opacity: 0, x: -10 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: -10 }}
+						transition={{ duration: 0.5 }}
+						key='normal_days'
+					>
+						<DisplayDays
+							showTitle={true}
+							days={normal}
+							header={__('Normal open hours', 'foh-domain')}
+							weekNameFormat={weekNameFormat}
+							hourNameFormat={hourNameFormat}
+						/>
+					</motion.div>
+				) : (
+					<motion.div
+						initial={{ opacity: 0, x: -10 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: -10 }}
+						transition={{ duration: 0.5 }}
+						key='temp_days'
+					>
+						{allTemporary}
+					</motion.div>
+				)}
+			</AnimatePresence>
 
 			{changeButton}
 		</div>
