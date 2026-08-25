@@ -333,13 +333,13 @@ function DisplayTemporaryHours({
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'foh-display__full-temporary',
     "aria-live": 'polite',
-    children: [!showNormal && allTemporary, showNormal && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_foh_block_display_day__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    children: [showNormal ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_foh_block_display_day__WEBPACK_IMPORTED_MODULE_1__["default"], {
       showTitle: true,
       days: normal,
       header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Normal open hours', 'foh-domain'),
       weekNameFormat: weekNameFormat,
       hourNameFormat: hourNameFormat
-    }), changeButton]
+    }) : allTemporary, changeButton]
   });
 }
 

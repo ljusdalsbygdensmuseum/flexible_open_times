@@ -55,8 +55,7 @@ export default function DisplayTemporaryHours({
 
 	return (
 		<div className='foh-display__full-temporary' aria-live='polite'>
-			{!showNormal && allTemporary}
-			{showNormal && (
+			{showNormal ? (
 				<DisplayDays
 					showTitle={true}
 					days={normal}
@@ -64,7 +63,10 @@ export default function DisplayTemporaryHours({
 					weekNameFormat={weekNameFormat}
 					hourNameFormat={hourNameFormat}
 				/>
+			) : (
+				allTemporary
 			)}
+
 			{changeButton}
 		</div>
 	)
