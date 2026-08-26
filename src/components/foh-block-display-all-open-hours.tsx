@@ -5,6 +5,8 @@ import DisplayExtraHours from '../components/foh-block-display-extra-hours'
 import DisplayTemporaryHours from '../components/foh-block-display-temporary-hours'
 import { __ } from '@wordpress/i18n'
 
+import { LayoutGroup } from 'motion/react'
+
 import { AllHoursDataSchema, AllHoursData } from '../types/foh-settings-types'
 
 interface Props {
@@ -81,8 +83,10 @@ export default function DisplayAllOpenHours({
 
 	return (
 		<>
-			{normalHours}
-			{ExtraHours}
+			<LayoutGroup>
+				{normalHours}
+				{ExtraHours}
+			</LayoutGroup>
 		</>
 	)
 }
