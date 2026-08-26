@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n'
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor'
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor'
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -21,6 +21,9 @@ import { useBlockProps } from '@wordpress/block-editor'
  */
 import './editor.scss'
 import DisplayAllOpenHours from '../components/foh-block-display-all-open-hours'
+import { PanelBody, PanelRow, ToggleControl } from '@wordpress/components'
+import { BlockEditProps } from '@wordpress/blocks'
+import { openhoursBlockProps } from '../types/foh-openhours-props'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,9 +34,23 @@ import DisplayAllOpenHours from '../components/foh-block-display-all-open-hours'
  * @return {Element} Element to render.
  */
 
-export default function Edit() {
+export default function Edit({
+	attributes,
+	setAttributes,
+}: BlockEditProps<openhoursBlockProps>) {
 	return (
 		<div {...useBlockProps()}>
+			<InspectorControls>
+				<PanelBody>
+					<PanelRow>
+						<ToggleControl
+							checked={attributes.animateOnEnter}
+							onChange={(value) => setAttributes({ animateOnEnter: value })}
+							label={__('Reveal on scroll', 'foh-domain')}
+						/>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
 			<DisplayAllOpenHours
 				title='Open Hours'
 				showExtra={true}
