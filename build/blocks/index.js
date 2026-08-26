@@ -432,19 +432,16 @@ function DisplayTemporaryHours({
     "aria-live": 'polite',
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_5__.AnimatePresence, {
       initial: false,
-      mode: 'wait',
+      mode: 'popLayout',
       children: showNormal ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_4__.motion.div, {
         initial: {
-          opacity: 0,
-          x: -10
+          opacity: 0
         },
         animate: {
-          opacity: 1,
-          x: 0
+          opacity: 1
         },
         exit: {
-          opacity: 0,
-          x: -10
+          opacity: 0
         },
         transition: {
           duration: 0.5
@@ -458,23 +455,23 @@ function DisplayTemporaryHours({
         })
       }, 'normal_days') : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_4__.motion.div, {
         initial: {
-          opacity: 0,
-          x: -10
+          opacity: 0
         },
         animate: {
-          opacity: 1,
-          x: 0
+          opacity: 1
         },
         exit: {
-          opacity: 0,
-          x: -10
+          opacity: 0
         },
         transition: {
           duration: 0.5
         },
         children: allTemporary
       }, 'temp_days')
-    }), changeButton]
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_4__.motion.div, {
+      layout: true,
+      children: changeButton
+    })]
   });
 }
 

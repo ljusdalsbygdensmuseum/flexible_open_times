@@ -4,7 +4,7 @@ import { Day, TemporaryHoursData } from '../types/foh-settings-types'
 import { __ } from '@wordpress/i18n'
 
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, LayoutGroup, motion } from 'motion/react'
 
 interface Props {
 	weekNameFormat: number
@@ -52,12 +52,12 @@ export default function DisplayTemporaryHours({
 
 	return (
 		<div className='foh-display__full-temporary' aria-live='polite'>
-			<AnimatePresence initial={false} mode='wait'>
+			<AnimatePresence initial={false} mode='popLayout'>
 				{showNormal ? (
 					<motion.div
-						initial={{ opacity: 0, x: -10 }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: -10 }}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
 						transition={{ duration: 0.5 }}
 						key='normal_days'
 					>
@@ -71,9 +71,9 @@ export default function DisplayTemporaryHours({
 					</motion.div>
 				) : (
 					<motion.div
-						initial={{ opacity: 0, x: -10 }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: -10 }}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
 						transition={{ duration: 0.5 }}
 						key='temp_days'
 					>
@@ -82,7 +82,7 @@ export default function DisplayTemporaryHours({
 				)}
 			</AnimatePresence>
 
-			{changeButton}
+			<motion.div layout>{changeButton}</motion.div>
 		</div>
 	)
 }
