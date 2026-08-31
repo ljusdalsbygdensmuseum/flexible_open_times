@@ -48,7 +48,7 @@ export default function DisplayAllOpenHours({
 				<h2>{__('Open hours', 'foh-domain')}</h2>
 				<motion.div
 					className='foh-display__spinner'
-					aria-label={__('Loading open hours')}
+					aria-label={__('Loading open hours', 'foh-domain')}
 					animate={{ transform: 'rotate(360deg)' }}
 					transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
 				></motion.div>

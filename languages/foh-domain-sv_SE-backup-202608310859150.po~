@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-05-18T08:39:51+00:00\n"
-"PO-Revision-Date: 2026-08-31 08:59+0000\n"
+"PO-Revision-Date: 2026-08-31 08:57+0000\n"
 "Language: sv_SE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: foh-domain\n"
@@ -163,11 +163,6 @@ msgstr "Tids format"
 #: flexible-open-hours.php
 msgid "ina"
 msgstr "Ina"
-
-#: build/blocks/index.js:194 build/blocks/view.js:69 build/block_frontend.js:69
-#: build/blocks/index.js:97 build/blocks/view.js:30 build/block_frontend.js:30
-msgid "Loading open hours"
-msgstr "Laddar öppettider"
 
 #: flexible-open-hours.php:332
 msgid "Message"

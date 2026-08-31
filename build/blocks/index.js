@@ -191,7 +191,7 @@ function DisplayAllOpenHours({
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Open hours', 'foh-domain')
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_7__.motion.div, {
         className: 'foh-display__spinner',
-        "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Loading open hours'),
+        "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Loading open hours', 'foh-domain'),
         animate: {
           transform: 'rotate(360deg)'
         },
