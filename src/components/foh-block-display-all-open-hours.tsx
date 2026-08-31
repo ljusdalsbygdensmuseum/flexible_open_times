@@ -5,7 +5,7 @@ import DisplayExtraHours from '../components/foh-block-display-extra-hours'
 import DisplayTemporaryHours from '../components/foh-block-display-temporary-hours'
 import { __ } from '@wordpress/i18n'
 
-import { LayoutGroup } from 'motion/react'
+import { motion, LayoutGroup } from 'motion/react'
 
 import { AllHoursDataSchema, AllHoursData } from '../types/foh-settings-types'
 
@@ -85,10 +85,16 @@ export default function DisplayAllOpenHours({
 
 	return (
 		<>
-			<LayoutGroup>
-				{normalHours}
-				{ExtraHours}
-			</LayoutGroup>
+			<motion.div
+				initial={animateOnEnter && { opacity: 0, y: 15 }}
+				whileInView={animateOnEnter && { opacity: 1, y: 0 }}
+				viewport={animateOnEnter && { once: true, margin: '-20px' }}
+			>
+				<LayoutGroup>
+					{normalHours}
+					{ExtraHours}
+				</LayoutGroup>
+			</motion.div>
 		</>
 	)
 }

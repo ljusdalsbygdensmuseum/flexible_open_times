@@ -148,8 +148,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_foh_block_display_temporary_hours__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/foh-block-display-temporary-hours */ "./src/components/foh-block-display-temporary-hours.tsx");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs");
-/* harmony import */ var _types_foh_settings_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../types/foh-settings-types */ "./src/types/foh-settings-types.ts");
+/* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/dist/es/react.mjs");
+/* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs");
+/* harmony import */ var _types_foh_settings_types__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../types/foh-settings-types */ "./src/types/foh-settings-types.ts");
 
 
 
@@ -184,10 +185,10 @@ function DisplayAllOpenHours({
     }).then(settings => {
       if (typeof settings == 'object' && settings != undefined) {
         setAllHours(() => {
-          if (_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_8__.AllHoursDataSchema.safeParse(settings).success) {
-            return _types_foh_settings_types__WEBPACK_IMPORTED_MODULE_8__.AllHoursDataSchema.parse(settings);
+          if (_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_9__.AllHoursDataSchema.safeParse(settings).success) {
+            return _types_foh_settings_types__WEBPACK_IMPORTED_MODULE_9__.AllHoursDataSchema.parse(settings);
           } else {
-            console.log(_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_8__.AllHoursDataSchema.safeParse(settings));
+            console.log(_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_9__.AllHoursDataSchema.safeParse(settings));
             return fullWeekInfo;
           }
         });
@@ -214,8 +215,22 @@ function DisplayAllOpenHours({
     hourNameFormat: allHours.settings.hour_name_format
   }) : '';
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(motion_react__WEBPACK_IMPORTED_MODULE_7__.LayoutGroup, {
-      children: [normalHours, ExtraHours]
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_7__.motion.div, {
+      initial: animateOnEnter && {
+        opacity: 0,
+        y: 15
+      },
+      whileInView: animateOnEnter && {
+        opacity: 1,
+        y: 0
+      },
+      viewport: animateOnEnter && {
+        once: true,
+        margin: '-20px'
+      },
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(motion_react__WEBPACK_IMPORTED_MODULE_8__.LayoutGroup, {
+        children: [normalHours, ExtraHours]
+      })
     })
   });
 }
