@@ -55,6 +55,7 @@ export default function Edit({
 				title='Open Hours'
 				showExtra={true}
 				showTemporary={true}
+				animateOnEnter={attributes.animateOnEnter}
 			/>
 		</div>
 	)

@@ -73,7 +73,8 @@ function Edit({
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_foh_block_display_all_open_hours__WEBPACK_IMPORTED_MODULE_4__["default"], {
       title: 'Open Hours',
       showExtra: true,
-      showTemporary: true
+      showTemporary: true,
+      animateOnEnter: attributes.animateOnEnter
     })]
   }));
   //return <p {...useBlockProps()}></p>
@@ -161,7 +162,8 @@ __webpack_require__.r(__webpack_exports__);
 function DisplayAllOpenHours({
   showExtra,
   showTemporary,
-  title
+  title,
+  animateOnEnter
 }) {
   const fullWeekInfo = {
     settings: {

@@ -37,7 +37,8 @@ __webpack_require__.r(__webpack_exports__);
 function DisplayAllOpenHours({
   showExtra,
   showTemporary,
-  title
+  title,
+  animateOnEnter
 }) {
   const fullWeekInfo = {
     settings: {

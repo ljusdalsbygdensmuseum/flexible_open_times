@@ -13,11 +13,13 @@ interface Props {
 	showExtra: boolean
 	showTemporary: boolean
 	title: string
+	animateOnEnter: any
 }
 export default function DisplayAllOpenHours({
 	showExtra,
 	showTemporary,
 	title,
+	animateOnEnter,
 }: Props) {
 	const fullWeekInfo: AllHoursData = {
 		settings: {

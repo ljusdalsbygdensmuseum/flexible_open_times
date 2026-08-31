@@ -37,7 +37,8 @@ __webpack_require__.r(__webpack_exports__);
 function DisplayAllOpenHours({
   showExtra,
   showTemporary,
-  title
+  title,
+  animateOnEnter
 }) {
   const fullWeekInfo = {
     settings: {
@@ -388,6 +389,24 @@ function DisplayTemporaryHours({
 
 /***/ },
 
+/***/ "./src/types/foh-openhours-props.ts"
+/*!******************************************!*\
+  !*** ./src/types/foh-openhours-props.ts ***!
+  \******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   openhoursBlockPropsSchema: () => (/* binding */ openhoursBlockPropsSchema)
+/* harmony export */ });
+/* harmony import */ var zod__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zod */ "./node_modules/zod/index.js");
+
+const openhoursBlockPropsSchema = zod__WEBPACK_IMPORTED_MODULE_0__["default"].object({
+  animateOnEnter: zod__WEBPACK_IMPORTED_MODULE_0__["default"].boolean()
+});
+
+/***/ },
+
 /***/ "./src/types/foh-settings-types.ts"
 /*!*****************************************!*\
   !*** ./src/types/foh-settings-types.ts ***!
@@ -492,6 +511,27 @@ const weekNames = {
   short: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Mon', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tue', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wed', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thu', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Fri', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sat', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sun', 'foh-domain')],
   pointing: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Monday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tuesday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wednesday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Thursday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Friday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Saturday the', 'foh-domain'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sunday the', 'foh-domain')]
 };
+
+/***/ },
+
+/***/ "./src/utility/is-json.ts"
+/*!********************************!*\
+  !*** ./src/utility/is-json.ts ***!
+  \********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ isJSON)
+/* harmony export */ });
+function isJSON(string) {
+  try {
+    JSON.parse(string);
+  } catch (error) {
+    return false;
+  }
+  return true;
+}
 
 /***/ },
 
@@ -28087,6 +28127,133 @@ const wrap = (min, max, v) => {
 
 /***/ },
 
+/***/ "./node_modules/zod/index.js"
+/*!***********************************!*\
+  !*** ./node_modules/zod/index.js ***!
+  \***********************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BRAND: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.BRAND),
+/* harmony export */   DIRTY: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.DIRTY),
+/* harmony export */   EMPTY_PATH: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.EMPTY_PATH),
+/* harmony export */   INVALID: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.INVALID),
+/* harmony export */   NEVER: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.NEVER),
+/* harmony export */   OK: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.OK),
+/* harmony export */   ParseStatus: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ParseStatus),
+/* harmony export */   Schema: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.Schema),
+/* harmony export */   ZodAny: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodAny),
+/* harmony export */   ZodArray: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodArray),
+/* harmony export */   ZodBigInt: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodBigInt),
+/* harmony export */   ZodBoolean: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodBoolean),
+/* harmony export */   ZodBranded: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodBranded),
+/* harmony export */   ZodCatch: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodCatch),
+/* harmony export */   ZodDate: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodDate),
+/* harmony export */   ZodDefault: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodDefault),
+/* harmony export */   ZodDiscriminatedUnion: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodDiscriminatedUnion),
+/* harmony export */   ZodEffects: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodEffects),
+/* harmony export */   ZodEnum: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodEnum),
+/* harmony export */   ZodError: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodError),
+/* harmony export */   ZodFirstPartyTypeKind: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodFirstPartyTypeKind),
+/* harmony export */   ZodFunction: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodFunction),
+/* harmony export */   ZodIntersection: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodIntersection),
+/* harmony export */   ZodIssueCode: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodIssueCode),
+/* harmony export */   ZodLazy: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodLazy),
+/* harmony export */   ZodLiteral: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodLiteral),
+/* harmony export */   ZodMap: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodMap),
+/* harmony export */   ZodNaN: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodNaN),
+/* harmony export */   ZodNativeEnum: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodNativeEnum),
+/* harmony export */   ZodNever: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodNever),
+/* harmony export */   ZodNull: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodNull),
+/* harmony export */   ZodNullable: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodNullable),
+/* harmony export */   ZodNumber: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodNumber),
+/* harmony export */   ZodObject: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodObject),
+/* harmony export */   ZodOptional: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodOptional),
+/* harmony export */   ZodParsedType: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodParsedType),
+/* harmony export */   ZodPipeline: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodPipeline),
+/* harmony export */   ZodPromise: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodPromise),
+/* harmony export */   ZodReadonly: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodReadonly),
+/* harmony export */   ZodRecord: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodRecord),
+/* harmony export */   ZodSchema: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodSchema),
+/* harmony export */   ZodSet: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodSet),
+/* harmony export */   ZodString: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodString),
+/* harmony export */   ZodSymbol: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodSymbol),
+/* harmony export */   ZodTransformer: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodTransformer),
+/* harmony export */   ZodTuple: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodTuple),
+/* harmony export */   ZodType: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodType),
+/* harmony export */   ZodUndefined: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodUndefined),
+/* harmony export */   ZodUnion: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodUnion),
+/* harmony export */   ZodUnknown: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodUnknown),
+/* harmony export */   ZodVoid: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ZodVoid),
+/* harmony export */   addIssueToContext: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.addIssueToContext),
+/* harmony export */   any: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.any),
+/* harmony export */   array: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.array),
+/* harmony export */   bigint: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.bigint),
+/* harmony export */   boolean: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.boolean),
+/* harmony export */   coerce: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.coerce),
+/* harmony export */   custom: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.custom),
+/* harmony export */   date: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.date),
+/* harmony export */   datetimeRegex: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.datetimeRegex),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   defaultErrorMap: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.defaultErrorMap),
+/* harmony export */   discriminatedUnion: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.discriminatedUnion),
+/* harmony export */   effect: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.effect),
+/* harmony export */   "enum": () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__["enum"]),
+/* harmony export */   "function": () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__["function"]),
+/* harmony export */   getErrorMap: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.getErrorMap),
+/* harmony export */   getParsedType: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.getParsedType),
+/* harmony export */   "instanceof": () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__["instanceof"]),
+/* harmony export */   intersection: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.intersection),
+/* harmony export */   isAborted: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.isAborted),
+/* harmony export */   isAsync: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.isAsync),
+/* harmony export */   isDirty: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.isDirty),
+/* harmony export */   isValid: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.isValid),
+/* harmony export */   late: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.late),
+/* harmony export */   lazy: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.lazy),
+/* harmony export */   literal: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.literal),
+/* harmony export */   makeIssue: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.makeIssue),
+/* harmony export */   map: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.map),
+/* harmony export */   nan: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.nan),
+/* harmony export */   nativeEnum: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.nativeEnum),
+/* harmony export */   never: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.never),
+/* harmony export */   "null": () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__["null"]),
+/* harmony export */   nullable: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.nullable),
+/* harmony export */   number: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.number),
+/* harmony export */   object: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.object),
+/* harmony export */   objectUtil: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.objectUtil),
+/* harmony export */   oboolean: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.oboolean),
+/* harmony export */   onumber: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.onumber),
+/* harmony export */   optional: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.optional),
+/* harmony export */   ostring: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.ostring),
+/* harmony export */   pipeline: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.pipeline),
+/* harmony export */   preprocess: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.preprocess),
+/* harmony export */   promise: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.promise),
+/* harmony export */   quotelessJson: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.quotelessJson),
+/* harmony export */   record: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.record),
+/* harmony export */   set: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.set),
+/* harmony export */   setErrorMap: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.setErrorMap),
+/* harmony export */   strictObject: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.strictObject),
+/* harmony export */   string: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.string),
+/* harmony export */   symbol: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.symbol),
+/* harmony export */   transformer: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.transformer),
+/* harmony export */   tuple: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.tuple),
+/* harmony export */   undefined: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.undefined),
+/* harmony export */   union: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.union),
+/* harmony export */   unknown: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.unknown),
+/* harmony export */   util: () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__.util),
+/* harmony export */   "void": () => (/* reexport safe */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__["void"]),
+/* harmony export */   z: () => (/* reexport module object */ _v3_external_js__WEBPACK_IMPORTED_MODULE_0__)
+/* harmony export */ });
+/* harmony import */ var _v3_external_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./v3/external.js */ "./node_modules/zod/v3/external.js");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_v3_external_js__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ },
+
 /***/ "./node_modules/zod/v3/ZodError.js"
 /*!*****************************************!*\
   !*** ./node_modules/zod/v3/ZodError.js ***!
@@ -28259,6 +28426,137 @@ function setErrorMap(map) {
 function getErrorMap() {
     return overrideErrorMap;
 }
+
+
+/***/ },
+
+/***/ "./node_modules/zod/v3/external.js"
+/*!*****************************************!*\
+  !*** ./node_modules/zod/v3/external.js ***!
+  \*****************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BRAND: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.BRAND),
+/* harmony export */   DIRTY: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.DIRTY),
+/* harmony export */   EMPTY_PATH: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.EMPTY_PATH),
+/* harmony export */   INVALID: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.INVALID),
+/* harmony export */   NEVER: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.NEVER),
+/* harmony export */   OK: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.OK),
+/* harmony export */   ParseStatus: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.ParseStatus),
+/* harmony export */   Schema: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.Schema),
+/* harmony export */   ZodAny: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodAny),
+/* harmony export */   ZodArray: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodArray),
+/* harmony export */   ZodBigInt: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodBigInt),
+/* harmony export */   ZodBoolean: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodBoolean),
+/* harmony export */   ZodBranded: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodBranded),
+/* harmony export */   ZodCatch: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodCatch),
+/* harmony export */   ZodDate: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodDate),
+/* harmony export */   ZodDefault: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodDefault),
+/* harmony export */   ZodDiscriminatedUnion: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodDiscriminatedUnion),
+/* harmony export */   ZodEffects: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodEffects),
+/* harmony export */   ZodEnum: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodEnum),
+/* harmony export */   ZodError: () => (/* reexport safe */ _ZodError_js__WEBPACK_IMPORTED_MODULE_4__.ZodError),
+/* harmony export */   ZodFirstPartyTypeKind: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodFirstPartyTypeKind),
+/* harmony export */   ZodFunction: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodFunction),
+/* harmony export */   ZodIntersection: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodIntersection),
+/* harmony export */   ZodIssueCode: () => (/* reexport safe */ _ZodError_js__WEBPACK_IMPORTED_MODULE_4__.ZodIssueCode),
+/* harmony export */   ZodLazy: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodLazy),
+/* harmony export */   ZodLiteral: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodLiteral),
+/* harmony export */   ZodMap: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodMap),
+/* harmony export */   ZodNaN: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodNaN),
+/* harmony export */   ZodNativeEnum: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodNativeEnum),
+/* harmony export */   ZodNever: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodNever),
+/* harmony export */   ZodNull: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodNull),
+/* harmony export */   ZodNullable: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodNullable),
+/* harmony export */   ZodNumber: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodNumber),
+/* harmony export */   ZodObject: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodObject),
+/* harmony export */   ZodOptional: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodOptional),
+/* harmony export */   ZodParsedType: () => (/* reexport safe */ _helpers_util_js__WEBPACK_IMPORTED_MODULE_2__.ZodParsedType),
+/* harmony export */   ZodPipeline: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodPipeline),
+/* harmony export */   ZodPromise: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodPromise),
+/* harmony export */   ZodReadonly: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodReadonly),
+/* harmony export */   ZodRecord: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodRecord),
+/* harmony export */   ZodSchema: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodSchema),
+/* harmony export */   ZodSet: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodSet),
+/* harmony export */   ZodString: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodString),
+/* harmony export */   ZodSymbol: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodSymbol),
+/* harmony export */   ZodTransformer: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodTransformer),
+/* harmony export */   ZodTuple: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodTuple),
+/* harmony export */   ZodType: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodType),
+/* harmony export */   ZodUndefined: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodUndefined),
+/* harmony export */   ZodUnion: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodUnion),
+/* harmony export */   ZodUnknown: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodUnknown),
+/* harmony export */   ZodVoid: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ZodVoid),
+/* harmony export */   addIssueToContext: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.addIssueToContext),
+/* harmony export */   any: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.any),
+/* harmony export */   array: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.array),
+/* harmony export */   bigint: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.bigint),
+/* harmony export */   boolean: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.boolean),
+/* harmony export */   coerce: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.coerce),
+/* harmony export */   custom: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.custom),
+/* harmony export */   date: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.date),
+/* harmony export */   datetimeRegex: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.datetimeRegex),
+/* harmony export */   defaultErrorMap: () => (/* reexport safe */ _errors_js__WEBPACK_IMPORTED_MODULE_0__.defaultErrorMap),
+/* harmony export */   discriminatedUnion: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.discriminatedUnion),
+/* harmony export */   effect: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.effect),
+/* harmony export */   "enum": () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__["enum"]),
+/* harmony export */   "function": () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__["function"]),
+/* harmony export */   getErrorMap: () => (/* reexport safe */ _errors_js__WEBPACK_IMPORTED_MODULE_0__.getErrorMap),
+/* harmony export */   getParsedType: () => (/* reexport safe */ _helpers_util_js__WEBPACK_IMPORTED_MODULE_2__.getParsedType),
+/* harmony export */   "instanceof": () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__["instanceof"]),
+/* harmony export */   intersection: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.intersection),
+/* harmony export */   isAborted: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.isAborted),
+/* harmony export */   isAsync: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.isAsync),
+/* harmony export */   isDirty: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.isDirty),
+/* harmony export */   isValid: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.isValid),
+/* harmony export */   late: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.late),
+/* harmony export */   lazy: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.lazy),
+/* harmony export */   literal: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.literal),
+/* harmony export */   makeIssue: () => (/* reexport safe */ _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__.makeIssue),
+/* harmony export */   map: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.map),
+/* harmony export */   nan: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.nan),
+/* harmony export */   nativeEnum: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.nativeEnum),
+/* harmony export */   never: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.never),
+/* harmony export */   "null": () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__["null"]),
+/* harmony export */   nullable: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.nullable),
+/* harmony export */   number: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.number),
+/* harmony export */   object: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.object),
+/* harmony export */   objectUtil: () => (/* reexport safe */ _helpers_util_js__WEBPACK_IMPORTED_MODULE_2__.objectUtil),
+/* harmony export */   oboolean: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.oboolean),
+/* harmony export */   onumber: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.onumber),
+/* harmony export */   optional: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.optional),
+/* harmony export */   ostring: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.ostring),
+/* harmony export */   pipeline: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.pipeline),
+/* harmony export */   preprocess: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.preprocess),
+/* harmony export */   promise: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.promise),
+/* harmony export */   quotelessJson: () => (/* reexport safe */ _ZodError_js__WEBPACK_IMPORTED_MODULE_4__.quotelessJson),
+/* harmony export */   record: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.record),
+/* harmony export */   set: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.set),
+/* harmony export */   setErrorMap: () => (/* reexport safe */ _errors_js__WEBPACK_IMPORTED_MODULE_0__.setErrorMap),
+/* harmony export */   strictObject: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.strictObject),
+/* harmony export */   string: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.string),
+/* harmony export */   symbol: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.symbol),
+/* harmony export */   transformer: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.transformer),
+/* harmony export */   tuple: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.tuple),
+/* harmony export */   undefined: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.undefined),
+/* harmony export */   union: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.union),
+/* harmony export */   unknown: () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__.unknown),
+/* harmony export */   util: () => (/* reexport safe */ _helpers_util_js__WEBPACK_IMPORTED_MODULE_2__.util),
+/* harmony export */   "void": () => (/* reexport safe */ _types_js__WEBPACK_IMPORTED_MODULE_3__["void"])
+/* harmony export */ });
+/* harmony import */ var _errors_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./errors.js */ "./node_modules/zod/v3/errors.js");
+/* harmony import */ var _helpers_parseUtil_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/parseUtil.js */ "./node_modules/zod/v3/helpers/parseUtil.js");
+/* harmony import */ var _helpers_util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/util.js */ "./node_modules/zod/v3/helpers/util.js");
+/* harmony import */ var _types_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./types.js */ "./node_modules/zod/v3/types.js");
+/* harmony import */ var _ZodError_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ZodError.js */ "./node_modules/zod/v3/ZodError.js");
+
+
+
+
+
+
 
 
 /***/ },
@@ -32594,6 +32892,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_foh_block_display_all_open_hours__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/foh-block-display-all-open-hours */ "./src/components/foh-block-display-all-open-hours.tsx");
+/* harmony import */ var _utility_is_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utility/is-json */ "./src/utility/is-json.ts");
+/* harmony import */ var _types_foh_openhours_props__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../types/foh-openhours-props */ "./src/types/foh-openhours-props.ts");
+
+
 
 
 
@@ -32601,13 +32903,22 @@ __webpack_require__.r(__webpack_exports__);
 _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
   const elements = document.querySelectorAll('.wp-block-flexible-open-hours-openhours');
   elements.forEach(element => {
+    var _a;
+    if (!element.dataset.attributes || !(0,_utility_is_json__WEBPACK_IMPORTED_MODULE_4__["default"])(element.dataset.attributes)) {
+      throw new Error('attributes not found');
+    }
+    const rawData = JSON.parse(element.dataset.attributes);
+    if (!_types_foh_openhours_props__WEBPACK_IMPORTED_MODULE_5__.openhoursBlockPropsSchema.safeParse(rawData)) {
+      throw new Error((_a = _types_foh_openhours_props__WEBPACK_IMPORTED_MODULE_5__.openhoursBlockPropsSchema.safeParse(rawData).error) === null || _a === void 0 ? void 0 : _a.message);
+    }
+    const data = _types_foh_openhours_props__WEBPACK_IMPORTED_MODULE_5__.openhoursBlockPropsSchema.parse(rawData);
     const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createRoot)(element);
     root.render((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_foh_block_display_all_open_hours__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_foh_block_display_all_open_hours__WEBPACK_IMPORTED_MODULE_3__["default"], Object.assign({
         title: 'Open Hours',
         showExtra: true,
         showTemporary: true
-      })
+      }, data))
     }));
   });
 });
