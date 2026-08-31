@@ -45,6 +45,7 @@ export default function DisplayAllOpenHours({
 	if (allHours === null) {
 		return (
 			<LayoutGroup>
+				<h2>{__('Open hours', 'foh-domain')}</h2>
 				<motion.div
 					className='foh-display__spinner'
 					aria-label={__('Loading open hours')}
