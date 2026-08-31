@@ -1,10 +1,10 @@
 import DisplayDays from '../components/foh-block-display-day'
 import { Day, TemporaryHoursData } from '../types/foh-settings-types'
-import { normalTitle } from '../utility/fohNames'
 
 import { __ } from '@wordpress/i18n'
 
 import { useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 
 interface Props {
 	weekNameFormat: number
@@ -34,46 +34,55 @@ export default function DisplayTemporaryHours({
 	})
 
 	const changeButton = (
-		<ul>
-			<li>
-				<button
-					onClick={(e) => {
-						const target = e.target as HTMLElement
-						target
-							.closest('.foh-display__full-temporary')
-							?.classList.add('foh-display__left-out')
-						setTimeout(() => {
-							setShowNormal((old) => {
-								return !old
-							})
-							target
-								.closest('.foh-display__full-temporary')
-								?.classList.remove('foh-display__left-out')
-						}, 300)
-					}}
-					className='foh-display__button'
-				>
-					{showNormal
-						? `${__('Back to current hours', 'foh-domain')}`
-						: `${__('Show normal open hours', 'foh-domain')}`}
-				</button>
-			</li>
-		</ul>
+		<button
+			onClick={(e) => {
+				const target = e.target as HTMLElement
+
+				setShowNormal((old) => {
+					return !old
+				})
+			}}
+			className='foh-display__button'
+		>
+			{showNormal
+				? `${__('Back to current hours', 'foh-domain')}`
+				: `${__('Show normal open hours', 'foh-domain')}`}
+		</button>
 	)
 
 	return (
 		<div className='foh-display__full-temporary' aria-live='polite'>
-			{!showNormal && allTemporary}
-			{showNormal && (
-				<DisplayDays
-					showTitle={true}
-					days={normal}
-					header={__('Normal open hours', 'foh-domain')}
-					weekNameFormat={weekNameFormat}
-					hourNameFormat={hourNameFormat}
-				/>
-			)}
-			{changeButton}
+			<AnimatePresence initial={false} mode='wait'>
+				{showNormal ? (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.5 }}
+						key='normal_days'
+					>
+						<DisplayDays
+							showTitle={true}
+							days={normal}
+							header={__('Normal open hours', 'foh-domain')}
+							weekNameFormat={weekNameFormat}
+							hourNameFormat={hourNameFormat}
+						/>
+					</motion.div>
+				) : (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.5 }}
+						key='temp_days'
+					>
+						{allTemporary}
+					</motion.div>
+				)}
+			</AnimatePresence>
+
+			<motion.div layout>{changeButton}</motion.div>
 		</div>
 	)
 }

@@ -5,30 +5,23 @@ import DisplayExtraHours from '../components/foh-block-display-extra-hours'
 import DisplayTemporaryHours from '../components/foh-block-display-temporary-hours'
 import { __ } from '@wordpress/i18n'
 
+import { motion, LayoutGroup } from 'motion/react'
+
 import { AllHoursDataSchema, AllHoursData } from '../types/foh-settings-types'
 
 interface Props {
 	showExtra: boolean
 	showTemporary: boolean
 	title: string
+	animateOnEnter: any
 }
 export default function DisplayAllOpenHours({
 	showExtra,
 	showTemporary,
 	title,
+	animateOnEnter,
 }: Props) {
-	const fullWeekInfo: AllHoursData = {
-		settings: {
-			week_name_format: 0,
-			week_name_format_extra: 0,
-			hour_name_format: 0,
-		},
-		normal_hours: [[], [], [], [], [], [], []],
-		extra_hours: [],
-		temporary_hours: [],
-	}
-
-	const [allHours, setAllHours] = useState(fullWeekInfo)
+	const [allHours, setAllHours] = useState<AllHoursData | null>(null)
 
 	//Normal hours
 	// get the setting
@@ -41,13 +34,27 @@ export default function DisplayAllOpenHours({
 							return AllHoursDataSchema.parse(settings)
 						} else {
 							console.log(AllHoursDataSchema.safeParse(settings))
-							return fullWeekInfo
+							return null
 						}
 					})
 				}
 			},
 		)
 	}, [])
+
+	if (allHours === null) {
+		return (
+			<LayoutGroup>
+				<h2>{__('Open hours', 'foh-domain')}</h2>
+				<motion.div
+					className='foh-display__spinner'
+					aria-label={__('Loading open hours')}
+					animate={{ transform: 'rotate(360deg)' }}
+					transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+				></motion.div>
+			</LayoutGroup>
+		)
+	}
 
 	//normal and temporary hours
 	const normalHours =
@@ -81,8 +88,16 @@ export default function DisplayAllOpenHours({
 
 	return (
 		<>
-			{normalHours}
-			{ExtraHours}
+			<motion.div
+				initial={animateOnEnter && { opacity: 0, y: 15 }}
+				whileInView={animateOnEnter && { opacity: 1, y: 0 }}
+				viewport={animateOnEnter && { once: true, margin: '-20px' }}
+			>
+				<LayoutGroup>
+					{normalHours}
+					{ExtraHours}
+				</LayoutGroup>
+			</motion.div>
 		</>
 	)
 }

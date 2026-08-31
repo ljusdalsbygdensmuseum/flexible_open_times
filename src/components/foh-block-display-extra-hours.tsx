@@ -3,6 +3,8 @@ import { ExtraHoursData } from '../types/foh-settings-types'
 import { __ } from '@wordpress/i18n'
 import { weekNames } from '../utility/fohNames'
 
+import { motion } from 'motion/react'
+
 interface Props {
 	event: ExtraHoursData[]
 	weekNameFormat: number
@@ -26,7 +28,7 @@ export default function DisplayExtraHours({
 		weekNamesFormated = ['', '', '', '', '', '', '']
 	}
 
-	const theDays = event.map((theEvent) => {
+	const theDays = event.map((theEvent, index) => {
 		const title = theEvent.title ? (
 			<li>
 				<h2>{theEvent.title}</h2>
@@ -71,16 +73,18 @@ export default function DisplayExtraHours({
 		)
 
 		return (
-			<ul className='foh-display__wrap'>
-				{title}
-				<ul>{message}</ul>
+			<motion.div layout>
+				<ul className='foh-display__wrap'>
+					{title}
+					<ul>{message}</ul>
 
-				<ul className='foh-display__dates'>{dates}</ul>
+					<ul className='foh-display__dates'>{dates}</ul>
 
-				<ul className='foh-display__hours'>
-					<li>{hours}</li>
+					<ul className='foh-display__hours'>
+						<li>{hours}</li>
+					</ul>
 				</ul>
-			</ul>
+			</motion.div>
 		)
 	})
 	return theDays

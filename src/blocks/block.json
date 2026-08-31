@@ -7,6 +7,12 @@
 	"category": "widgets",
 	"icon": "clock",
 	"description": "Display your open hours",
+	"attributes": {
+		"animateOnEnter": {
+			"type": "boolean",
+			"default": true
+		}
+	},
 	"example": {},
 	"supports": {
 		"html": false
