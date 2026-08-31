@@ -41,17 +41,7 @@ function DisplayAllOpenHours({
   title,
   animateOnEnter
 }) {
-  const fullWeekInfo = {
-    settings: {
-      week_name_format: 0,
-      week_name_format_extra: 0,
-      hour_name_format: 0
-    },
-    normal_hours: [[], [], [], [], [], [], []],
-    extra_hours: [],
-    temporary_hours: []
-  };
-  const [allHours, setAllHours] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(fullWeekInfo);
+  const [allHours, setAllHours] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null);
   //Normal hours
   // get the setting
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
@@ -64,12 +54,15 @@ function DisplayAllOpenHours({
             return _types_foh_settings_types__WEBPACK_IMPORTED_MODULE_9__.AllHoursDataSchema.parse(settings);
           } else {
             console.log(_types_foh_settings_types__WEBPACK_IMPORTED_MODULE_9__.AllHoursDataSchema.safeParse(settings));
-            return fullWeekInfo;
+            return null;
           }
         });
       }
     });
   }, []);
+  if (allHours === null) {
+    return 'loading...';
+  }
   //normal and temporary hours
   const normalHours = showTemporary && allHours.temporary_hours.length ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_foh_block_display_temporary_hours__WEBPACK_IMPORTED_MODULE_5__["default"], {
     temporary: allHours.temporary_hours,

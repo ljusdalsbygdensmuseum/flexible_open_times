@@ -21,18 +21,7 @@ export default function DisplayAllOpenHours({
 	title,
 	animateOnEnter,
 }: Props) {
-	const fullWeekInfo: AllHoursData = {
-		settings: {
-			week_name_format: 0,
-			week_name_format_extra: 0,
-			hour_name_format: 0,
-		},
-		normal_hours: [[], [], [], [], [], [], []],
-		extra_hours: [],
-		temporary_hours: [],
-	}
-
-	const [allHours, setAllHours] = useState(fullWeekInfo)
+	const [allHours, setAllHours] = useState<AllHoursData | null>(null)
 
 	//Normal hours
 	// get the setting
@@ -45,13 +34,17 @@ export default function DisplayAllOpenHours({
 							return AllHoursDataSchema.parse(settings)
 						} else {
 							console.log(AllHoursDataSchema.safeParse(settings))
-							return fullWeekInfo
+							return null
 						}
 					})
 				}
 			},
 		)
 	}, [])
+
+	if (allHours === null) {
+		return 'loading...'
+	}
 
 	//normal and temporary hours
 	const normalHours =
