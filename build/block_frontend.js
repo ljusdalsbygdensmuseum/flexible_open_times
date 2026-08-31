@@ -134,6 +134,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _foh_block_display_hours__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foh-block-display-hours */ "./src/components/foh-block-display-hours.tsx");
 /* harmony import */ var _utility_fohNames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility/fohNames */ "./src/utility/fohNames.ts");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -169,7 +172,9 @@ function DisplayDays({
     className: 'foh-display__days',
     children: [theHeader, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", {
       className: 'foh-display__hours',
-      children: theWeek
+      children: !theWeek.every(item => item == undefined) ? theWeek : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Closed', 'foh-domain')
+      })
     })]
   });
 }
