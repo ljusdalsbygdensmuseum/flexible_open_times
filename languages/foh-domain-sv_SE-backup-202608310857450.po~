@@ -1,0 +1,406 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Flexible Open Hours 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress."
+"org/support/plugin/flexible_open_times\n"
+"Last-Translator: \n"
+"Language-Team: Swedish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-05-18T08:39:51+00:00\n"
+"PO-Revision-Date: 2026-08-24 08:59+0000\n"
+"Language: sv_SE\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: foh-domain\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.8.8; wp-7.0.2; php-8.3.29\n"
+
+#: flexible-open-hours.php:261
+msgid "15/11"
+msgstr "15/11"
+
+#: build/main_page.js:93 build/metabox_extra.js:303
+#: build/metabox_temporary.js:174 build/main_page.js:55
+#: build/metabox_extra.js:170 build/metabox_temporary.js:108
+msgid "Add Additional hours"
+msgstr "Lägg till ytterligare tider"
+
+#: build/blocks/index.js:308 build/blocks/view.js:210
+#: build/block_frontend.js:210 build/blocks/index.js:162
+#: build/blocks/view.js:102 build/block_frontend.js:102
+msgid "and"
+msgstr "och"
+
+#: build/blocks/index.js:433 build/blocks/view.js:335
+#: build/block_frontend.js:335 build/blocks/index.js:214
+#: build/blocks/view.js:154 build/block_frontend.js:154
+msgid "Back to current hours"
+msgstr "Tillbaka till vanliga öppettider"
+
+#: build/blocks/block.json src/blocks/block.json
+msgctxt "block description"
+msgid "Display your open hours"
+msgstr "Visa dina öppettider"
+
+#: build/blocks/block.json src/blocks/block.json
+msgctxt "block title"
+msgid "Open hours"
+msgstr "Öppettider"
+
+#: build/main_page.js:190 build/metabox_extra.js:352
+#: build/metabox_temporary.js:223 build/main_page.js:88
+#: build/metabox_extra.js:182 build/metabox_temporary.js:120
+msgid "Close"
+msgstr "Stänga"
+
+#: build/blocks/index.js:317 build/blocks/view.js:219
+#: build/block_frontend.js:219 build/metabox_extra.js:197
+#: build/blocks/index.js:166 build/blocks/view.js:106
+#: build/block_frontend.js:106 build/metabox_extra.js:110
+msgid "Closed"
+msgstr "Stängt"
+
+#: build/metabox_extra.js:91 build/metabox_extra.js:64
+msgid "Dates"
+msgstr "Datum"
+
+#: flexible-open-hours.php:252
+msgid "Definite form"
+msgstr "Bestämd form"
+
+#. Description of the plugin
+#: flexible-open-hours.php
+msgid "Easily change open times on the fly."
+msgstr "Ändra öppettider hur och när du vill"
+
+#: flexible-open-hours.php:55 flexible-open-hours.php:294
+#: flexible-open-hours.php:330
+msgid "Extra hours"
+msgstr "Extra öppettider"
+
+#: flexible-open-hours.php:195
+msgid "Extra Open Hours"
+msgstr "Extra öppettider"
+
+#. Plugin Name of the plugin
+#: flexible-open-hours.php
+msgid "Flexible Open Hours"
+msgstr "Flexibla Öppettider"
+
+#: flexible-open-hours.php:296
+msgid ""
+"For induvidual dates or events, example: a seminar at night or closed on "
+"christmas day."
+msgstr ""
+"Till enstaka datum eller event, till exempel: ett seminarium på kvällen "
+"eller stängt på julafton."
+
+#: flexible-open-hours.php:307
+msgid ""
+"For longer periods of time, example: summer open hours or a month closed for "
+"renovations."
+msgstr ""
+"Till längre perioder, till exempel: sommar öppettider eller stängt en månad "
+"för renoveringar."
+
+#: build/blocks/index.js:553 build/blocks/view.js:455
+#: build/block_frontend.js:455 build/main_page.js:296
+#: build/metabox_extra.js:458 build/metabox_temporary.js:401
+#: build/blocks/index.js:287 build/blocks/view.js:227
+#: build/block_frontend.js:227 build/main_page.js:158
+#: build/metabox_extra.js:252 build/metabox_temporary.js:224
+msgid "Fri"
+msgstr "Fre"
+
+#: build/blocks/index.js:552 build/blocks/view.js:454
+#: build/block_frontend.js:454 build/main_page.js:295
+#: build/metabox_extra.js:457 build/metabox_temporary.js:400
+#: build/blocks/index.js:278 build/blocks/view.js:218
+#: build/block_frontend.js:218 build/main_page.js:149
+#: build/metabox_extra.js:243 build/metabox_temporary.js:215
+msgid "Friday"
+msgstr "Fredag"
+
+#: build/blocks/index.js:554 build/blocks/view.js:456
+#: build/block_frontend.js:456 build/main_page.js:297
+#: build/metabox_extra.js:459 build/metabox_temporary.js:402
+#: build/blocks/index.js:296 build/blocks/view.js:236
+#: build/block_frontend.js:236 build/main_page.js:167
+#: build/metabox_extra.js:261 build/metabox_temporary.js:233
+msgid "Friday the"
+msgstr "Fredagen den"
+
+#: flexible-open-hours.php:231 flexible-open-hours.php:248
+#: flexible-open-hours.php:273
+msgid "Full"
+msgstr "Hela"
+
+#: flexible-open-hours.php:235 flexible-open-hours.php:256
+#: flexible-open-hours.php:277
+msgid "Half"
+msgstr "Halva"
+
+#: flexible-open-hours.php:206 build/main_page.js:38 build/metabox_extra.js:248
+#: build/metabox_temporary.js:119 build/main_page.js:11
+#: build/metabox_extra.js:126 build/metabox_temporary.js:64
+msgid "Hours"
+msgstr "Tider"
+
+#: flexible-open-hours.php:204
+msgid "Hours format"
+msgstr "Tids format"
+
+#. Author of the plugin
+#: flexible-open-hours.php
+msgid "ina"
+msgstr "Ina"
+
+#: flexible-open-hours.php:331
+msgid "Message"
+msgstr "Medelande"
+
+#: flexible-open-hours.php:236 build/blocks/index.js:553
+#: build/blocks/view.js:455 build/block_frontend.js:455 build/main_page.js:296
+#: build/metabox_extra.js:458 build/metabox_temporary.js:401
+#: build/blocks/index.js:283 build/blocks/view.js:223
+#: build/block_frontend.js:223 build/main_page.js:154
+#: build/metabox_extra.js:248 build/metabox_temporary.js:220
+msgid "Mon"
+msgstr "Mån"
+
+#: flexible-open-hours.php:257
+msgid "Mon 15/11"
+msgstr "Mån 15/11"
+
+#: flexible-open-hours.php:232 build/blocks/index.js:552
+#: build/blocks/view.js:454 build/block_frontend.js:454 build/main_page.js:295
+#: build/metabox_extra.js:457 build/metabox_temporary.js:400
+#: build/blocks/index.js:274 build/blocks/view.js:214
+#: build/block_frontend.js:214 build/main_page.js:145
+#: build/metabox_extra.js:239 build/metabox_temporary.js:211
+msgid "Monday"
+msgstr "Måndag"
+
+#: flexible-open-hours.php:249
+msgid "Monday 15/11"
+msgstr "Måndag 15/11"
+
+#: build/blocks/index.js:554 build/blocks/view.js:456
+#: build/block_frontend.js:456 build/main_page.js:297
+#: build/metabox_extra.js:459 build/metabox_temporary.js:402
+#: build/blocks/index.js:292 build/blocks/view.js:232
+#: build/block_frontend.js:232 build/main_page.js:163
+#: build/metabox_extra.js:257 build/metabox_temporary.js:229
+msgid "Monday the"
+msgstr "Måndagen"
+
+#: flexible-open-hours.php:253
+msgid "Monday the 15/11"
+msgstr "Måndagen den 15/11"
+
+#: flexible-open-hours.php:260
+msgid "None"
+msgstr "Ingen"
+
+#: flexible-open-hours.php:52
+msgid "Normal hours"
+msgstr "Vanliga öppettider"
+
+#: flexible-open-hours.php:68 flexible-open-hours.php:194
+msgid "Normal Open Hours"
+msgstr "Vanliga Öppettider"
+
+#: build/blocks/index.js:443 build/blocks/view.js:345
+#: build/block_frontend.js:345 build/blocks/index.js:216
+#: build/blocks/view.js:156 build/block_frontend.js:156
+msgid "Normal open hours"
+msgstr "Vanliga öppettider"
+
+#: build/main_page.js:182 build/metabox_extra.js:344
+#: build/metabox_temporary.js:215 build/main_page.js:86
+#: build/metabox_extra.js:180 build/metabox_temporary.js:118
+msgid "Open"
+msgstr "Öppna"
+
+#: flexible-open-hours.php:85
+msgid "Open Hour Settings"
+msgstr "Öppet tider inställningar"
+
+#: flexible-open-hours.php:47 flexible-open-hours.php:52
+msgid "Open Hours"
+msgstr "Öppettider"
+
+#: build/blocks/index.js:176 build/blocks/view.js:78 build/block_frontend.js:78
+#: build/blocks/index.js:99 build/blocks/view.js:39 build/block_frontend.js:39
+#| msgid "Open hour"
+msgid "Open hours"
+msgstr "Öppettider"
+
+#: build/main_page.js:203 build/metabox_extra.js:365
+#: build/metabox_temporary.js:236 build/main_page.js:92
+#: build/metabox_extra.js:186 build/metabox_temporary.js:124
+msgid "Remove"
+msgstr "Ta bort"
+
+#: build/metabox_extra.js:107 build/metabox_extra.js:64
+msgid "Remove days"
+msgstr "Ta bort dagar"
+
+#: build/blocks/index.js:553 build/blocks/view.js:455
+#: build/block_frontend.js:455 build/main_page.js:296
+#: build/metabox_extra.js:458 build/metabox_temporary.js:401
+#: build/blocks/index.js:288 build/blocks/view.js:228
+#: build/block_frontend.js:228 build/main_page.js:159
+#: build/metabox_extra.js:253 build/metabox_temporary.js:225
+msgid "Sat"
+msgstr "Lör"
+
+#: build/blocks/index.js:552 build/blocks/view.js:454
+#: build/block_frontend.js:454 build/main_page.js:295
+#: build/metabox_extra.js:457 build/metabox_temporary.js:400
+#: build/blocks/index.js:279 build/blocks/view.js:219
+#: build/block_frontend.js:219 build/main_page.js:150
+#: build/metabox_extra.js:244 build/metabox_temporary.js:216
+msgid "Saturday"
+msgstr "Lördag"
+
+#: build/blocks/index.js:554 build/blocks/view.js:456
+#: build/block_frontend.js:456 build/main_page.js:297
+#: build/metabox_extra.js:459 build/metabox_temporary.js:402
+#: build/blocks/index.js:297 build/blocks/view.js:237
+#: build/block_frontend.js:237 build/main_page.js:168
+#: build/metabox_extra.js:262 build/metabox_temporary.js:234
+msgid "Saturday the"
+msgstr "Lördagen den"
+
+#: build/metabox_extra.js:101 build/metabox_extra.js:64
+msgid "Select multiple days"
+msgstr "Välj flera i taget"
+
+#: flexible-open-hours.php:59
+msgid "Settings"
+msgstr "Inställningar"
+
+#: build/blocks/index.js:433 build/blocks/view.js:335
+#: build/block_frontend.js:335 build/blocks/index.js:215
+#: build/blocks/view.js:155 build/block_frontend.js:155
+msgid "Show normal open hours"
+msgstr "Visa vanliga öppettider"
+
+#: build/blocks/index.js:553 build/blocks/view.js:455
+#: build/block_frontend.js:455 build/main_page.js:296
+#: build/metabox_extra.js:458 build/metabox_temporary.js:401
+#: build/blocks/index.js:289 build/blocks/view.js:229
+#: build/block_frontend.js:229 build/main_page.js:160
+#: build/metabox_extra.js:254 build/metabox_temporary.js:226
+msgid "Sun"
+msgstr "Sön"
+
+#: build/blocks/index.js:552 build/blocks/view.js:454
+#: build/block_frontend.js:454 build/main_page.js:295
+#: build/metabox_extra.js:457 build/metabox_temporary.js:400
+#: build/blocks/index.js:280 build/blocks/view.js:220
+#: build/block_frontend.js:220 build/main_page.js:151
+#: build/metabox_extra.js:245 build/metabox_temporary.js:217
+msgid "Sunday"
+msgstr "Söndag"
+
+#: build/blocks/index.js:554 build/blocks/view.js:456
+#: build/block_frontend.js:456 build/main_page.js:297
+#: build/metabox_extra.js:459 build/metabox_temporary.js:402
+#: build/blocks/index.js:298 build/blocks/view.js:238
+#: build/block_frontend.js:238 build/main_page.js:169
+#: build/metabox_extra.js:263 build/metabox_temporary.js:235
+msgid "Sunday the"
+msgstr "Söndagen den"
+
+#: flexible-open-hours.php:56 flexible-open-hours.php:305
+#: flexible-open-hours.php:334
+msgid "Temporary hours"
+msgstr "Tillfälliga öppettider"
+
+#: build/blocks/index.js:553 build/blocks/view.js:455
+#: build/block_frontend.js:455 build/main_page.js:296
+#: build/metabox_extra.js:458 build/metabox_temporary.js:401
+#: build/blocks/index.js:286 build/blocks/view.js:226
+#: build/block_frontend.js:226 build/main_page.js:157
+#: build/metabox_extra.js:251 build/metabox_temporary.js:223
+msgid "Thu"
+msgstr "Tor"
+
+#: build/blocks/index.js:552 build/blocks/view.js:454
+#: build/block_frontend.js:454 build/main_page.js:295
+#: build/metabox_extra.js:457 build/metabox_temporary.js:400
+#: build/blocks/index.js:277 build/blocks/view.js:217
+#: build/block_frontend.js:217 build/main_page.js:148
+#: build/metabox_extra.js:242 build/metabox_temporary.js:214
+msgid "Thursday"
+msgstr "Torsdag"
+
+#: build/blocks/index.js:554 build/blocks/view.js:456
+#: build/block_frontend.js:456 build/main_page.js:297
+#: build/metabox_extra.js:459 build/metabox_temporary.js:402
+#: build/blocks/index.js:295 build/blocks/view.js:235
+#: build/block_frontend.js:235 build/main_page.js:166
+#: build/metabox_extra.js:260 build/metabox_temporary.js:232
+msgid "Thursday the"
+msgstr "Torsdagen den"
+
+#: build/blocks/index.js:553 build/blocks/view.js:455
+#: build/block_frontend.js:455 build/main_page.js:296
+#: build/metabox_extra.js:458 build/metabox_temporary.js:401
+#: build/blocks/index.js:284 build/blocks/view.js:224
+#: build/block_frontend.js:224 build/main_page.js:155
+#: build/metabox_extra.js:249 build/metabox_temporary.js:221
+msgid "Tue"
+msgstr "Tis"
+
+#: build/blocks/index.js:552 build/blocks/view.js:454
+#: build/block_frontend.js:454 build/main_page.js:295
+#: build/metabox_extra.js:457 build/metabox_temporary.js:400
+#: build/blocks/index.js:275 build/blocks/view.js:215
+#: build/block_frontend.js:215 build/main_page.js:146
+#: build/metabox_extra.js:240 build/metabox_temporary.js:212
+msgid "Tuesday"
+msgstr "Tisdag"
+
+#: build/blocks/index.js:554 build/blocks/view.js:456
+#: build/block_frontend.js:456 build/main_page.js:297
+#: build/metabox_extra.js:459 build/metabox_temporary.js:402
+#: build/blocks/index.js:293 build/blocks/view.js:233
+#: build/block_frontend.js:233 build/main_page.js:164
+#: build/metabox_extra.js:258 build/metabox_temporary.js:230
+msgid "Tuesday the"
+msgstr "Tisdagen den"
+
+#: build/blocks/index.js:553 build/blocks/view.js:455
+#: build/block_frontend.js:455 build/main_page.js:296
+#: build/metabox_extra.js:458 build/metabox_temporary.js:401
+#: build/blocks/index.js:285 build/blocks/view.js:225
+#: build/block_frontend.js:225 build/main_page.js:156
+#: build/metabox_extra.js:250 build/metabox_temporary.js:222
+msgid "Wed"
+msgstr "Ons"
+
+#: build/blocks/index.js:552 build/blocks/view.js:454
+#: build/block_frontend.js:454 build/main_page.js:295
+#: build/metabox_extra.js:457 build/metabox_temporary.js:400
+#: build/blocks/index.js:276 build/blocks/view.js:216
+#: build/block_frontend.js:216 build/main_page.js:147
+#: build/metabox_extra.js:241 build/metabox_temporary.js:213
+msgid "Wednesday"
+msgstr "Onsdag"
+
+#: build/blocks/index.js:554 build/blocks/view.js:456
+#: build/block_frontend.js:456 build/main_page.js:297
+#: build/metabox_extra.js:459 build/metabox_temporary.js:402
+#: build/blocks/index.js:294 build/blocks/view.js:234
+#: build/block_frontend.js:234 build/main_page.js:165
+#: build/metabox_extra.js:259 build/metabox_temporary.js:231
+msgid "Wednesday the"
+msgstr "Onsdagen den"
+
+#: flexible-open-hours.php:192
+msgid "Week name format"
+msgstr "Vecko namns format"
