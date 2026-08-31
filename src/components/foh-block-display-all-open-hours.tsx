@@ -43,7 +43,16 @@ export default function DisplayAllOpenHours({
 	}, [])
 
 	if (allHours === null) {
-		return 'loading...'
+		return (
+			<LayoutGroup>
+				<motion.div
+					className='foh-display__spinner'
+					aria-label={__('Loading open hours')}
+					animate={{ transform: 'rotate(360deg)' }}
+					transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+				></motion.div>
+			</LayoutGroup>
+		)
 	}
 
 	//normal and temporary hours

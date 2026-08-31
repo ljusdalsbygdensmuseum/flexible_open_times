@@ -61,7 +61,20 @@ function DisplayAllOpenHours({
     });
   }, []);
   if (allHours === null) {
-    return 'loading...';
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_8__.LayoutGroup, {
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_7__.motion.div, {
+        className: 'foh-display__spinner',
+        "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Loading open hours'),
+        animate: {
+          transform: 'rotate(360deg)'
+        },
+        transition: {
+          duration: 1.5,
+          repeat: Infinity,
+          ease: 'linear'
+        }
+      })
+    });
   }
   //normal and temporary hours
   const normalHours = showTemporary && allHours.temporary_hours.length ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_foh_block_display_temporary_hours__WEBPACK_IMPORTED_MODULE_5__["default"], {
