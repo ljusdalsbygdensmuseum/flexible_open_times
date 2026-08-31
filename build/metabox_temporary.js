@@ -313,7 +313,7 @@ function FohTemporaryHours() {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
         children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
           className: 'description',
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('fill in your open hours. If all are left empty it will say it is closed', 'foh-domain')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Fill in your open hours. If all are left empty it will say it is closed', 'foh-domain')
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           id: 'full-week',
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_settings_fullweek__WEBPACK_IMPORTED_MODULE_2__.FullWeek, {

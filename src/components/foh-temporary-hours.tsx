@@ -57,7 +57,7 @@ export function FohTemporaryHours() {
 				<PanelBody>
 					<p className='description'>
 						{__(
-							'fill in your open hours. If all are left empty it will say it is closed',
+							'Fill in your open hours. If all are left empty it will say it is closed',
 							'foh-domain',
 						)}
 					</p>
