@@ -2,6 +2,8 @@ import { Day } from '../types/foh-settings-types'
 import DisplayHours from './foh-block-display-hours'
 import { weekNames } from '../utility/fohNames'
 
+import { __ } from '@wordpress/i18n'
+
 interface Props {
 	days: Day[]
 	weekNameFormat: number
@@ -44,7 +46,13 @@ export default function DisplayDays({
 	return (
 		<ul className='foh-display__days'>
 			{theHeader}
-			<ul className='foh-display__hours'>{theWeek}</ul>
+			<ul className='foh-display__hours'>
+				{!theWeek.every((item) => item == undefined) ? (
+					theWeek
+				) : (
+					<li>{__('Closed', 'foh-domain')}</li>
+				)}
+			</ul>
 		</ul>
 	)
 }

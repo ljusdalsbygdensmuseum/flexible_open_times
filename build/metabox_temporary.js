@@ -262,6 +262,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foh_date_range__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foh-date-range */ "./src/components/foh-date-range.tsx");
 /* harmony import */ var _types_foh_settings_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../types/foh-settings-types */ "./src/types/foh-settings-types.ts");
 /* harmony import */ var _utility_is_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utility/is-json */ "./src/utility/is-json.ts");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -295,20 +298,29 @@ function FohTemporaryHours() {
   const maxDate = parseInt(maxdateInput.value);
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Panel, {
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        id: 'day-select',
-        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_date_range__WEBPACK_IMPORTED_MODULE_3__.FOHDateRange, {
-          dates: [minDate, maxDate],
-          input: [mindateInput, maxdateInput]
+      header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Dates', 'foh-domain'),
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          id: 'day-select',
+          children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_date_range__WEBPACK_IMPORTED_MODULE_3__.FOHDateRange, {
+            dates: [minDate, maxDate],
+            input: [mindateInput, maxdateInput]
+          })
         })
       })
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Panel, {
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        id: 'full-week',
-        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_settings_fullweek__WEBPACK_IMPORTED_MODULE_2__.FullWeek, {
-          week: hoursinfo,
-          input: hoursInput
-        })
+      header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Open hours', 'foh-domain'),
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+          className: 'description',
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Fill in your open hours. If all are left empty it will say it is closed', 'foh-domain')
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          id: 'full-week',
+          children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_foh_settings_fullweek__WEBPACK_IMPORTED_MODULE_2__.FullWeek, {
+            week: hoursinfo,
+            input: hoursInput
+          })
+        })]
       })
     })]
   });

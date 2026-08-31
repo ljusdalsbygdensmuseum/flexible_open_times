@@ -66,6 +66,7 @@ class FlexibleOpenHours
 ?>
         <div class="wrap">
             <h1><?php _e('Normal Open Hours', 'foh-domain'); ?></h1>
+            <p class="description"><?php _e('Fill in your open hours. If all are left empty it will say it is closed', 'foh-domain') ?></p>
             <form action="options.php" method="POST">
                 <?php
                 settings_errors();
